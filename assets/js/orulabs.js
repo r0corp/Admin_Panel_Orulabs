@@ -84,7 +84,7 @@
     };
 
     OL.rgba = function (alpha) {
-        var rgb = getComputedStyle(html).getPropertyValue("--ol-primary-rgb").trim() || "37, 99, 235";
+        var rgb = getComputedStyle(html).getPropertyValue("--ol-primary-rgb").trim() || "1, 144, 251";
         return "rgba(" + rgb + ", " + alpha + ")";
     };
 
@@ -113,15 +113,15 @@
     });
 
     var PRESETS = [
+        { name: "Orulabs", color: "#0190fb" },
+        { name: "Orulabs Oranye", color: "#f47a20" },
         { name: "Biru", color: "#2563eb" },
         { name: "Indigo", color: "#4f46e5" },
         { name: "Ungu", color: "#7c3aed" },
         { name: "Pink", color: "#db2777" },
         { name: "Merah", color: "#dc2626" },
-        { name: "Oranye", color: "#ea580c" },
         { name: "Hijau", color: "#16a34a" },
         { name: "Teal", color: "#0d9488" },
-        { name: "Cyan", color: "#0891b2" },
         { name: "Slate", color: "#475569" }
     ];
 
@@ -152,6 +152,9 @@
                 var val = opt.dataset.value;
                 patch[opt.dataset.olSet] = val === "true" ? true : val === "false" ? false : val;
                 OL.setTheme(patch);
+                if (opt.dataset.olSet === "loader" && val !== "none") {
+                    OL.previewLoader(val, 1200);
+                }
                 return;
             }
             if (e.target.closest("[data-ol-reset-theme]")) {
@@ -181,7 +184,7 @@
                 if (/^#([0-9a-f]{3}){1,2}$/i.test(v)) {
                     OL.setTheme({ primary: v });
                 } else {
-                    OL.toast("Format warna harus hex, contoh #2563eb", "danger");
+                    OL.toast("Format warna harus hex, contoh #0190fb", "danger");
                     syncCustomizer();
                 }
             });
@@ -300,14 +303,11 @@
             });
         });
 
-        // Ctrl/Cmd + K fokus ke kolom pencarian
+        // Ctrl/Cmd + K membuka command palette
         document.addEventListener("keydown", function (e) {
-            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
-                var s = $("[data-ol-search]");
-                if (s) {
-                    e.preventDefault();
-                    s.focus();
-                }
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k" && OL.openPalette) {
+                e.preventDefault();
+                OL.openPalette();
             }
         });
 
@@ -932,8 +932,395 @@
     }
 
 
+    /* ========================================================
+       LOADING: preloader, progress bar atas, overlay kartu
+       ======================================================== */
+
+    var bootTime = Date.now();
+
+    function hidePreloader() {
+        // Minimal tampil sebentar supaya tidak sekadar berkedip.
+        var wait = Math.max(0, 350 - (Date.now() - bootTime));
+        setTimeout(function () { html.classList.add("ol-loaded"); }, wait);
+    }
+
+    if (document.readyState === "complete") {
+        hidePreloader();
+    } else {
+        window.addEventListener("load", hidePreloader);
+        setTimeout(hidePreloader, 5000); // jaga-jaga kalau ada aset yang lambat
+    }
+
+    // Tampilkan loader beberapa saat (dipakai panel Tema & halaman demo).
+    OL.previewLoader = function (style, ms) {
+        var pre = $(".ol-preloader");
+        if (!pre) { return; }
+        var before = html.getAttribute("data-ol-loader");
+        html.setAttribute("data-ol-loader", style || before);
+        pre.classList.add("is-preview");
+        setTimeout(function () {
+            pre.classList.remove("is-preview");
+            html.setAttribute("data-ol-loader", THEME.current.loader || "none");
+        }, ms || 1600);
+    };
+
+    document.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-ol-preview-loader]");
+        if (b) { OL.previewLoader(b.dataset.olPreviewLoader || THEME.current.loader); }
+    });
+
+    // Progress bar tipis di atas layar, mis. saat request AJAX:
+    //   OL.progress.start(); fetch(...).finally(OL.progress.done);
+    OL.progress = (function () {
+        var bar = null;
+        var timer = null;
+        var value = 0;
+
+        function set(v) {
+            value = v;
+            bar.style.width = v + "%";
+        }
+
+        return {
+            start: function () {
+                if (!bar) {
+                    bar = document.createElement("div");
+                    bar.className = "ol-top-progress";
+                    document.body.appendChild(bar);
+                }
+                clearInterval(timer);
+                bar.style.opacity = "1";
+                set(8);
+                timer = setInterval(function () {
+                    if (value < 90) { set(value + (90 - value) * 0.12); }
+                }, 250);
+            },
+            done: function () {
+                if (!bar) { return; }
+                clearInterval(timer);
+                set(100);
+                setTimeout(function () {
+                    bar.style.opacity = "0";
+                    setTimeout(function () { set(0); }, 300);
+                }, 250);
+            }
+        };
+    })();
+
+    // Overlay loading di atas elemen (kartu, tabel):
+    //   var unblock = OL.blockCard(el, "Menyimpan..."); ... unblock();
+    OL.blockCard = function (el, text) {
+        if (typeof el === "string") { el = $(el); }
+        if (!el) { return function () {}; }
+        if (getComputedStyle(el).position === "static") { el.style.position = "relative"; }
+        var overlay = document.createElement("div");
+        overlay.className = "ol-block-overlay";
+        overlay.innerHTML = '<div class="spinner-border text-primary" role="status"></div><span>' + escapeHtml(text || "Memuat...") + "</span>";
+        el.appendChild(overlay);
+        return function () { overlay.remove(); };
+    };
+
+    // Tombol dengan status loading: <button data-ol-loading-text="Menyimpan...">
+    OL.buttonLoading = function (btn, on) {
+        if (on) {
+            btn.dataset.olOriginal = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1" aria-hidden="true"></span>' +
+                escapeHtml(btn.dataset.olLoadingText || "Memproses...");
+        } else if (btn.dataset.olOriginal) {
+            btn.disabled = false;
+            btn.innerHTML = btn.dataset.olOriginal;
+        }
+    };
+
+
+    /* ========================================================
+       WIZARD  ([data-ol-wizard])
+       Markup:
+         <div data-ol-wizard>
+           langkah : elemen [data-wizard-step]  (.ol-step / .ol-stepper-item)
+           panel   : elemen [data-wizard-pane]  (satu per langkah)
+           tombol  : [data-wizard-prev], [data-wizard-next]
+           opsional: [data-wizard-progress] (progress-bar), [data-wizard-count]
+                     [data-wizard-summary] (ringkasan isian otomatis)
+         </div>
+       Atribut: data-finish-text="Kirim" pada wizard.
+       Event  : "ol:wizardfinish" (detail: { form data }) di elemen wizard.
+       ======================================================== */
+
+    function initWizards() {
+        $$("[data-ol-wizard]").forEach(function (wiz) {
+            var panes = $$("[data-wizard-pane]", wiz);
+            var steps = $$("[data-wizard-step]", wiz);
+            var prev = $("[data-wizard-prev]", wiz);
+            var next = $("[data-wizard-next]", wiz);
+            var bar = $("[data-wizard-progress]", wiz);
+            var count = $("[data-wizard-count]", wiz);
+            var nextHtml = next ? next.innerHTML : "";
+            var finishText = wiz.dataset.finishText || "Selesai";
+            var current = 0;
+
+            // Lewati input internal Tom Select; select aslinya yang dibaca.
+            function fields(pane) {
+                return $$("input, select, textarea", pane).filter(function (f) {
+                    return !f.disabled && !f.closest(".ts-wrapper");
+                });
+            }
+
+            function fillSummary() {
+                var box = $("[data-wizard-summary]", wiz);
+                if (!box) { return; }
+                // Label diambil dari <label for>, atau data-summary-label pada
+                // pembungkus (untuk grup radio/checkbox). Nilai radio/checkbox
+                // dari data-summary-value. Nilai berlabel sama digabung.
+                var order = [];
+                var values = {};
+                panes.slice(0, -1).forEach(function (p) {
+                    fields(p).forEach(function (f) {
+                        if ((f.type === "radio" || f.type === "checkbox") && !f.checked) { return; }
+                        var group = f.closest("[data-summary-label]");
+                        // Tom Select memindahkan <label for> ke input internalnya.
+                        var forLabel = f.id ? ($('label[for="' + f.id + '"]', wiz) || $('label[for="' + f.id + '-ts-control"]', wiz)) : null;
+                        var label = (group ? group.dataset.summaryLabel : forLabel ? forLabel.textContent : "").trim();
+                        if (!label) { return; }
+                        var value;
+                        if (f.type === "radio" || f.type === "checkbox") {
+                            value = f.dataset.summaryValue || (f.value && f.value !== "on" ? f.value : "Ya");
+                        } else if (f.tagName === "SELECT") {
+                            value = Array.prototype.map.call(f.selectedOptions, function (o) { return o.text; }).join(", ");
+                        } else if (f._flatpickr && f._flatpickr.altInput) {
+                            value = f._flatpickr.altInput.value;
+                        } else {
+                            value = f.value;
+                        }
+                        if (!values[label]) {
+                            values[label] = [];
+                            order.push(label);
+                        }
+                        if (value) { values[label].push(value); }
+                    });
+                });
+                box.innerHTML = order.map(function (label) {
+                    return '<dt class="col-5 text-muted-ol fw-normal">' + escapeHtml(label) + '</dt><dd class="col-7 fw-semibold">' +
+                        escapeHtml(values[label].join(", ") || "-") + "</dd>";
+                }).join("");
+            }
+
+            function show(index) {
+                current = index;
+                panes.forEach(function (p, i) { p.hidden = i !== index; });
+                steps.forEach(function (s, i) {
+                    s.classList.toggle("is-active", i === index);
+                    s.classList.toggle("is-done", i < index);
+                });
+                if (prev) { prev.disabled = index === 0; }
+                var last = index === panes.length - 1;
+                if (next) {
+                    next.innerHTML = last ? '<i class="bi bi-check2-circle me-1"></i> ' + escapeHtml(finishText) : nextHtml;
+                }
+                if (bar) { bar.style.width = Math.round(((index + 1) / panes.length) * 100) + "%"; }
+                if (count) { count.textContent = "Langkah " + (index + 1) + " dari " + panes.length; }
+                if (last) { fillSummary(); }
+                wiz.dispatchEvent(new CustomEvent("ol:wizardstep", { detail: { index: index } }));
+            }
+
+            function valid(pane) {
+                var ok = fields(pane).every(function (f) { return f.checkValidity(); });
+                pane.classList.add("was-validated");
+                return ok;
+            }
+
+            if (next) {
+                next.addEventListener("click", function () {
+                    if (!valid(panes[current])) { return; }
+                    if (current < panes.length - 1) {
+                        show(current + 1);
+                        return;
+                    }
+                    var data = {};
+                    panes.forEach(function (p) {
+                        fields(p).forEach(function (f) {
+                            if ((f.type === "radio" || f.type === "checkbox") && !f.checked) { return; }
+                            if (f.name || f.id) { data[f.name || f.id] = f.value; }
+                        });
+                    });
+                    var ev = new CustomEvent("ol:wizardfinish", { detail: data, cancelable: true });
+                    if (wiz.dispatchEvent(ev)) {
+                        OL.toast(wiz.dataset.finishMessage || "Data berhasil dikirim!", "success");
+                    }
+                });
+            }
+
+            if (prev) {
+                prev.addEventListener("click", function () { if (current > 0) { show(current - 1); } });
+            }
+
+            // Klik langkah yang sudah selesai untuk kembali ke sana
+            steps.forEach(function (s, i) {
+                s.addEventListener("click", function () { if (i < current) { show(i); } });
+            });
+
+            OL.wizards = OL.wizards || [];
+            wiz.olWizard = {
+                go: show,
+                reset: function () {
+                    panes.forEach(function (p) {
+                        p.classList.remove("was-validated");
+                        fields(p).forEach(function (f) {
+                            if (f.type === "radio" || f.type === "checkbox") {
+                                f.checked = f.defaultChecked;
+                            } else if (f.tagName === "SELECT") {
+                                Array.prototype.forEach.call(f.options, function (o) { o.selected = o.defaultSelected; });
+                            } else if (f.type !== "hidden" || f._flatpickr) {
+                                f.value = f.defaultValue;
+                            }
+                            if (f._flatpickr) { f._flatpickr.clear(); }
+                            if (f.tomselect) { f.tomselect.clear(); }
+                        });
+                    });
+                    show(0);
+                }
+            };
+
+            show(0);
+        });
+    }
+
+
+    /* ========================================================
+       COMMAND PALETTE (Ctrl/Cmd + K, atau klik kolom cari)
+       Isi diambil otomatis dari menu sidebar + aksi cepat.
+       ======================================================== */
+
+    function initPalette() {
+        var links = $$(".ol-sidebar a.ol-nav-link[href]").filter(function (a) {
+            var href = a.getAttribute("href");
+            return href && href.indexOf(".html") !== -1;
+        });
+        if (!links.length) { return; }
+
+        var items = links.map(function (a) {
+            var parent = a.closest(".ol-nav-sub");
+            var parentLink = parent ? $('[href="#' + parent.id + '"]') : null;
+            var icon = parentLink ? parentLink.querySelector("i").className : a.querySelector("i").className;
+            return {
+                group: "Halaman",
+                label: a.querySelector(".ol-nav-text").textContent.trim(),
+                hint: parentLink ? parentLink.querySelector(".ol-nav-text").textContent.trim() : "",
+                icon: icon.replace("nav-icon", "").trim(),
+                href: a.getAttribute("href")
+            };
+        });
+
+        var actions = [
+            { group: "Aksi", label: "Ganti mode terang / gelap", icon: "bi bi-moon-stars", run: function () { $("[data-ol-toggle-mode]") && $("[data-ol-toggle-mode]").click(); } },
+            { group: "Aksi", label: "Buka pengaturan tema", icon: "bi bi-palette", run: function () { bootstrap.Offcanvas.getOrCreateInstance("#olCustomizer").show(); } },
+            { group: "Aksi", label: "Buka sticky notes", icon: "bi bi-sticky", run: function () { bootstrap.Offcanvas.getOrCreateInstance("#olNotes").show(); } },
+            { group: "Aksi", label: "Ciutkan / lebarkan sidebar", icon: "bi bi-layout-sidebar", run: function () { OL.setTheme({ mini: !THEME.current.mini }); } },
+            { group: "Aksi", label: "Layar penuh", icon: "bi bi-arrows-fullscreen", run: function () { $("[data-ol-fullscreen]") && $("[data-ol-fullscreen]").click(); } },
+            { group: "Aksi", label: "Keluar", icon: "bi bi-box-arrow-right", href: "login.html" }
+        ];
+        var all = items.concat(actions);
+
+        var modalEl = document.createElement("div");
+        modalEl.className = "modal fade ol-palette";
+        modalEl.tabIndex = -1;
+        modalEl.setAttribute("aria-label", "Cari cepat");
+        modalEl.innerHTML =
+            '<div class="modal-dialog"><div class="modal-content">' +
+            '<div class="position-relative"><i class="bi bi-search ol-palette-search-icon"></i>' +
+            '<input type="text" class="form-control ol-palette-input" placeholder="Ketik nama halaman atau aksi..." aria-label="Cari halaman atau aksi" autocomplete="off"></div>' +
+            '<ul class="ol-palette-list" role="listbox"></ul>' +
+            '<div class="ol-palette-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> pilih</span><span><kbd>Enter</kbd> buka</span><span><kbd>Esc</kbd> tutup</span></div>' +
+            "</div></div>";
+        document.body.appendChild(modalEl);
+
+        var modal = new bootstrap.Modal(modalEl);
+        var input = $(".ol-palette-input", modalEl);
+        var list = $(".ol-palette-list", modalEl);
+        var shown = [];
+        var active = 0;
+
+        function render() {
+            var q = input.value.trim().toLowerCase();
+            shown = all.filter(function (it) {
+                return !q || (it.label + " " + (it.hint || "") + " " + it.group).toLowerCase().indexOf(q) !== -1;
+            });
+            active = Math.min(active, Math.max(shown.length - 1, 0));
+            if (!shown.length) {
+                list.innerHTML = '<li class="ol-empty py-4"><i class="bi bi-search"></i>Tidak ada hasil untuk "' + escapeHtml(input.value) + '"</li>';
+                return;
+            }
+            var html2 = "";
+            var lastGroup = "";
+            shown.forEach(function (it, i) {
+                if (it.group !== lastGroup) {
+                    html2 += '<li class="ol-palette-group">' + it.group + "</li>";
+                    lastGroup = it.group;
+                }
+                html2 += '<li class="ol-palette-item' + (i === active ? " is-active" : "") + '" role="option" data-i="' + i + '">' +
+                    '<i class="' + it.icon + '"></i><span class="flex-grow-1">' + escapeHtml(it.label) +
+                    (it.hint ? ' <span class="small text-muted-ol">· ' + escapeHtml(it.hint) + "</span>" : "") +
+                    '</span><i class="bi bi-arrow-return-left small opacity-50"></i></li>';
+            });
+            list.innerHTML = html2;
+            var act = $(".ol-palette-item.is-active", list);
+            if (act) { act.scrollIntoView({ block: "nearest" }); }
+        }
+
+        function choose(i) {
+            var it = shown[i];
+            if (!it) { return; }
+            modal.hide();
+            if (it.href) {
+                location.href = it.href;
+            } else if (it.run) {
+                setTimeout(it.run, 200);
+            }
+        }
+
+        OL.openPalette = function () {
+            input.value = "";
+            active = 0;
+            render();
+            modal.show();
+        };
+
+        modalEl.addEventListener("shown.bs.modal", function () { input.focus(); });
+        input.addEventListener("input", function () { active = 0; render(); });
+        input.addEventListener("keydown", function (e) {
+            if (e.key === "ArrowDown") { e.preventDefault(); active = Math.min(active + 1, shown.length - 1); render(); }
+            if (e.key === "ArrowUp") { e.preventDefault(); active = Math.max(active - 1, 0); render(); }
+            if (e.key === "Enter") { e.preventDefault(); choose(active); }
+        });
+        list.addEventListener("click", function (e) {
+            var li = e.target.closest("[data-i]");
+            if (li) { choose(parseInt(li.dataset.i, 10)); }
+        });
+        list.addEventListener("mousemove", function (e) {
+            var li = e.target.closest("[data-i]");
+            if (li && parseInt(li.dataset.i, 10) !== active) {
+                active = parseInt(li.dataset.i, 10);
+                $$(".ol-palette-item", list).forEach(function (x) { x.classList.toggle("is-active", x === li); });
+            }
+        });
+
+        // Kolom cari di navbar membuka palette
+        var search = $("[data-ol-search]");
+        if (search) {
+            search.readOnly = true;
+            search.style.cursor = "pointer";
+            search.addEventListener("click", OL.openPalette);
+            search.addEventListener("focus", function () { search.blur(); OL.openPalette(); });
+        }
+        $$("[data-ol-palette]").forEach(function (b) { b.addEventListener("click", OL.openPalette); });
+    }
+
+
     function boot() {
         buildCustomizer();
+        initWizards();
+        initPalette();
         initSidebar();
         initNavbar();
         initMiniCalendars();

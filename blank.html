@@ -6,19 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Halaman Kosong · Orulabs Admin</title>
     <meta name="description" content="Orulabs Admin Panel - template dashboard admin berbasis Bootstrap 5.">
-    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0190fb">
+    <link rel="icon" href="assets/img/favicon.ico" sizes="any">
+    <link rel="icon" href="assets/img/brand/orulabs-icon-192.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
     <!-- Tema dipasang paling awal supaya tidak berkedip -->
     <script src="assets/js/orulabs-theme-init.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/vendor/inter/inter.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/orulabs.css">
 </head>
 <body class="ol-layout">
+    <!-- Loading screen: gaya dipilih lewat panel Tema (data-ol-loader di <html>) -->
+    <div class="ol-preloader" aria-hidden="true">
+        <div class="ol-loader-logo">
+            <img src="assets/img/brand/orulabs-icon-192.png" alt="">
+            <span class="ol-loader-text">Memuat</span>
+        </div>
+        <div class="ol-loader-ring"><img src="assets/img/brand/orulabs-icon-192.png" alt=""></div>
+        <div class="ol-loader-spinner"></div>
+        <div class="ol-loader-dots"><span></span><span></span><span></span></div>
+        <div class="ol-loader-bar">
+            <img src="assets/img/brand/orulabs-logo.png" alt="">
+            <span class="ol-loader-track"></span>
+        </div>
+    </div>
 
     <!-- ======================================================
          SIDEBAR
@@ -27,8 +42,11 @@
     ======================================================= -->
     <aside class="ol-sidebar" aria-label="Menu utama">
         <a href="index.html" class="ol-sidebar-brand">
-            <span class="ol-brand-logo"><i class="bi bi-hexagon-half"></i></span>
-            <span class="ol-brand-text">Orulabs<small>Admin Panel</small></span>
+            <!-- Logo panjang saat sidebar lebar, ikon saja saat sidebar mini.
+                 Versi putih otomatis dipakai di sidebar "Berwarna". -->
+            <img src="assets/img/brand/orulabs-logo.png" alt="Orulabs" class="ol-logo-full">
+            <img src="assets/img/brand/orulabs-logo-white.png" alt="Orulabs" class="ol-logo-full-white">
+            <img src="assets/img/brand/orulabs-icon-192.png" alt="Orulabs" class="ol-logo-icon">
         </a>
 
         <div class="ol-sidebar-body">
@@ -61,7 +79,8 @@
                         <li><a href="buttons.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Buttons</span></a></li>
                         <li><a href="elements.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Elements</span></a></li>
                         <li><a href="cards.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Cards &amp; Widgets</span></a></li>
-                        <li><a href="typography.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Typography &amp; Warna</span></a></li>
+                        <li><a href="loaders.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Loading &amp; Skeleton</span></a></li>
+                        <li><a href="typography.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Typography &amp; Logo</span></a></li>
                     </ul>
                 </li>
                 <li>
@@ -72,6 +91,7 @@
                     <ul class="ol-nav-sub collapse" id="menu-forms">
                         <li><a href="forms.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Form Input</span></a></li>
                         <li><a href="form-advanced.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Form Lanjutan</span></a></li>
+                        <li><a href="wizard.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Wizard</span><span class="badge text-bg-success ol-nav-badge">Baru</span></a></li>
                     </ul>
                 </li>
                 <li>
@@ -82,6 +102,24 @@
                 <li>
                     <a href="charts.html" class="ol-nav-link">
                         <i class="bi bi-bar-chart-line"></i><span class="ol-nav-text">Charts</span>
+                    </a>
+                </li>
+
+                <li class="ol-nav-header">Aplikasi</li>
+                <li>
+                    <a href="kanban.html" class="ol-nav-link">
+                        <i class="bi bi-kanban"></i><span class="ol-nav-text">Kanban</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html" class="ol-nav-link">
+                        <i class="bi bi-chat-dots"></i><span class="ol-nav-text">Chat</span>
+                        <span class="badge text-bg-danger ol-nav-badge">3</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="invoice.html" class="ol-nav-link">
+                        <i class="bi bi-receipt"></i><span class="ol-nav-text">Invoice</span>
                     </a>
                 </li>
 
@@ -287,8 +325,8 @@
 
             <h6>Warna bebas</h6>
             <div class="row g-2">
-                <div class="col-5"><input type="color" class="ol-color-input" data-ol-color-input value="#2563eb" aria-label="Pilih warna"></div>
-                <div class="col-7"><input type="text" class="form-control h-100" data-ol-hex-input placeholder="#2563eb" aria-label="Kode warna hex"></div>
+                <div class="col-5"><input type="color" class="ol-color-input" data-ol-color-input value="#0190fb" aria-label="Pilih warna"></div>
+                <div class="col-7"><input type="text" class="form-control h-100" data-ol-hex-input placeholder="#0190fb" aria-label="Kode warna hex"></div>
             </div>
 
             <h6>Mode</h6>
@@ -310,6 +348,16 @@
                 <button type="button" class="ol-option" data-ol-set="radius" data-value="6"><i class="bi bi-square"></i>Tegas</button>
                 <button type="button" class="ol-option" data-ol-set="radius" data-value="14"><i class="bi bi-app"></i>Standar</button>
                 <button type="button" class="ol-option" data-ol-set="radius" data-value="20"><i class="bi bi-circle"></i>Bulat</button>
+            </div>
+
+            <h6 class="d-flex align-items-center">Loading screen <button type="button" class="btn btn-link btn-sm ms-auto p-0 text-decoration-none" data-ol-preview-loader><i class="bi bi-play-circle me-1"></i>Pratinjau</button></h6>
+            <div class="ol-option-group">
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="logo"><i class="bi bi-hexagon"></i>Logo</button>
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="ring"><i class="bi bi-circle"></i>Ring</button>
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="spinner"><i class="bi bi-arrow-repeat"></i>Spinner</button>
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="dots"><i class="bi bi-three-dots"></i>Titik</button>
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="bar"><i class="bi bi-hr"></i>Bar</button>
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="none"><i class="bi bi-slash-circle"></i>Mati</button>
             </div>
 
             <h6>Sidebar desktop</h6>
@@ -357,7 +405,7 @@
         <i class="bi bi-gear"></i>
     </button>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="assets/js/orulabs.js"></script>
 </body>
 </html>

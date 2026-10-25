@@ -28,8 +28,8 @@
 
 :root,
 [data-bs-theme] {
-    --ol-primary: #2563eb;
-    --ol-primary-rgb: 37, 99, 235;
+    --ol-primary: #0190fb;
+    --ol-primary-rgb: 1, 144, 251;
     --ol-primary-dark: color-mix(in srgb, var(--ol-primary) 78%, #000);
     --ol-primary-light: color-mix(in srgb, var(--ol-primary) 55%, #fff);
     --ol-primary-subtle: rgba(var(--ol-primary-rgb), 0.12);
@@ -167,6 +167,9 @@ body {
     --bs-btn-active-color: var(--ol-primary);
     --bs-btn-active-bg: var(--ol-primary-subtle);
     --bs-btn-active-border-color: transparent;
+    --bs-btn-disabled-color: var(--ol-muted);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: transparent;
 }
 
 .btn-gradient {
@@ -637,6 +640,59 @@ body {
 
 [data-ol-sidebar="primary"] .ol-sidebar-brand {
     border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Logo Orulabs ---
+   .ol-logo-full        logo panjang berwarna
+   .ol-logo-full-white  logo panjang putih (latar berwarna/gelap)
+   .ol-logo-icon        ikon persegi (sidebar mini, favicon, avatar app) */
+.ol-logo-full,
+.ol-logo-full-white {
+    height: 26px;
+    width: auto;
+    max-width: 100%;
+}
+
+.ol-logo-icon {
+    height: 36px;
+    width: 36px;
+    flex-shrink: 0;
+}
+
+.ol-sidebar-brand .ol-logo-icon,
+.ol-sidebar-brand .ol-logo-full-white,
+[data-ol-sidebar="primary"] .ol-sidebar-brand .ol-logo-full {
+    display: none;
+}
+
+[data-ol-sidebar="primary"] .ol-sidebar-brand .ol-logo-full-white {
+    display: block;
+}
+
+@media (min-width: 992px) {
+    .ol-sidebar-mini .ol-sidebar:not(:hover) .ol-sidebar-brand {
+        padding: 0;
+        justify-content: center;
+    }
+
+    .ol-sidebar-mini .ol-sidebar:not(:hover) .ol-sidebar-brand img {
+        display: none;
+    }
+
+    .ol-sidebar-mini .ol-sidebar:not(:hover) .ol-sidebar-brand .ol-logo-icon {
+        display: block;
+    }
+}
+
+/* Logo besar di halaman auth */
+.ol-logo-lg {
+    height: 34px;
+    width: auto;
+}
+
+.ol-logo-icon-lg {
+    width: 64px;
+    height: 64px;
 }
 
 .ol-brand-logo {
@@ -1382,6 +1438,801 @@ body {
     background: var(--ol-primary);
 }
 
+.ol-step.is-done {
+    cursor: pointer;
+}
+
+/* --- Stepper dengan ikon (horizontal & vertikal) ---
+   <ol class="ol-stepper [ol-stepper-vertical]">
+     <li class="ol-stepper-item" data-wizard-step>
+       <span class="ol-stepper-icon"><i class="bi ..."></i></span>
+       <span><span class="ol-stepper-title">..</span><span class="ol-stepper-desc">..</span></span>
+     </li>
+   </ol> */
+.ol-stepper {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    gap: 0.5rem;
+}
+
+.ol-stepper-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    position: relative;
+    min-width: 0;
+    color: var(--ol-muted);
+}
+
+.ol-stepper-item:not(:last-child)::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    min-width: 16px;
+    background: var(--ol-border);
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+.ol-stepper-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.15rem;
+    background: var(--ol-surface-2);
+    border: 1px solid var(--ol-border);
+    transition: all 0.25s ease;
+}
+
+.ol-stepper-title {
+    display: block;
+    font-weight: 700;
+    font-size: 0.87rem;
+    white-space: nowrap;
+}
+
+.ol-stepper-desc {
+    display: block;
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+.ol-stepper-item.is-active {
+    color: var(--ol-text);
+}
+
+.ol-stepper-item.is-active .ol-stepper-icon {
+    background: var(--ol-gradient);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(var(--ol-primary-rgb), 0.35);
+}
+
+.ol-stepper-item.is-done {
+    color: var(--ol-text);
+    cursor: pointer;
+}
+
+.ol-stepper-item.is-done .ol-stepper-icon {
+    background: var(--ol-primary-subtle);
+    border-color: transparent;
+    color: var(--ol-primary);
+}
+
+.ol-stepper-item.is-done::after {
+    background: var(--ol-primary);
+}
+
+@media (max-width: 767.98px) {
+    .ol-stepper:not(.ol-stepper-vertical) .ol-stepper-item > span:not(.ol-stepper-icon) {
+        display: none;
+    }
+}
+
+.ol-stepper-vertical {
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+}
+
+.ol-stepper-vertical .ol-stepper-item {
+    flex: none;
+    align-items: flex-start;
+    padding-bottom: 1.6rem;
+}
+
+.ol-stepper-vertical .ol-stepper-item:not(:last-child)::after {
+    position: absolute;
+    left: 21px;
+    top: 50px;
+    bottom: 6px;
+    width: 2px;
+    height: auto;
+    min-width: 0;
+    flex: none;
+}
+
+.ol-stepper-vertical .ol-stepper-title,
+.ol-stepper-vertical .ol-stepper-desc {
+    white-space: normal;
+}
+
+.ol-stepper-vertical .ol-stepper-item > span:last-child {
+    padding-top: 0.25rem;
+}
+
+/* Panel langkah wizard: animasi masuk */
+[data-wizard-pane]:not([hidden]) {
+    animation: ol-fade-in 0.3s ease both;
+}
+
+/* Kartu pilihan besar (radio) */
+.ol-choice {
+    display: block;
+    cursor: pointer;
+    height: 100%;
+}
+
+.ol-choice input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ol-choice-body {
+    height: 100%;
+    border: 2px solid var(--ol-border);
+    border-radius: var(--ol-radius);
+    padding: 1.1rem;
+    transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+    position: relative;
+}
+
+.ol-choice:hover .ol-choice-body {
+    border-color: rgba(var(--ol-primary-rgb), 0.5);
+}
+
+.ol-choice input:checked + .ol-choice-body {
+    border-color: var(--ol-primary);
+    background: var(--ol-primary-subtle);
+}
+
+.ol-choice input:checked + .ol-choice-body::after {
+    content: "\F26A";
+    font-family: "bootstrap-icons";
+    position: absolute;
+    top: 0.7rem;
+    right: 0.8rem;
+    color: var(--ol-primary);
+    font-size: 1.15rem;
+}
+
+.ol-choice input:focus-visible + .ol-choice-body {
+    box-shadow: 0 0 0 0.22rem rgba(var(--ol-primary-rgb), 0.25);
+}
+
+/* Konfeti sederhana saat wizard selesai */
+.ol-success-burst {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: var(--ol-gradient);
+    color: #fff;
+    font-size: 2.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 12px var(--ol-primary-subtle), 0 0 0 24px rgba(var(--ol-primary-rgb), 0.06);
+    animation: ol-pop 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+@keyframes ol-pop {
+    from { transform: scale(0.4); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* --- Kanban --- */
+.ol-kanban {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(240px, 1fr);
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    align-items: start;
+}
+
+.ol-kanban-col {
+    background: var(--ol-surface-2);
+    border: 1px solid var(--ol-border);
+    border-radius: var(--ol-radius);
+    padding: 0.75rem;
+    min-height: 200px;
+}
+
+.ol-kanban-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    padding: 0.25rem 0.25rem 0.75rem;
+}
+
+.ol-kanban-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.ol-kanban-list {
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    border-radius: var(--ol-radius-sm);
+    transition: background-color 0.15s ease;
+}
+
+.ol-kanban-list.is-over {
+    background: var(--ol-primary-subtle);
+    outline: 2px dashed rgba(var(--ol-primary-rgb), 0.5);
+    outline-offset: 2px;
+}
+
+.ol-kanban-card {
+    background: var(--ol-surface);
+    border: 1px solid var(--ol-border);
+    border-radius: var(--ol-radius-sm);
+    padding: 0.75rem;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+    cursor: grab;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.ol-kanban-card:hover {
+    box-shadow: var(--ol-shadow);
+}
+
+.ol-kanban-card.is-dragging {
+    opacity: 0.5;
+    transform: rotate(2deg);
+}
+
+.ol-kanban-add {
+    width: 100%;
+    margin-top: 0.6rem;
+    border: 1px dashed var(--ol-border);
+    background: transparent;
+    color: var(--ol-muted);
+    border-radius: var(--ol-radius-sm);
+    padding: 0.5rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.ol-kanban-add:hover {
+    border-color: var(--ol-primary);
+    color: var(--ol-primary);
+}
+
+/* --- Chat --- */
+.ol-chat {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    height: calc(100vh - 210px);
+    min-height: 480px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.ol-chat-list {
+    border-right: 1px solid var(--ol-border);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.ol-chat-contacts {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.ol-chat-contact {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+}
+
+.ol-chat-contact:hover {
+    background: var(--ol-surface-2);
+}
+
+.ol-chat-contact.active {
+    background: var(--ol-primary-subtle);
+    border-left-color: var(--ol-primary);
+}
+
+.ol-chat-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+}
+
+.ol-chat-head,
+.ol-chat-form {
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.ol-chat-head {
+    border-bottom: 1px solid var(--ol-border);
+}
+
+.ol-chat-form {
+    border-top: 1px solid var(--ol-border);
+}
+
+.ol-chat-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    background:
+        radial-gradient(circle at 1px 1px, rgba(var(--ol-primary-rgb), 0.08) 1px, transparent 0) 0 0 / 18px 18px;
+}
+
+.ol-msg {
+    max-width: min(75%, 520px);
+    padding: 0.6rem 0.85rem;
+    border-radius: 14px;
+    background: var(--ol-surface);
+    border: 1px solid var(--ol-border);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.ol-msg.me {
+    align-self: flex-end;
+    background: var(--ol-gradient);
+    color: #fff;
+    border: 0;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 4px;
+}
+
+.ol-msg time {
+    display: block;
+    font-size: 0.68rem;
+    opacity: 0.7;
+    margin-top: 0.15rem;
+    text-align: right;
+}
+
+.ol-chat-day {
+    align-self: center;
+    font-size: 0.72rem;
+    color: var(--ol-muted);
+    background: var(--ol-surface);
+    border: 1px solid var(--ol-border);
+    border-radius: 50rem;
+    padding: 0.15rem 0.7rem;
+}
+
+.ol-typing span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 1px;
+    border-radius: 50%;
+    background: var(--ol-muted);
+    animation: ol-typing 1s infinite ease-in-out;
+}
+
+.ol-typing span:nth-child(2) { animation-delay: 0.15s; }
+.ol-typing span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes ol-typing {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+    40% { transform: translateY(-4px); opacity: 1; }
+}
+
+@media (max-width: 767.98px) {
+    .ol-chat {
+        grid-template-columns: 1fr;
+    }
+
+    .ol-chat-list {
+        display: none;
+    }
+}
+
+/* --- Invoice --- */
+.ol-invoice {
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.ol-invoice-head {
+    background: var(--ol-gradient);
+    color: #fff;
+    border-radius: var(--ol-radius) var(--ol-radius) 0 0;
+    padding: 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ol-stamp {
+    display: inline-block;
+    border: 3px solid #16a34a;
+    color: #16a34a;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    padding: 0.3rem 0.9rem;
+    border-radius: 8px;
+    transform: rotate(-8deg);
+    opacity: 0.85;
+}
+
+@media print {
+    .ol-no-print {
+        display: none !important;
+    }
+
+    .ol-invoice .card {
+        box-shadow: none !important;
+        border: 0 !important;
+    }
+
+    .ol-invoice-head {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* --- Command palette --- */
+.ol-palette .modal-dialog {
+    max-width: 600px;
+    margin-top: 12vh;
+}
+
+.ol-palette .modal-content {
+    overflow: hidden;
+}
+
+.ol-palette-input {
+    border: 0;
+    border-bottom: 1px solid var(--ol-border);
+    border-radius: 0;
+    padding: 1rem 1rem 1rem 3rem;
+    font-size: 1.05rem;
+    background: transparent;
+}
+
+.ol-palette-input:focus {
+    box-shadow: none;
+    border-color: var(--ol-border);
+}
+
+.ol-palette-search-icon {
+    position: absolute;
+    left: 1.1rem;
+    top: 1.05rem;
+    font-size: 1.1rem;
+    color: var(--ol-muted);
+}
+
+.ol-palette-list {
+    max-height: 360px;
+    overflow-y: auto;
+    padding: 0.5rem;
+    margin: 0;
+    list-style: none;
+}
+
+.ol-palette-group {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ol-muted);
+    padding: 0.6rem 0.75rem 0.3rem;
+}
+
+.ol-palette-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--ol-radius-sm);
+    color: var(--ol-text);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.ol-palette-item i:first-child {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: var(--ol-surface-2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ol-muted);
+}
+
+.ol-palette-item.is-active {
+    background: var(--ol-primary-subtle);
+    color: var(--ol-primary);
+}
+
+.ol-palette-item.is-active i:first-child {
+    background: var(--ol-primary);
+    color: #fff;
+}
+
+.ol-palette-foot {
+    display: flex;
+    gap: 1rem;
+    padding: 0.6rem 1rem;
+    border-top: 1px solid var(--ol-border);
+    font-size: 0.75rem;
+    color: var(--ol-muted);
+}
+
+.ol-palette-foot kbd {
+    background: var(--ol-surface-2);
+    color: var(--ol-text);
+    border: 1px solid var(--ol-border);
+    font-size: 0.7rem;
+}
+
+/* --- Preloader (loading screen) ---
+   Gaya dipilih lewat <html data-ol-loader="logo|ring|spinner|dots|bar|none">
+   (panel Tema / OL_DEFAULTS.loader). Disembunyikan saat halaman selesai
+   dimuat (class .ol-loaded di <html>). */
+.ol-preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ol-bg);
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.ol-loaded .ol-preloader,
+[data-ol-loader="none"] .ol-preloader {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.ol-preloader > * {
+    display: none;
+}
+
+[data-ol-loader="logo"] .ol-preloader .ol-loader-logo,
+[data-ol-loader="ring"] .ol-preloader .ol-loader-ring,
+[data-ol-loader="spinner"] .ol-preloader .ol-loader-spinner,
+[data-ol-loader="dots"] .ol-preloader .ol-loader-dots,
+[data-ol-loader="bar"] .ol-preloader .ol-loader-bar {
+    display: flex;
+}
+
+/* Saat dipratinjau dari panel Tema */
+.ol-preloader.is-preview {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.ol-loader-logo,
+.ol-loader-ring,
+.ol-loader-dots,
+.ol-loader-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ol-loader-logo img {
+    width: 72px;
+    height: 72px;
+    animation: ol-logo-pulse 1.4s ease-in-out infinite;
+}
+
+.ol-loader-logo .ol-loader-text,
+.ol-loader-bar .ol-loader-text {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ol-muted);
+}
+
+@keyframes ol-logo-pulse {
+    0%, 100% { transform: scale(0.92); opacity: 0.75; }
+    50% { transform: scale(1.05); opacity: 1; }
+}
+
+.ol-loader-ring {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    justify-content: center;
+}
+
+.ol-loader-ring::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 4px solid var(--ol-primary-subtle);
+    border-top-color: var(--ol-primary);
+    border-right-color: #f47a20;
+    animation: ol-spin 0.9s linear infinite;
+}
+
+.ol-loader-ring img {
+    width: 52px;
+    height: 52px;
+}
+
+.ol-loader-spinner {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 5px solid var(--ol-primary-subtle);
+    border-top-color: var(--ol-primary);
+    animation: ol-spin 0.8s linear infinite;
+}
+
+.ol-loader-dots {
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.ol-loader-dots span {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--ol-primary);
+    animation: ol-dots 1s ease-in-out infinite;
+}
+
+.ol-loader-dots span:nth-child(2) { animation-delay: 0.15s; background: #16c5fb; }
+.ol-loader-dots span:nth-child(3) { animation-delay: 0.3s; background: #f47a20; }
+
+@keyframes ol-dots {
+    0%, 100% { transform: translateY(0) scale(0.8); opacity: 0.5; }
+    50% { transform: translateY(-12px) scale(1); opacity: 1; }
+}
+
+.ol-loader-bar img {
+    height: 30px;
+    width: auto;
+}
+
+.ol-loader-bar .ol-loader-track {
+    width: 220px;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--ol-primary-subtle);
+    overflow: hidden;
+    position: relative;
+}
+
+.ol-loader-bar .ol-loader-track::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    border-radius: 4px;
+    background: var(--ol-gradient);
+    animation: ol-bar 1.1s ease-in-out infinite;
+}
+
+@keyframes ol-bar {
+    from { left: -40%; }
+    to { left: 100%; }
+}
+
+/* Contoh loader di halaman demo (tanpa layar penuh) */
+.ol-loader-demo {
+    height: 180px;
+    border-radius: var(--ol-radius);
+    background: var(--ol-surface-2);
+    border: 1px solid var(--ol-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ol-loader-demo > * {
+    display: flex;
+}
+
+button.ol-loader-demo {
+    cursor: pointer;
+    color: inherit;
+    transition: border-color 0.15s ease;
+}
+
+button.ol-loader-demo:hover {
+    border-color: var(--ol-primary);
+}
+
+/* --- Progress bar tipis di atas halaman (OL.progress) --- */
+.ol-top-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    z-index: 2100;
+    background: var(--ol-gradient);
+    box-shadow: 0 0 10px rgba(var(--ol-primary-rgb), 0.6);
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+/* --- Overlay loading di kartu (OL.blockCard) --- */
+.ol-block-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--ol-surface) 75%, transparent);
+    backdrop-filter: blur(2px);
+    border-radius: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ol-muted);
+}
+
+/* --- Skeleton --- */
+.ol-skeleton {
+    display: block;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--ol-surface-2) 25%, var(--ol-border) 37%, var(--ol-surface-2) 63%);
+    background-size: 400% 100%;
+    animation: ol-shimmer 1.4s ease infinite;
+    height: 0.85rem;
+}
+
+.ol-skeleton-circle { border-radius: 50%; }
+.ol-skeleton-title { height: 1.2rem; width: 55%; }
+.ol-skeleton-img { height: 140px; border-radius: var(--ol-radius-sm); }
+
+@keyframes ol-shimmer {
+    from { background-position: 100% 50%; }
+    to { background-position: 0 50%; }
+}
+
 /* --- Ticker / pengumuman berjalan --- */
 .ol-ticker {
     display: flex;
@@ -1407,14 +2258,15 @@ body {
     mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 
+/* Teks langsung terlihat saat halaman dibuka, lalu berjalan ke kiri. */
 .ol-ticker-track span {
     display: inline-block;
     white-space: nowrap;
-    padding-left: 100%;
-    animation: ol-ticker 28s linear infinite;
+    animation: ol-ticker 32s linear infinite;
 }
 
 @keyframes ol-ticker {
+    from { transform: translateX(2%); }
     to { transform: translateX(-100%); }
 }
 

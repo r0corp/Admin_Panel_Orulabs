@@ -1,28 +1,59 @@
-# Orulabs Admin Panel
+<p align="center">
+  <img src="assets/img/brand/orulabs-logo.png" alt="Orulabs" height="56">
+</p>
 
-Template dashboard admin berbasis **Bootstrap 5.3**, berupa HTML/CSS/JS statis tanpa build tool. Tinggal salin lalu dipakai di proyek Flask, Laravel, PHP, atau backend lainnya.
+<h1 align="center">Orulabs Admin Panel</h1>
 
-![Bootstrap 5.3](https://img.shields.io/badge/Bootstrap-5.3-7952b3) ![Tanpa build tool](https://img.shields.io/badge/build-tidak%20perlu-success)
+<p align="center">
+  Template dashboard admin berbasis <b>Bootstrap 5.3</b>, berupa HTML/CSS/JS statis tanpa build tool.<br>
+  Bisa jalan <b>offline</b> (semua library ada di <code>assets/vendor</code>) atau lewat CDN.
+</p>
 
-## Isi paket
+![Dashboard](docs/screenshots/dashboard-light.png)
+
+## Isi paket (26 halaman)
 
 | Bagian | Halaman / fitur |
 |---|---|
-| Layout | Sidebar melayang (mode lebar / mini ikon / overlay di ponsel), navbar sticky dengan progress scroll, footer |
-| Navbar | Pencarian (`Ctrl+K`), jam, mini kalender, sticky notes, notifikasi, layar penuh, mode gelap, menu user |
-| Tema | Panel **Pengaturan Tema**: 10 warna preset + warna bebas (color picker / hex), mode terang/gelap/otomatis, sidebar terang/gelap/berwarna, radius sudut, sidebar mini. Tersimpan otomatis di browser |
+| Layout | Sidebar melayang (lebar / mini ikon / overlay di ponsel) dengan logo Orulabs panjang & ikon, navbar sticky dengan progress scroll, footer |
+| Navbar | **Command palette** (`Ctrl+K`: cari & buka halaman atau aksi), jam, mini kalender, sticky notes, notifikasi, layar penuh, mode gelap, menu user |
+| Tema | Panel **Pengaturan Tema**: preset warna (termasuk biru & oranye Orulabs) + warna bebas, mode terang/gelap/otomatis, sidebar terang/gelap/berwarna, radius sudut, sidebar mini, **pilihan loading screen**. Tersimpan otomatis di browser |
+| Loading | Loading screen 5 gaya (Logo, Ring, Spinner, Titik, Bar) atau mati; `loaders.html`: progress bar atas, overlay loading kartu, tombol loading, skeleton shimmer |
 | Dashboard | `index.html`: kartu KPI, grafik, transaksi, mini kalender, timeline, ticker pengumuman |
-| UI Elements | `buttons.html`, `elements.html` (alert, badge, avatar, progress, spinner, modal, toast, tooltip, popover, tab, accordion, pagination, offcanvas, empty state), `cards.html`, `typography.html` |
-| Forms | `forms.html` (semua input, date picker, select berpencarian, multi select, tags, upload drag & drop, validasi), `form-advanced.html` (wizard bertahap, form horizontal) |
-| Data | `tables.html` (cari, urutkan, paging, pilih semua, tanpa library), `charts.html` (line, bar, stacked, doughnut, radar) |
-| Kalender | `calendar.html`: tampilan bulanan, tambah/ubah/hapus event, daftar event mendatang |
+| UI Elements | `buttons.html`, `elements.html` (alert, badge, avatar, progress, spinner, modal, toast, tooltip, popover, tab, accordion, pagination, offcanvas, empty state), `cards.html`, `loaders.html`, `typography.html` (termasuk panduan logo) |
+| Forms | `forms.html` (semua input, date picker, select berpencarian, tags, upload drag & drop, validasi), `form-advanced.html` (wizard sederhana, form horizontal), **`wizard.html`** (onboarding dengan stepper ikon + pilihan kartu + pratinjau tema, stepper vertikal, wizard di dalam modal) |
+| Data | `tables.html` (cari, urutkan, paging, pilih semua), `charts.html` (line, bar, stacked, doughnut, radar) |
+| Aplikasi | `calendar.html` (event bulanan), **`kanban.html`** (drag & drop), **`chat.html`**, **`invoice.html`** (siap cetak/PDF) |
 | Sticky Notes | Panel samping: tambah, cari, 6 warna, sematkan, hapus |
 | Autentikasi | 4 variasi login (`login.html` Split, `login-centered.html`, `login-glass.html`, `login-minimal.html`), `register.html`, `forgot-password.html` (dengan OTP), `lock-screen.html` |
 | Lainnya | `profile.html`, `pricing.html`, `404.html`, `blank.html` (titik awal halaman baru) |
 
+## Screenshot
+
+| | |
+|---|---|
+| ![Mode gelap](docs/screenshots/dashboard-dark.png) | ![Sidebar berwarna, tema oranye](docs/screenshots/dashboard-sidebar-color.png) |
+| Mode gelap | Sidebar berwarna + tema oranye Orulabs |
+| ![Wizard](docs/screenshots/wizard.png) | ![Kanban](docs/screenshots/kanban.png) |
+| Wizard | Kanban drag & drop |
+| ![Chat](docs/screenshots/chat.png) | ![Invoice](docs/screenshots/invoice.png) |
+| Chat | Invoice |
+| ![Kalender](docs/screenshots/calendar.png) | ![Loading & Skeleton](docs/screenshots/loaders.png) |
+| Kalender | Loading & Skeleton |
+| ![Form](docs/screenshots/forms.png) | ![Tabel](docs/screenshots/tables.png) |
+| Form input | Tabel data |
+| ![Login split](docs/screenshots/login-split.png) | ![Login glass](docs/screenshots/login-glass.png) |
+| Login - Split | Login - Glass |
+| ![Login centered](docs/screenshots/login-centered.png) | ![Login minimal](docs/screenshots/login-minimal.png) |
+| Login - Centered | Login - Minimal |
+| ![Sidebar mini](docs/screenshots/dashboard-mini-sidebar.png) | ![Logo](docs/screenshots/typography-brand.png) |
+| Sidebar mini (ikon logo) | Panduan logo |
+
+<p align="center"><img src="docs/screenshots/mobile-dashboard.png" alt="Tampilan ponsel" width="300"></p>
+
 ## Cara pakai
 
-Buka `index.html` langsung di browser, atau jalankan server lokal supaya semua fitur berjalan normal:
+Buka `index.html` langsung di browser (tanpa internet pun jalan), atau jalankan server lokal:
 
 ```bash
 python -m http.server 8000
@@ -30,29 +61,67 @@ python -m http.server 8000
 
 Lalu buka <http://localhost:8000>.
 
-## Mengganti warna
+## Offline atau CDN
 
-**Dari tampilan:** klik ikon palet di navbar (atau tombol gerigi di tepi kanan), lalu pilih warna. Pilihan ini tersimpan di browser masing-masing pengguna.
+Secara bawaan semua halaman memakai library dari **`assets/vendor/`** (Bootstrap, Bootstrap Icons, Chart.js, Flatpickr, Tom Select, font Inter), jadi bisa dikembangkan tanpa internet.
 
-**Warna bawaan untuk semua pengguna:** ubah `OL_DEFAULTS` di [`assets/js/orulabs-theme-init.js`](assets/js/orulabs-theme-init.js):
+Kalau ingin memakai CDN (jsDelivr + Google Fonts), build ulang dengan:
+
+```bash
+python tools/build.py --cdn
+```
+
+Untuk kembali ke mode offline cukup `python tools/build.py`. Daftar library dan URL-nya ada di `VENDOR` dalam [`tools/build.py`](tools/build.py).
+
+## Mengganti warna & tampilan
+
+**Dari tampilan:** klik ikon palet di navbar (atau tombol gerigi di tepi kanan). Pilihan tersimpan di browser masing-masing pengguna.
+
+**Bawaan untuk semua pengguna:** ubah `OL_DEFAULTS` di [`assets/js/orulabs-theme-init.js`](assets/js/orulabs-theme-init.js):
 
 ```js
 var OL_DEFAULTS = {
-    primary: "#7c3aed",   // warna utama (hex)
+    primary: "#0190fb",   // warna utama (hex) - biru logo Orulabs
     mode: "light",        // light | dark | auto
-    sidebar: "dark",      // light | dark | primary
+    sidebar: "light",     // light | dark | primary
     radius: "14",         // 6 | 14 | 20
-    mini: false           // sidebar mini di desktop
+    mini: false,          // sidebar mini di desktop
+    loader: "logo"        // loading screen: logo | ring | spinner | dots | bar | none
 };
 ```
 
-**Dari JavaScript:**
+**Lewat URL** (untuk demo, tidak disimpan): `index.html?mode=dark&primary=f47a20&sidebar=primary&loader=ring`
 
-```js
-OL.setTheme({ primary: "#16a34a", sidebar: "primary" });
-```
+**Dari JavaScript:** `OL.setTheme({ primary: "#16a34a", sidebar: "primary" })`
 
-Semua warna aksen (tombol, link, form, badge, sidebar, chart) diturunkan dari satu variabel CSS, `--ol-primary`.
+## Logo
+
+File ada di `assets/img/brand/`:
+
+| File | Pemakaian |
+|---|---|
+| `orulabs-logo.png` | Logo panjang (sidebar lebar, halaman login, header) |
+| `orulabs-logo-white.png` | Logo panjang putih untuk latar berwarna / gelap (otomatis dipakai di sidebar "Berwarna") |
+| `orulabs-icon-512.png`, `-192.png`, `-64.png` | Ikon persegi (sidebar mini, loading screen, aplikasi) |
+| `orulabs-icon-white-192.png` | Ikon putih untuk latar berwarna |
+| `../favicon.ico`, `../apple-touch-icon.png` | Ikon tab browser & layar utama ponsel |
+
+Warna brand: biru `#0190fb`, cyan `#16c5fb`, oranye `#f47a20`.
+
+## Komponen JavaScript siap pakai
+
+| API / atribut | Fungsi |
+|---|---|
+| `data-ol-wizard` + `data-wizard-step` / `data-wizard-pane` / `data-wizard-next` / `data-wizard-prev` | Wizard bertahap dengan validasi per langkah, progress (`data-wizard-progress`), ringkasan otomatis (`data-wizard-summary`), event `ol:wizardfinish` |
+| `OL.toast(pesan, varian)` | Notifikasi kecil |
+| `OL.progress.start()` / `.done()` | Progress bar tipis di atas layar |
+| `OL.blockCard(el, teks)` | Overlay loading di atas kartu; mengembalikan fungsi untuk menutupnya |
+| `OL.buttonLoading(btn, true/false)` | Tombol dengan status memproses |
+| `OL.previewLoader("ring")` | Tampilkan loading screen sesaat |
+| `OL.openPalette()` | Buka command palette |
+| `OL.events` | Data event kalender (ganti dengan API backend) |
+| `table[data-ol-table]` | Tabel dengan cari, urutkan, paging |
+| `form.needs-validation` | Validasi form Bootstrap |
 
 ## Struktur folder
 
@@ -60,40 +129,43 @@ Semua warna aksen (tombol, link, form, badge, sidebar, chart) diturunkan dari sa
 assets/
   css/orulabs.css              # semua style template
   js/orulabs-theme-init.js     # tema, dimuat di <head> (tanpa kedipan warna)
-  js/orulabs.js                # sidebar, navbar, tema, notes, kalender, tabel, form
-  js/pages/*.js                # script khusus halaman (dashboard, charts, calendar, wizard)
-  img/favicon.svg
+  js/orulabs.js                # layout, tema, loading, wizard, palette, notes, kalender, tabel, form
+  js/pages/*.js                # script khusus halaman
+  img/brand/                   # logo Orulabs
+  vendor/                      # library pihak ketiga (mode offline)
 src/
-  partials/*.html              # head, sidebar, navbar, footer, panel tema & notes, scripts
+  partials/*.html              # head, preloader, sidebar, navbar, footer, panel tema & notes, scripts
   pages/*.html                 # isi tiap halaman
-tools/build.py                 # merakit src/ menjadi *.html di root
+docs/screenshots/              # gambar untuk README
+tools/build.py                 # merakit src/ menjadi *.html di root (--cdn untuk mode CDN)
+tools/screenshots.py           # ambil ulang screenshot (butuh Edge/Chrome)
 *.html                         # halaman siap pakai (hasil build)
 ```
 
 ### Mengubah menu sidebar atau navbar
 
-Sidebar dan navbar ada di setiap halaman. Supaya tidak perlu mengedit 21 file, ubah sumbernya sekali saja lalu build ulang:
+Sidebar dan navbar ada di setiap halaman. Ubah sumbernya sekali saja lalu build ulang:
 
 1. Edit `src/partials/sidebar.html` (atau partial lain), atau isi halaman di `src/pages/`.
 2. Jalankan `python tools/build.py` (hanya butuh Python 3, tanpa paket tambahan).
 
-Menu yang aktif ditandai otomatis dari nama file halaman, jadi markup sidebar tidak perlu diubah per halaman.
+Menu aktif ditandai otomatis dari nama file halaman, dan command palette otomatis mengikuti isi sidebar.
 
-Untuk membuat halaman baru, salin `src/pages/blank.html`, ganti `title` di blok `<!--@ ... -->`, lalu build ulang.
+Untuk halaman baru, salin `src/pages/blank.html`, ganti `title` di blok `<!--@ ... -->`, lalu build ulang. Screenshot README bisa diambil ulang dengan `python tools/screenshots.py`.
 
 ### Memasang ke framework (Flask / Laravel)
 
-- `src/partials/head.html` + `sidebar.html` + `navbar.html` + `footer.html` + `offcanvas.html` + `scripts.html` menjadi layout dasar (`base.html` di Jinja, `layouts/app.blade.php` di Laravel).
+- `src/partials/head.html` + `preloader.html` + `sidebar.html` + `navbar.html` + `footer.html` + `offcanvas.html` + `scripts.html` menjadi layout dasar (`base.html` di Jinja, `layouts/app.blade.php` di Laravel).
 - Isi `src/pages/*.html` menjadi blok konten (`{% block content %}` / `@section('content')`).
-- Ganti tautan `*.html` dengan route aplikasi Anda.
+- Ganti tautan `*.html` dengan route aplikasi Anda, dan path `assets/...` dengan helper aset framework (`url_for('static', ...)` / `asset(...)`).
 
 ## Data contoh
 
-Sticky notes dan event kalender disimpan di `localStorage` browser sebagai demo. Untuk produksi, ganti isi `OL.events` dan fungsi `initNotes` di `assets/js/orulabs.js` dengan panggilan API ke backend Anda.
+Sticky notes, event kalender, dan kartu kanban disimpan di `localStorage` browser sebagai demo. Untuk produksi, ganti dengan panggilan API ke backend Anda.
 
-## Library yang dipakai (via CDN)
+## Library pihak ketiga
 
-Bootstrap 5.3.8, Bootstrap Icons 1.13.1, Chart.js 4.4.7, Flatpickr 4.6.13, Tom Select 2.4.3, dan font Inter. Semuanya berlisensi terbuka (MIT, Apache-2.0, dan SIL OFL). Detailnya ada di [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+Bootstrap 5.3.8, Bootstrap Icons 1.13.1, Chart.js 4.4.7, Flatpickr 4.6.13, Tom Select 2.4.3, dan font Inter. Semuanya berlisensi terbuka (MIT, Apache-2.0, SIL OFL) dan disertakan di `assets/vendor/` bersama file lisensinya. Detail di [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 
 ## Lisensi
 

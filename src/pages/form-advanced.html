@@ -2,7 +2,6 @@
 title: Form Lanjutan
 layout: app
 libs: flatpickr, tomselect
-js: form-advanced
 -->
             <div class="ol-page-header">
                 <span class="ol-page-icon"><i class="bi bi-ui-radios"></i></span>
@@ -16,12 +15,12 @@ js: form-advanced
             <div class="row g-3">
                 <div class="col-xl-7">
                     <div class="card">
-                        <div class="card-header"><h2 class="card-title">Wizard pengajuan</h2></div>
-                        <div class="card-body">
-                            <div class="ol-steps" data-wizard-steps>
-                                <div class="ol-step is-active">Data diri</div>
-                                <div class="ol-step">Detail</div>
-                                <div class="ol-step">Konfirmasi</div>
+                        <div class="card-header"><h2 class="card-title">Wizard pengajuan</h2><a href="wizard.html" class="ms-auto small">Contoh wizard lain</a></div>
+                        <div class="card-body" data-ol-wizard data-finish-text="Kirim pengajuan" data-finish-message="Pengajuan terkirim!">
+                            <div class="ol-steps">
+                                <div class="ol-step" data-wizard-step>Data diri</div>
+                                <div class="ol-step" data-wizard-step>Detail</div>
+                                <div class="ol-step" data-wizard-step>Konfirmasi</div>
                             </div>
 
                             <form id="wizard" novalidate>

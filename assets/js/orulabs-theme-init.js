@@ -11,11 +11,12 @@
    ============================================================ */
 (function () {
     var OL_DEFAULTS = {
-        primary: "#2563eb",   // warna utama (hex)
+        primary: "#0190fb",   // warna utama (hex) - biru logo Orulabs
         mode: "light",        // light | dark | auto
         sidebar: "light",     // light | dark | primary
         radius: "14",         // sudut kartu dalam px: 6 | 14 | 20
-        mini: false           // sidebar diciutkan (desktop)
+        mini: false,          // sidebar diciutkan (desktop)
+        loader: "logo"        // loading screen: logo | ring | spinner | dots | bar | none
     };
 
     var STORAGE_KEY = "orulabs-theme";
@@ -32,6 +33,16 @@
         theme[key] = saved[key] !== undefined ? saved[key] : OL_DEFAULTS[key];
     }
 
+    // Pratinjau lewat URL (tidak disimpan), mis. untuk demo/screenshot:
+    // index.html?mode=dark&primary=7c3aed&sidebar=primary&radius=20&mini=1&loader=ring
+    var params = new URLSearchParams(location.search);
+    if (params.has("primary")) { theme.primary = "#" + params.get("primary").replace("#", ""); }
+    if (params.has("mode")) { theme.mode = params.get("mode"); }
+    if (params.has("sidebar")) { theme.sidebar = params.get("sidebar"); }
+    if (params.has("radius")) { theme.radius = params.get("radius"); }
+    if (params.has("mini")) { theme.mini = params.get("mini") === "1"; }
+    if (params.has("loader")) { theme.loader = params.get("loader"); }
+
     function hexToRgb(hex) {
         var h = String(hex).replace("#", "");
         if (h.length === 3) {
@@ -39,7 +50,7 @@
         }
         var n = parseInt(h, 16);
         if (isNaN(n) || h.length !== 6) {
-            return "37, 99, 235";
+            return "1, 144, 251";
         }
         return ((n >> 16) & 255) + ", " + ((n >> 8) & 255) + ", " + (n & 255);
     }
@@ -59,6 +70,7 @@
         root.setAttribute("data-bs-theme", resolveMode(t.mode));
         root.setAttribute("data-ol-sidebar", t.sidebar);
         root.classList.toggle("ol-sidebar-mini", !!t.mini);
+        root.setAttribute("data-ol-loader", t.loader || "none");
     }
 
     apply(theme);

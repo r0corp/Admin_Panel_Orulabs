@@ -1,0 +1,77 @@
+<!--@
+title: Invoice
+layout: app
+-->
+            <div class="ol-invoice">
+                <div class="d-flex flex-wrap gap-2 align-items-center mb-3 ol-no-print">
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item">Aplikasi</li><li class="breadcrumb-item active" aria-current="page">Invoice</li></ol></nav>
+                    <div class="ms-auto d-flex gap-2">
+                        <button type="button" class="btn btn-soft-primary" data-ol-toast="Link invoice disalin." data-variant="success"><i class="bi bi-link-45deg me-1"></i> Bagikan</button>
+                        <button type="button" class="btn btn-soft-primary" onclick="window.print()"><i class="bi bi-printer me-1"></i> Cetak / PDF</button>
+                        <button type="button" class="btn btn-primary" data-ol-toast="Invoice terkirim ke email pelanggan." data-variant="success"><i class="bi bi-send me-1"></i> Kirim</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="ol-invoice-head">
+                        <div>
+                            <img src="assets/img/brand/orulabs-logo-white.png" alt="Orulabs" style="height:32px">
+                            <div class="small mt-2 opacity-75">Jl. Contoh Raya No. 1, Jakarta · halo@orulabs.id</div>
+                        </div>
+                        <div class="text-md-end">
+                            <div class="small text-uppercase opacity-75 fw-semibold">Invoice</div>
+                            <div class="fs-3 fw-800">#INV-2026-0142</div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-5">
+                                <div class="ol-section-title mb-1">Ditagihkan kepada</div>
+                                <div class="fw-bold">PT Maju Bersama</div>
+                                <div class="text-muted-ol small">Up. Ibu Rina Putri<br>Jl. Sudirman Kav. 10, Jakarta<br>finance@majubersama.co.id</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="ol-section-title mb-1">Detail</div>
+                                <div class="small"><span class="text-muted-ol">Tanggal:</span> 25 Okt 2026</div>
+                                <div class="small"><span class="text-muted-ol">Jatuh tempo:</span> 8 Nov 2026</div>
+                                <div class="small"><span class="text-muted-ol">No. PO:</span> PO-7781</div>
+                            </div>
+                            <div class="col-md-3 text-md-end">
+                                <span class="ol-stamp">LUNAS</span>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead><tr><th>#</th><th>Deskripsi</th><th class="text-end">Qty</th><th class="text-end">Harga</th><th class="text-end">Jumlah</th></tr></thead>
+                                <tbody>
+                                    <tr><td>1</td><td><div class="fw-semibold">Lisensi Orulabs Admin - Bisnis</div><div class="small text-muted-ol">Langganan 12 bulan</div></td><td class="text-end">1</td><td class="text-end">Rp 3.588.000</td><td class="text-end">Rp 3.588.000</td></tr>
+                                    <tr><td>2</td><td><div class="fw-semibold">Setup &amp; migrasi data</div><div class="small text-muted-ol">Import aset dari Excel</div></td><td class="text-end">1</td><td class="text-end">Rp 1.500.000</td><td class="text-end">Rp 1.500.000</td></tr>
+                                    <tr><td>3</td><td><div class="fw-semibold">Training pengguna</div><div class="small text-muted-ol">2 sesi online</div></td><td class="text-end">2</td><td class="text-end">Rp 750.000</td><td class="text-end">Rp 1.500.000</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row justify-content-end mt-3">
+                            <div class="col-md-5">
+                                <div class="d-flex justify-content-between py-1"><span class="text-muted-ol">Subtotal</span><span>Rp 6.588.000</span></div>
+                                <div class="d-flex justify-content-between py-1"><span class="text-muted-ol">Diskon (10%)</span><span class="text-success">- Rp 658.800</span></div>
+                                <div class="d-flex justify-content-between py-1"><span class="text-muted-ol">PPN 11%</span><span>Rp 652.212</span></div>
+                                <div class="d-flex justify-content-between align-items-center py-2 mt-2 border-top"><span class="fw-bold">Total</span><span class="fs-4 fw-800 text-primary">Rp 6.581.412</span></div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-7">
+                                <div class="p-3 rounded-ol bg-surface-2 small">
+                                    <div class="fw-semibold mb-1"><i class="bi bi-bank me-1 text-primary"></i> Pembayaran via transfer</div>
+                                    Bank Contoh · 123-456-7890 · a.n. Orulabs
+                                </div>
+                            </div>
+                            <div class="col-md-5 text-md-end small text-muted-ol align-self-end">
+                                Terima kasih atas kepercayaan Anda.<br>Invoice ini sah tanpa tanda tangan.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

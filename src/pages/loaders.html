@@ -1,0 +1,115 @@
+<!--@
+title: Loading & Skeleton
+layout: app
+js: loaders
+-->
+            <div class="ol-page-header">
+                <span class="ol-page-icon"><i class="bi bi-hourglass-split"></i></span>
+                <div>
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item">UI Elements</li><li class="breadcrumb-item active" aria-current="page">Loading &amp; Skeleton</li></ol></nav>
+                    <h1 class="ol-page-title">Loading &amp; Skeleton</h1>
+                    <p class="ol-page-subtitle">Pilihan loading screen, progress bar atas, overlay kartu, tombol loading, dan skeleton.</p>
+                </div>
+                <div class="ol-page-actions">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#olCustomizer"><i class="bi bi-palette me-1"></i> Atur loading screen</button>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header"><h2 class="card-title">Loading screen (preloader)</h2><span class="ms-auto small text-muted-ol">Klik untuk pratinjau layar penuh · pilih default di panel Tema</span></div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-sm-6 col-xl-4">
+                            <button type="button" class="ol-loader-demo w-100" data-ol-preview-loader="logo" aria-label="Pratinjau loader Logo"><span class="ol-loader-logo"><img src="assets/img/brand/orulabs-icon-192.png" alt=""><span class="ol-loader-text">Memuat</span></span></button>
+                            <div class="small mt-2 d-flex"><strong>Logo</strong><code class="ms-auto">loader: "logo"</code></div>
+                        </div>
+                        <div class="col-sm-6 col-xl-4">
+                            <button type="button" class="ol-loader-demo w-100" data-ol-preview-loader="ring" aria-label="Pratinjau loader Ring"><span class="ol-loader-ring"><img src="assets/img/brand/orulabs-icon-192.png" alt=""></span></button>
+                            <div class="small mt-2 d-flex"><strong>Ring</strong><code class="ms-auto">loader: "ring"</code></div>
+                        </div>
+                        <div class="col-sm-6 col-xl-4">
+                            <button type="button" class="ol-loader-demo w-100" data-ol-preview-loader="spinner" aria-label="Pratinjau loader Spinner"><span class="ol-loader-spinner"></span></button>
+                            <div class="small mt-2 d-flex"><strong>Spinner</strong><code class="ms-auto">loader: "spinner"</code></div>
+                        </div>
+                        <div class="col-sm-6 col-xl-4">
+                            <button type="button" class="ol-loader-demo w-100" data-ol-preview-loader="dots" aria-label="Pratinjau loader Titik"><span class="ol-loader-dots"><span></span><span></span><span></span></span></button>
+                            <div class="small mt-2 d-flex"><strong>Titik</strong><code class="ms-auto">loader: "dots"</code></div>
+                        </div>
+                        <div class="col-sm-6 col-xl-4">
+                            <button type="button" class="ol-loader-demo w-100" data-ol-preview-loader="bar" aria-label="Pratinjau loader Bar"><span class="ol-loader-bar"><img src="assets/img/brand/orulabs-logo.png" alt=""><span class="ol-loader-track"></span></span></button>
+                            <div class="small mt-2 d-flex"><strong>Bar</strong><code class="ms-auto">loader: "bar"</code></div>
+                        </div>
+                        <div class="col-sm-6 col-xl-4">
+                            <div class="ol-loader-demo text-center p-3"><div><i class="bi bi-slash-circle fs-2 text-muted-ol"></i><div class="small text-muted-ol mt-2">Tanpa loading screen</div></div></div>
+                            <div class="small mt-2 d-flex"><strong>Mati</strong><code class="ms-auto">loader: "none"</code></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Progress bar atas &amp; tombol loading</h2></div>
+                        <div class="card-body">
+                            <p class="small text-muted-ol">Cocok untuk request AJAX: <code>OL.progress.start()</code> lalu <code>OL.progress.done()</code>.</p>
+                            <div class="ol-demo-row mb-4">
+                                <button type="button" class="btn btn-primary" data-demo-progress><i class="bi bi-play-fill me-1"></i> Jalankan progress</button>
+                                <button type="button" class="btn btn-soft-primary" data-demo-progress-done>Selesai</button>
+                            </div>
+                            <p class="small text-muted-ol">Tombol dengan status memproses: <code>OL.buttonLoading(btn, true)</code>.</p>
+                            <div class="ol-demo-row">
+                                <button type="button" class="btn btn-success" data-demo-button data-ol-loading-text="Menyimpan..."><i class="bi bi-floppy me-1"></i> Simpan</button>
+                                <button type="button" class="btn btn-outline-primary" data-demo-button data-ol-loading-text="Mengunggah..."><i class="bi bi-upload me-1"></i> Upload</button>
+                                <button type="button" class="btn btn-danger" data-demo-button data-ol-loading-text="Menghapus..."><i class="bi bi-trash3 me-1"></i> Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card h-100" id="demoBlockCard">
+                        <div class="card-header"><h2 class="card-title">Overlay loading di kartu</h2><button type="button" class="btn btn-sm btn-soft-primary ms-auto" data-demo-block><i class="bi bi-arrow-clockwise me-1"></i> Muat ulang data</button></div>
+                        <div class="card-body">
+                            <p class="small text-muted-ol">Kunci satu kartu/tabel saat memuat: <code>var done = OL.blockCard(el, "Memuat...")</code>.</p>
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between"><span>Server aplikasi</span><span class="badge badge-soft-success">Online</span></li>
+                                <li class="list-group-item d-flex justify-content-between"><span>Database</span><span class="badge badge-soft-success">Online</span></li>
+                                <li class="list-group-item d-flex justify-content-between"><span>Backup terakhir</span><span class="small text-muted-ol" data-demo-time>-</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"><h2 class="card-title">Skeleton</h2><button type="button" class="btn btn-sm btn-soft-primary ms-auto" data-demo-skeleton><i class="bi bi-arrow-repeat me-1"></i> Simulasi memuat</button></div>
+                <div class="card-body">
+                    <div class="row g-3" data-skeleton-area>
+                        <div class="col-md-4">
+                            <div class="border rounded-ol p-3">
+                                <span class="ol-skeleton ol-skeleton-img mb-3"></span>
+                                <span class="ol-skeleton ol-skeleton-title mb-2"></span>
+                                <span class="ol-skeleton mb-2"></span>
+                                <span class="ol-skeleton w-75"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="border rounded-ol p-3">
+                                <div class="d-flex gap-3 align-items-center mb-3"><span class="ol-skeleton ol-skeleton-circle" style="width:48px;height:48px"></span><div class="flex-grow-1"><span class="ol-skeleton ol-skeleton-title mb-2"></span><span class="ol-skeleton w-50"></span></div></div>
+                                <span class="ol-skeleton mb-2"></span><span class="ol-skeleton mb-2"></span><span class="ol-skeleton w-50"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="border rounded-ol p-3">
+                                <span class="ol-skeleton ol-skeleton-title mb-3"></span>
+                                <div class="d-flex gap-2 align-items-end" style="height:118px"><span class="ol-skeleton flex-fill" style="height:40%"></span><span class="ol-skeleton flex-fill" style="height:70%"></span><span class="ol-skeleton flex-fill" style="height:55%"></span><span class="ol-skeleton flex-fill" style="height:90%"></span><span class="ol-skeleton flex-fill" style="height:65%"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3" data-skeleton-real hidden>
+                        <div class="col-md-4"><div class="border rounded-ol p-3"><div class="bg-gradient-primary rounded-3 mb-3 d-flex align-items-center justify-content-center" style="height:140px"><i class="bi bi-image fs-1 opacity-75"></i></div><h3 class="h6 fw-bold">Artikel terbaru</h3><p class="small text-muted-ol mb-0">Konten asli muncul setelah data selesai dimuat.</p></div></div>
+                        <div class="col-md-4"><div class="border rounded-ol p-3"><div class="d-flex gap-3 align-items-center mb-3"><span class="ol-avatar ol-avatar-lg">RP</span><div><div class="fw-bold">Rina Putri</div><div class="small text-muted-ol">HRGA Supervisor</div></div></div><p class="small text-muted-ol mb-0">Mengelola rekrutmen, aset kantor, dan fasilitas pantry.</p></div></div>
+                        <div class="col-md-4"><div class="border rounded-ol p-3"><h3 class="h6 fw-bold">Penjualan 5 hari</h3><div class="ol-mini-bars" style="height:118px"><span style="height:40%"></span><span style="height:70%"></span><span style="height:55%"></span><span style="height:90%"></span><span style="height:65%"></span></div></div></div>
+                    </div>
+                </div>
+            </div>

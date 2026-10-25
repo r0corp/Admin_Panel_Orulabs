@@ -1,0 +1,41 @@
+<!--@
+title: Kanban
+layout: app
+js: kanban
+-->
+            <div class="ol-page-header">
+                <span class="ol-page-icon"><i class="bi bi-kanban"></i></span>
+                <div>
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item">Aplikasi</li><li class="breadcrumb-item active" aria-current="page">Kanban</li></ol></nav>
+                    <h1 class="ol-page-title">Kanban Board</h1>
+                    <p class="ol-page-subtitle">Seret kartu antar kolom. Data tersimpan di browser.</p>
+                </div>
+                <div class="ol-page-actions">
+                    <span class="ol-avatar-group align-self-center me-2"><span class="ol-avatar ol-avatar-sm">BS</span><span class="ol-avatar ol-avatar-sm" style="background:#16a34a">SW</span><span class="ol-avatar ol-avatar-sm" style="background:#ea580c">AR</span><span class="ol-avatar ol-avatar-sm" style="background:#475569">+4</span></span>
+                    <button type="button" class="btn btn-soft-primary" data-kanban-reset><i class="bi bi-arrow-counterclockwise me-1"></i> Reset</button>
+                </div>
+            </div>
+
+            <div class="ol-kanban" data-kanban></div>
+
+            <div class="modal fade" id="kanbanModal" tabindex="-1" aria-labelledby="kanbanModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <form class="modal-content" id="kanbanForm" novalidate>
+                        <div class="modal-header"><h5 class="modal-title fw-bold" id="kanbanModalLabel">Kartu</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button></div>
+                        <div class="modal-body">
+                            <input type="hidden" id="kbId"><input type="hidden" id="kbCol">
+                            <div class="mb-3"><label class="form-label" for="kbTitle">Judul tugas</label><input type="text" class="form-control" id="kbTitle" required maxlength="100"><div class="invalid-feedback">Judul wajib diisi.</div></div>
+                            <div class="row g-3">
+                                <div class="col-6"><label class="form-label" for="kbTag">Label</label><select class="form-select" id="kbTag"><option value="primary">Umum</option><option value="success">Fitur</option><option value="danger">Bug</option><option value="warning">Urgent</option><option value="info">Riset</option></select></div>
+                                <div class="col-6"><label class="form-label" for="kbDue">Tenggat</label><input type="date" class="form-control" id="kbDue"></div>
+                                <div class="col-12"><label class="form-label" for="kbWho">Penanggung jawab</label><select class="form-select" id="kbWho"><option value="BS">Budi Santoso</option><option value="SW">Siti Wulandari</option><option value="AR">Andi Rahman</option><option value="DL">Dewi Lestari</option></select></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger me-auto" id="kbDelete"><i class="bi bi-trash3 me-1"></i> Hapus</button>
+                            <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>

@@ -1,9 +1,11 @@
 # Third-Party Notices
 
-Orulabs Admin Panel memuat komponen pihak ketiga berikut dari CDN
-(jsDelivr dan Google Fonts). Setiap komponen tetap berada di bawah
+Orulabs Admin Panel menyertakan komponen pihak ketiga berikut di
+`assets/vendor/` (mode offline, masing-masing dengan file LICENSE-nya),
+atau memuatnya dari CDN jsDelivr/Google Fonts saat dibangun dengan
+`python tools/build.py --cdn`. Setiap komponen tetap berada di bawah
 lisensinya masing-masing. Saat template dijual atau didistribusikan,
-sertakan file ini.
+sertakan file ini beserta folder `assets/vendor/`.
 
 | Komponen | Versi | Lisensi | Hak cipta | Sumber |
 |---|---|---|---|---|
@@ -12,7 +14,7 @@ sertakan file ini.
 | Chart.js | 4.4.7 | MIT | © 2014-2024 Chart.js Contributors | https://www.chartjs.org |
 | Flatpickr | 4.6.13 | MIT | © 2017 Gregory Petrosyan | https://flatpickr.js.org |
 | Tom Select | 2.4.3 | Apache-2.0 | © 2013-2020 Brian Reavis & contributors | https://tom-select.js.org |
-| Inter (font) | 4.x | SIL Open Font License 1.1 | © 2016 The Inter Project Authors | https://rsms.me/inter |
+| Inter (font, @fontsource-variable) | 5.1.0 | SIL Open Font License 1.1 | © 2016 The Inter Project Authors | https://rsms.me/inter |
 
 ## Teks lisensi MIT
 

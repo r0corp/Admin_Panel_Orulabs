@@ -1,0 +1,36 @@
+<!--@
+title: Chat
+layout: app
+js: chat
+-->
+            <div class="card ol-chat">
+                <aside class="ol-chat-list">
+                    <div class="p-3 border-bottom">
+                        <div class="d-flex align-items-center mb-3"><h1 class="h5 fw-800 mb-0">Pesan</h1><button type="button" class="btn btn-soft-primary btn-icon btn-sm ms-auto" aria-label="Percakapan baru"><i class="bi bi-pencil-square"></i></button></div>
+                        <div class="ol-search mw-100"><i class="bi bi-search"></i><input type="search" class="form-control" placeholder="Cari kontak..." data-chat-search aria-label="Cari kontak" style="padding-right:.75rem"></div>
+                    </div>
+                    <div class="ol-chat-contacts" data-chat-contacts></div>
+                </aside>
+
+                <section class="ol-chat-main">
+                    <header class="ol-chat-head">
+                        <span class="ol-avatar ol-online" data-chat-avatar>SW</span>
+                        <div class="min-w-0">
+                            <div class="fw-bold" data-chat-name>Siti Wulandari</div>
+                            <div class="small text-success" data-chat-status>Online</div>
+                        </div>
+                        <div class="ms-auto d-flex gap-1">
+                            <button type="button" class="btn btn-ghost btn-icon" aria-label="Telepon"><i class="bi bi-telephone"></i></button>
+                            <button type="button" class="btn btn-ghost btn-icon" aria-label="Video"><i class="bi bi-camera-video"></i></button>
+                            <button type="button" class="btn btn-ghost btn-icon" aria-label="Info"><i class="bi bi-info-circle"></i></button>
+                        </div>
+                    </header>
+                    <div class="ol-chat-body" data-chat-body aria-live="polite"></div>
+                    <form class="ol-chat-form" data-chat-form>
+                        <button type="button" class="btn btn-ghost btn-icon" aria-label="Lampiran"><i class="bi bi-paperclip"></i></button>
+                        <input type="text" class="form-control" placeholder="Tulis pesan..." aria-label="Pesan" autocomplete="off">
+                        <button type="button" class="btn btn-ghost btn-icon" aria-label="Emoji" data-chat-emoji><i class="bi bi-emoji-smile"></i></button>
+                        <button type="submit" class="btn btn-primary btn-icon" aria-label="Kirim"><i class="bi bi-send"></i></button>
+                    </form>
+                </section>
+            </div>

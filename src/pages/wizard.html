@@ -1,0 +1,208 @@
+<!--@
+title: Wizard
+layout: app
+libs: flatpickr, tomselect
+js: wizard
+-->
+            <div class="ol-page-header">
+                <span class="ol-page-icon"><i class="bi bi-signpost-split"></i></span>
+                <div>
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item">Forms</li><li class="breadcrumb-item active" aria-current="page">Wizard</li></ol></nav>
+                    <h1 class="ol-page-title">Wizard</h1>
+                    <p class="ol-page-subtitle">Form bertahap dalam tiga gaya: stepper ikon, stepper vertikal, dan wizard di dalam modal.</p>
+                </div>
+                <div class="ol-page-actions">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#wizardModal"><i class="bi bi-window-stack me-1"></i> Wizard di modal</button>
+                </div>
+            </div>
+
+            <!-- ===== 1. Onboarding: stepper ikon + progress ===== -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 class="card-title">Onboarding aplikasi</h2>
+                    <span class="ms-auto small text-muted-ol" data-onboarding-count></span>
+                </div>
+                <div class="card-body" id="onboarding" data-ol-wizard data-finish-text="Mulai pakai" data-finish-message="Setup selesai!">
+                    <ol class="ol-stepper">
+                        <li class="ol-stepper-item" data-wizard-step><span class="ol-stepper-icon"><i class="bi bi-person"></i></span><span><span class="ol-stepper-title">Akun</span><span class="ol-stepper-desc">Data pribadi</span></span></li>
+                        <li class="ol-stepper-item" data-wizard-step><span class="ol-stepper-icon"><i class="bi bi-building"></i></span><span><span class="ol-stepper-title">Perusahaan</span><span class="ol-stepper-desc">Profil bisnis</span></span></li>
+                        <li class="ol-stepper-item" data-wizard-step><span class="ol-stepper-icon"><i class="bi bi-grid"></i></span><span><span class="ol-stepper-title">Modul</span><span class="ol-stepper-desc">Fitur yang dipakai</span></span></li>
+                        <li class="ol-stepper-item" data-wizard-step><span class="ol-stepper-icon"><i class="bi bi-palette"></i></span><span><span class="ol-stepper-title">Tampilan</span><span class="ol-stepper-desc">Warna tema</span></span></li>
+                        <li class="ol-stepper-item" data-wizard-step><span class="ol-stepper-icon"><i class="bi bi-flag"></i></span><span><span class="ol-stepper-title">Selesai</span><span class="ol-stepper-desc">Ringkasan</span></span></li>
+                    </ol>
+                    <div class="progress mb-4" style="height:6px" role="progressbar" aria-label="Kemajuan onboarding"><div class="progress-bar" data-wizard-progress style="width:20%"></div></div>
+
+                    <div data-onboarding-panes>
+                        <div data-wizard-pane>
+                            <div class="row g-3">
+                                <div class="col-md-6"><label class="form-label" for="ob1">Nama lengkap</label><input type="text" class="form-control" id="ob1" required><div class="invalid-feedback">Nama wajib diisi.</div></div>
+                                <div class="col-md-6"><label class="form-label" for="ob2">Email kerja</label><input type="email" class="form-control" id="ob2" required><div class="invalid-feedback">Email tidak valid.</div></div>
+                                <div class="col-md-6"><label class="form-label" for="ob3">Jabatan</label><select class="form-select" id="ob3" required><option value="">Pilih...</option><option>Owner / Direktur</option><option>Manajer</option><option>Staf</option><option>IT / Admin sistem</option></select><div class="invalid-feedback">Pilih jabatan.</div></div>
+                                <div class="col-md-6"><label class="form-label" for="ob4">Nomor WhatsApp</label><div class="input-group"><span class="input-group-text">+62</span><input type="tel" class="form-control" id="ob4" placeholder="812xxxxxxx"></div></div>
+                            </div>
+                        </div>
+
+                        <div data-wizard-pane hidden>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6"><label class="form-label" for="ob5">Nama perusahaan</label><input type="text" class="form-control" id="ob5" required><div class="invalid-feedback">Wajib diisi.</div></div>
+                                <div class="col-md-6"><label class="form-label" for="ob6">Bidang usaha</label><select id="ob6" data-ol-select required><option value="">Cari bidang usaha...</option><option>Distribusi &amp; perdagangan</option><option>Manufaktur</option><option>Retail &amp; F&amp;B</option><option>Jasa profesional</option><option>Teknologi</option><option>Pendidikan</option></select></div>
+                            </div>
+                            <label class="form-label d-block">Jumlah karyawan</label>
+                            <div class="row g-2" data-summary-label="Jumlah karyawan">
+                                <div class="col-6 col-lg-3"><label class="ol-choice"><input type="radio" name="obSize" value="1-10" checked><span class="ol-choice-body"><i class="bi bi-person fs-3 text-primary"></i><span class="d-block fw-bold mt-1">1-10</span><span class="small text-muted-ol">Tim kecil</span></span></label></div>
+                                <div class="col-6 col-lg-3"><label class="ol-choice"><input type="radio" name="obSize" value="11-50"><span class="ol-choice-body"><i class="bi bi-people fs-3 text-primary"></i><span class="d-block fw-bold mt-1">11-50</span><span class="small text-muted-ol">Berkembang</span></span></label></div>
+                                <div class="col-6 col-lg-3"><label class="ol-choice"><input type="radio" name="obSize" value="51-200"><span class="ol-choice-body"><i class="bi bi-building fs-3 text-primary"></i><span class="d-block fw-bold mt-1">51-200</span><span class="small text-muted-ol">Menengah</span></span></label></div>
+                                <div class="col-6 col-lg-3"><label class="ol-choice"><input type="radio" name="obSize" value="200+"><span class="ol-choice-body"><i class="bi bi-buildings fs-3 text-primary"></i><span class="d-block fw-bold mt-1">200+</span><span class="small text-muted-ol">Enterprise</span></span></label></div>
+                            </div>
+                        </div>
+
+                        <div data-wizard-pane hidden>
+                            <p class="text-muted-ol">Pilih modul yang ingin diaktifkan (bisa diubah nanti).</p>
+                            <div class="row g-2" data-summary-label="Modul">
+                                <div class="col-sm-6 col-lg-4"><label class="ol-choice"><input type="checkbox" name="obMod" value="Aset" data-summary-value="Aset" checked><span class="ol-choice-body d-flex gap-3"><span class="ol-stat-icon" style="width:44px;height:44px;font-size:1.2rem"><i class="bi bi-box-seam"></i></span><span><span class="d-block fw-bold">Manajemen Aset</span><span class="small text-muted-ol">Inventaris, mutasi, QR label</span></span></span></label></div>
+                                <div class="col-sm-6 col-lg-4"><label class="ol-choice"><input type="checkbox" name="obMod" value="HR" data-summary-value="HR" checked><span class="ol-choice-body d-flex gap-3"><span class="ol-stat-icon is-success" style="width:44px;height:44px;font-size:1.2rem"><i class="bi bi-people"></i></span><span><span class="d-block fw-bold">HR &amp; Karyawan</span><span class="small text-muted-ol">Data karyawan, cuti, absensi</span></span></span></label></div>
+                                <div class="col-sm-6 col-lg-4"><label class="ol-choice"><input type="checkbox" name="obMod" value="Laporan" data-summary-value="Laporan"><span class="ol-choice-body d-flex gap-3"><span class="ol-stat-icon is-warning" style="width:44px;height:44px;font-size:1.2rem"><i class="bi bi-graph-up"></i></span><span><span class="d-block fw-bold">Laporan</span><span class="small text-muted-ol">Mingguan, bulanan, export</span></span></span></label></div>
+                                <div class="col-sm-6 col-lg-4"><label class="ol-choice"><input type="checkbox" name="obMod" value="Pengadaan" data-summary-value="Pengadaan"><span class="ol-choice-body d-flex gap-3"><span class="ol-stat-icon is-info" style="width:44px;height:44px;font-size:1.2rem"><i class="bi bi-cart3"></i></span><span><span class="d-block fw-bold">Pengadaan</span><span class="small text-muted-ol">PR, PO, vendor</span></span></span></label></div>
+                                <div class="col-sm-6 col-lg-4"><label class="ol-choice"><input type="checkbox" name="obMod" value="Helpdesk" data-summary-value="Helpdesk"><span class="ol-choice-body d-flex gap-3"><span class="ol-stat-icon is-danger" style="width:44px;height:44px;font-size:1.2rem"><i class="bi bi-life-preserver"></i></span><span><span class="d-block fw-bold">Helpdesk</span><span class="small text-muted-ol">Tiket &amp; SLA</span></span></span></label></div>
+                                <div class="col-sm-6 col-lg-4"><label class="ol-choice"><input type="checkbox" name="obMod" value="Kalender" data-summary-value="Kalender"><span class="ol-choice-body d-flex gap-3"><span class="ol-stat-icon" style="width:44px;height:44px;font-size:1.2rem"><i class="bi bi-calendar3"></i></span><span><span class="d-block fw-bold">Kalender Tim</span><span class="small text-muted-ol">Jadwal &amp; booking ruang</span></span></span></label></div>
+                            </div>
+                        </div>
+
+                        <div data-wizard-pane hidden>
+                            <p class="text-muted-ol">Pilih warna - tampilan langsung berubah sebagai pratinjau.</p>
+                            <div class="row g-2 mb-3" data-summary-label="Warna tema">
+                                <div class="col-6 col-md-3"><label class="ol-choice"><input type="radio" name="obColor" value="#0190fb" data-summary-value="Orulabs Biru" checked><span class="ol-choice-body text-center"><span class="d-block rounded-3 mb-2" style="height:48px;background:linear-gradient(135deg,#0190fb,#0170c8)"></span><span class="fw-bold">Orulabs Biru</span></span></label></div>
+                                <div class="col-6 col-md-3"><label class="ol-choice"><input type="radio" name="obColor" value="#f47a20" data-summary-value="Orulabs Oranye"><span class="ol-choice-body text-center"><span class="d-block rounded-3 mb-2" style="height:48px;background:linear-gradient(135deg,#f47a20,#c25d12)"></span><span class="fw-bold">Orulabs Oranye</span></span></label></div>
+                                <div class="col-6 col-md-3"><label class="ol-choice"><input type="radio" name="obColor" value="#7c3aed" data-summary-value="Ungu"><span class="ol-choice-body text-center"><span class="d-block rounded-3 mb-2" style="height:48px;background:linear-gradient(135deg,#7c3aed,#5b21b6)"></span><span class="fw-bold">Ungu</span></span></label></div>
+                                <div class="col-6 col-md-3"><label class="ol-choice"><input type="radio" name="obColor" value="#16a34a" data-summary-value="Hijau"><span class="ol-choice-body text-center"><span class="d-block rounded-3 mb-2" style="height:48px;background:linear-gradient(135deg,#16a34a,#15803d)"></span><span class="fw-bold">Hijau</span></span></label></div>
+                            </div>
+                            <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="obDark" data-summary-value="Ya"><label class="form-check-label" for="obDark">Gunakan mode gelap</label></div>
+                        </div>
+
+                        <div data-wizard-pane hidden>
+                            <div class="text-center mb-3">
+                                <span class="ol-success-burst mb-3"><i class="bi bi-rocket-takeoff"></i></span>
+                                <h3 class="h5 fw-bold mt-3">Hampir selesai!</h3>
+                                <p class="text-muted-ol mb-0">Periksa ringkasan di bawah, lalu klik <strong>Mulai pakai</strong>.</p>
+                            </div>
+                            <dl class="row small mx-auto mb-0" style="max-width:520px" data-wizard-summary></dl>
+                        </div>
+                    </div>
+
+                    <div class="text-center py-4" data-onboarding-done hidden>
+                        <span class="ol-success-burst"><i class="bi bi-check2"></i></span>
+                        <h3 class="h4 fw-800 mt-4">Semua siap! 🎉</h3>
+                        <p class="text-muted-ol">Akun Anda sudah dikonfigurasi. Selamat bekerja.</p>
+                        <div class="d-flex gap-2 justify-content-center">
+                            <a href="index.html" class="btn btn-primary"><i class="bi bi-grid-1x2 me-1"></i> Ke Dashboard</a>
+                            <button type="button" class="btn btn-soft-primary" data-onboarding-restart><i class="bi bi-arrow-counterclockwise me-1"></i> Ulangi</button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4 pt-3 border-top" data-onboarding-nav>
+                        <button type="button" class="btn btn-ghost" data-wizard-prev><i class="bi bi-arrow-left me-1"></i> Kembali</button>
+                        <button type="button" class="btn btn-primary" data-wizard-next>Lanjut <i class="bi bi-arrow-right ms-1"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 2. Stepper vertikal ===== -->
+            <div class="card">
+                <div class="card-header"><h2 class="card-title">Permintaan pembelian (stepper vertikal)</h2></div>
+                <div class="card-body" data-ol-wizard data-finish-text="Ajukan" data-finish-message="Permintaan pembelian diajukan!">
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-xl-3">
+                            <ol class="ol-stepper ol-stepper-vertical">
+                                <li class="ol-stepper-item" data-wizard-step><span class="ol-stepper-icon"><i class="bi bi-box"></i></span><span><span class="ol-stepper-title">Barang</span><span class="ol-stepper-desc">Apa yang dibutuhkan</span></span></li>
+                                <li class="ol-stepper-item" data-wizard-step><span class="ol-stepper-icon"><i class="bi bi-truck"></i></span><span><span class="ol-stepper-title">Pengiriman</span><span class="ol-stepper-desc">Lokasi &amp; tanggal</span></span></li>
+                                <li class="ol-stepper-item" data-wizard-step><span class="ol-stepper-icon"><i class="bi bi-credit-card"></i></span><span><span class="ol-stepper-title">Anggaran</span><span class="ol-stepper-desc">Sumber dana</span></span></li>
+                                <li class="ol-stepper-item" data-wizard-step><span class="ol-stepper-icon"><i class="bi bi-clipboard-check"></i></span><span><span class="ol-stepper-title">Review</span><span class="ol-stepper-desc">Periksa &amp; ajukan</span></span></li>
+                            </ol>
+                        </div>
+                        <div class="col-lg-8 col-xl-9">
+                            <div data-wizard-pane>
+                                <h3 class="h6 fw-bold mb-3">Detail barang</h3>
+                                <div class="row g-3">
+                                    <div class="col-md-8"><label class="form-label" for="pr1">Nama barang</label><input type="text" class="form-control" id="pr1" placeholder="mis. Laptop 14 inci" required><div class="invalid-feedback">Wajib diisi.</div></div>
+                                    <div class="col-md-4"><label class="form-label" for="pr2">Jumlah</label><input type="number" class="form-control" id="pr2" min="1" value="1" required></div>
+                                    <div class="col-md-6"><label class="form-label" for="pr3">Kategori</label><select class="form-select" id="pr3" required><option value="">Pilih...</option><option>Elektronik</option><option>ATK</option><option>Furniture</option><option>Lainnya</option></select><div class="invalid-feedback">Pilih kategori.</div></div>
+                                    <div class="col-md-6"><label class="form-label" for="pr4">Prioritas</label><select class="form-select" id="pr4"><option>Normal</option><option>Mendesak</option><option>Rendah</option></select></div>
+                                    <div class="col-12"><label class="form-label" for="pr5">Keterangan</label><textarea class="form-control" id="pr5" rows="2"></textarea></div>
+                                </div>
+                            </div>
+                            <div data-wizard-pane hidden>
+                                <h3 class="h6 fw-bold mb-3">Pengiriman</h3>
+                                <div class="row g-3">
+                                    <div class="col-md-6"><label class="form-label" for="pr6">Lokasi tujuan</label><select class="form-select" id="pr6" required><option value="">Pilih...</option><option>Kantor Pusat</option><option>Gudang Cakung</option><option>Cabang Bandung</option></select><div class="invalid-feedback">Pilih lokasi.</div></div>
+                                    <div class="col-md-6"><label class="form-label" for="pr7">Dibutuhkan tanggal</label><input type="text" class="form-control" id="pr7" data-ol-date required></div>
+                                    <div class="col-12"><label class="form-label" for="pr8">Penerima</label><input type="text" class="form-control" id="pr8" required><div class="invalid-feedback">Wajib diisi.</div></div>
+                                </div>
+                            </div>
+                            <div data-wizard-pane hidden>
+                                <h3 class="h6 fw-bold mb-3">Anggaran</h3>
+                                <div class="row g-2 mb-3" data-summary-label="Sumber dana">
+                                    <div class="col-md-4"><label class="ol-choice"><input type="radio" name="prFund" checked data-summary-value="Anggaran departemen"><span class="ol-choice-body"><i class="bi bi-wallet2 fs-4 text-primary"></i><span class="d-block fw-bold mt-1">Anggaran departemen</span></span></label></div>
+                                    <div class="col-md-4"><label class="ol-choice"><input type="radio" name="prFund" data-summary-value="CAPEX"><span class="ol-choice-body"><i class="bi bi-bank fs-4 text-primary"></i><span class="d-block fw-bold mt-1">CAPEX</span></span></label></div>
+                                    <div class="col-md-4"><label class="ol-choice"><input type="radio" name="prFund" data-summary-value="Kas kecil"><span class="ol-choice-body"><i class="bi bi-cash-coin fs-4 text-primary"></i><span class="d-block fw-bold mt-1">Kas kecil</span></span></label></div>
+                                </div>
+                                <label class="form-label" for="pr9">Perkiraan harga total</label>
+                                <div class="input-group"><span class="input-group-text">Rp</span><input type="number" class="form-control" id="pr9" min="0" step="1000" required></div>
+                            </div>
+                            <div data-wizard-pane hidden>
+                                <div class="alert alert-primary small"><i class="bi bi-info-circle me-1"></i> Permintaan akan dikirim ke atasan untuk disetujui.</div>
+                                <dl class="row small mb-0" data-wizard-summary></dl>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4 pt-3 border-top">
+                                <button type="button" class="btn btn-ghost" data-wizard-prev><i class="bi bi-arrow-left me-1"></i> Kembali</button>
+                                <button type="button" class="btn btn-primary" data-wizard-next>Lanjut <i class="bi bi-arrow-right ms-1"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 3. Wizard di dalam modal ===== -->
+            <div class="modal fade" id="wizardModal" tabindex="-1" aria-labelledby="wizardModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content" data-ol-wizard id="modalWizard" data-finish-text="Simpan" data-finish-message="Karyawan baru tersimpan!">
+                        <div class="modal-header">
+                            <div>
+                                <h5 class="modal-title fw-bold" id="wizardModalLabel">Tambah karyawan</h5>
+                                <div class="small text-muted-ol" data-wizard-count></div>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="ol-steps">
+                                <div class="ol-step" data-wizard-step>Identitas</div>
+                                <div class="ol-step" data-wizard-step>Pekerjaan</div>
+                                <div class="ol-step" data-wizard-step>Konfirmasi</div>
+                            </div>
+                            <div data-wizard-pane>
+                                <div class="row g-3">
+                                    <div class="col-md-6"><label class="form-label" for="mw1">Nama</label><input type="text" class="form-control" id="mw1" required><div class="invalid-feedback">Wajib diisi.</div></div>
+                                    <div class="col-md-6"><label class="form-label" for="mw2">NIK</label><input type="text" class="form-control" id="mw2" required><div class="invalid-feedback">Wajib diisi.</div></div>
+                                    <div class="col-md-6"><label class="form-label" for="mw3">Tanggal lahir</label><input type="text" class="form-control" id="mw3" data-ol-date></div>
+                                    <div class="col-md-6"><label class="form-label" for="mw4">Email</label><input type="email" class="form-control" id="mw4" required><div class="invalid-feedback">Email tidak valid.</div></div>
+                                </div>
+                            </div>
+                            <div data-wizard-pane hidden>
+                                <div class="row g-3">
+                                    <div class="col-md-6"><label class="form-label" for="mw5">Departemen</label><select class="form-select" id="mw5" required><option value="">Pilih...</option><option>IT</option><option>HRGA</option><option>Finance</option><option>Marketing</option></select><div class="invalid-feedback">Pilih departemen.</div></div>
+                                    <div class="col-md-6"><label class="form-label" for="mw6">Jabatan</label><input type="text" class="form-control" id="mw6" required><div class="invalid-feedback">Wajib diisi.</div></div>
+                                    <div class="col-md-6"><label class="form-label" for="mw7">Tanggal masuk</label><input type="text" class="form-control" id="mw7" data-ol-date required></div>
+                                    <div class="col-md-6"><label class="form-label" for="mw8">Status</label><select class="form-select" id="mw8"><option>Probation</option><option>Kontrak</option><option>Tetap</option></select></div>
+                                </div>
+                            </div>
+                            <div data-wizard-pane hidden>
+                                <dl class="row small mb-0" data-wizard-summary></dl>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-ghost" data-wizard-prev><i class="bi bi-arrow-left me-1"></i> Kembali</button>
+                            <button type="button" class="btn btn-primary" data-wizard-next>Lanjut <i class="bi bi-arrow-right ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
