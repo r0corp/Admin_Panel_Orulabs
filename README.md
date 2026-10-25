@@ -9,6 +9,12 @@
   Bisa jalan <b>offline</b> (semua library ada di <code>assets/vendor</code>) atau lewat CDN.
 </p>
 
+<p align="center">
+  <a href="https://r0corp.github.io/Admin_Panel_Orulabs/"><b>Lihat demo langsung</b></a> ·
+  <a href="#edisi-pro--limited">Edisi Pro &amp; Limited</a> ·
+  <a href="LICENSE">Lisensi MIT</a>
+</p>
+
 ![Dashboard](docs/screenshots/dashboard-light.png)
 
 ## Isi paket (26 halaman)
@@ -51,6 +57,19 @@
 | Sidebar mini (ikon logo) | Panduan logo |
 
 <p align="center"><img src="docs/screenshots/mobile-dashboard.png" alt="Tampilan ponsel" width="300"></p>
+
+## Edisi Pro & Limited
+
+Butuh tampilan yang lebih premium? Ada dua edisi berbayar yang dibangun di atas template ini (semua fitur di atas tetap ada):
+
+| | |
+|---|---|
+| ![Pro Glass Light](docs/editions/pro-glass-light.jpg) | ![Pro Glass Dark](docs/editions/pro-glass-dark.jpg) |
+| **Pro** - skin Glass Light & Glass Dark, gambar latar per area (halaman, sidebar, navbar, header, login), 5 preset + upload foto | Gambar berbeda di sidebar, navbar, dan header |
+| ![Limited Liquid Light](docs/editions/limited-liquid-light.jpg) | ![Limited Liquid Dark](docs/editions/limited-liquid-dark.jpg) |
+| **Orulabs Liquid - Edisi Limited** - kaca cair ala iOS 26, Liquid Light & Liquid Dark | Palet dikunci ke warna logo Orulabs |
+
+Tertarik? Hubungi [Orulabs di GitHub](https://github.com/r0corp).
 
 ## Cara pakai
 
@@ -193,4 +212,6 @@ Bootstrap 5.3.8, Bootstrap Icons 1.13.1, Chart.js 4.4.7, Flatpickr 4.6.13, Tom S
 
 ## Lisensi
 
-Hak cipta © 2026 Orulabs. Lihat [LICENSE](LICENSE).
+Edisi ini berlisensi [MIT](LICENSE): bebas dipakai, diubah, dan dipakai di proyek komersial, asal catatan hak cipta tetap disertakan. Nama dan logo Orulabs (`assets/img/brand/`) tidak termasuk dalam lisensi ini; ganti dengan merek Anda sendiri saat menerbitkan produk berbasis template ini.
+
+Edisi Pro dan Limited Edition memakai lisensi komersial terpisah.
