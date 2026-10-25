@@ -734,7 +734,6 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0.75rem 0.7rem 1rem;
-    scrollbar-width: thin;
 }
 
 .ol-nav {
@@ -3296,6 +3295,61 @@ button.ol-loader-demo:hover {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+}
+
+
+/* ============================================================
+   SCROLLBAR MENGIKUTI TEMA
+   ------------------------------------------------------------
+   Tipis, tanpa panah, warna dari --ol-primary (ikut mode gelap).
+   Chrome/Edge/Safari memakai ::-webkit-scrollbar; Firefox memakai
+   scrollbar-color. Keduanya dipisah karena di Chrome versi baru
+   scrollbar-color/scrollbar-width akan mematikan gaya webkit.
+   ============================================================ */
+
+:root {
+    --ol-scroll-thumb: rgba(var(--ol-primary-rgb), 0.35);
+    --ol-scroll-thumb-hover: rgba(var(--ol-primary-rgb), 0.6);
+    --ol-scroll-track: transparent;
+}
+
+[data-bs-theme="dark"] {
+    --ol-scroll-thumb: rgba(var(--ol-primary-rgb), 0.45);
+    --ol-scroll-thumb-hover: rgba(var(--ol-primary-rgb), 0.75);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--ol-scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ol-scroll-thumb);
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ol-scroll-thumb-hover);
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner {
+    display: none;
+    background: transparent;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--ol-scroll-thumb) var(--ol-scroll-track);
+    }
 }
 
 
