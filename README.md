@@ -16,6 +16,7 @@
 | Bagian | Halaman / fitur |
 |---|---|
 | Layout | Sidebar melayang (lebar / mini ikon / overlay di ponsel) dengan logo Orulabs panjang & ikon, navbar sticky dengan progress scroll, footer |
+| Bahasa | Indonesia, English, 日本語, 中文: pemilih di navbar & panel Tema; menu, panel, notes, palette, tanggal & jam ikut bahasa |
 | Navbar | **Command palette** (`Ctrl+K`: cari & buka halaman atau aksi), jam, mini kalender, sticky notes, notifikasi, layar penuh, mode gelap, menu user |
 | Tema | Panel **Pengaturan Tema**: preset warna (termasuk biru & oranye Orulabs) + warna bebas, mode terang/gelap/otomatis, sidebar terang/gelap/berwarna, radius sudut, sidebar mini, **pilihan loading screen**. Tersimpan otomatis di browser |
 | Loading | Loading screen 5 gaya (Logo, Ring, Spinner, Titik, Bar) atau mati; `loaders.html`: progress bar atas, overlay loading kartu, tombol loading, skeleton shimmer |
@@ -94,6 +95,22 @@ var OL_DEFAULTS = {
 
 **Dari JavaScript:** `OL.setTheme({ primary: "#16a34a", sidebar: "primary" })`
 
+## Bahasa
+
+Pilih bahasa dari tombol kode bahasa (ID/EN/JA/ZH) di navbar atau dari panel Tema. Pilihan tersimpan di browser; untuk demo bisa juga lewat URL: `index.html?lang=en`.
+
+Teks diterjemahkan lewat atribut:
+
+```html
+<span data-i18n="nav.dashboard">Dashboard</span>
+<input data-i18n-placeholder="top.search">
+<button data-i18n-title="top.fullscreen">...</button>
+```
+
+Kamus ada di [`assets/js/orulabs-i18n.js`](assets/js/orulabs-i18n.js). Menambah bahasa: salin blok `en`, ganti kodenya, terjemahkan, lalu daftarkan di `LANGS`. Kunci yang belum diterjemahkan otomatis memakai teks Indonesia. Dari JavaScript: `OL.t("kunci")`, `OL.setLang("en")`, event `ol:langchange`.
+
+Yang diterjemahkan adalah bagian layout (sidebar, navbar, panel Tema, sticky notes, command palette, footer, loading screen) serta format tanggal/jam. Isi contoh di tiap halaman tetap berbahasa Indonesia; tambahkan `data-i18n` sesuai kebutuhan.
+
 ## Logo
 
 File ada di `assets/img/brand/`:
@@ -152,6 +169,13 @@ Sidebar dan navbar ada di setiap halaman. Ubah sumbernya sekali saja lalu build 
 Menu aktif ditandai otomatis dari nama file halaman, dan command palette otomatis mengikuti isi sidebar.
 
 Untuk halaman baru, salin `src/pages/blank.html`, ganti `title` di blok `<!--@ ... -->`, lalu build ulang. Screenshot README bisa diambil ulang dengan `python tools/screenshots.py`.
+
+### Titik sambung untuk ekstensi
+
+Fitur tambahan (mis. edisi Pro) bisa dipasang tanpa mengubah file inti:
+
+- **Plugin tema** - skrip yang dimuat sebelum `orulabs-theme-init.js` boleh menambah objek ke `window.OL_THEME_PLUGINS` (`defaults`, `params`, `apply(t, root)`). Pengaturannya ikut tersimpan, di-reset, dan bisa diisi lewat URL.
+- **Partial opsional** - kalau ada, `src/partials/head-extra.html`, `head-css-extra.html`, `scripts-extra.html`, dan `customizer-extra.html` otomatis disisipkan saat build.
 
 ### Memasang ke framework (Flask / Laravel)
 

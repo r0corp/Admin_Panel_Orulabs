@@ -178,8 +178,20 @@ def build_page(src_path, partials):
     )
 
 
+# Partial opsional: kalau file-nya ada di src/partials/, isinya disisipkan
+# di titik {{NAMA}} pada partial lain; kalau tidak ada, titiknya dikosongkan.
+# Dipakai edisi turunan (mis. Pro) untuk menambah fitur tanpa mengubah
+# partial inti.
+OPTIONAL_PARTIALS = ["head-extra", "head-css-extra", "scripts-extra", "customizer-extra"]
+
+
 def main():
     partials = {path.stem: read(path) for path in PARTIALS.glob("*.html")}
+    for name in OPTIONAL_PARTIALS:
+        marker = "{{" + name.upper().replace("-", "_") + "}}\n"
+        extra = partials.pop(name, "")
+        for key in partials:
+            partials[key] = partials[key].replace(marker, extra)
     count = 0
     for src_path in sorted(PAGES.glob("*.html")):
         output = ROOT / src_path.name

@@ -4,60 +4,64 @@
     <div class="offcanvas offcanvas-end ol-customizer" tabindex="-1" id="olCustomizer" aria-labelledby="olCustomizerLabel">
         <div class="offcanvas-header border-bottom">
             <div>
-                <h5 class="offcanvas-title fw-bold" id="olCustomizerLabel"><i class="bi bi-palette me-1 text-primary"></i> Pengaturan Tema</h5>
-                <div class="small text-muted-ol">Tersimpan otomatis di browser ini</div>
+                <h5 class="offcanvas-title fw-bold" id="olCustomizerLabel"><i class="bi bi-palette me-1 text-primary"></i> <span data-i18n="theme.title">Pengaturan Tema</span></h5>
+                <div class="small text-muted-ol" data-i18n="theme.saved">Tersimpan otomatis di browser ini</div>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Tutup"></button>
         </div>
         <div class="offcanvas-body pt-0">
-            <h6>Warna utama</h6>
+{{CUSTOMIZER_EXTRA}}
+            <h6 data-i18n="theme.language">Bahasa</h6>
+            <div class="ol-option-group" style="grid-template-columns:repeat(4,1fr)" data-ol-lang-options></div>
+
+            <h6 data-i18n="theme.color">Warna utama</h6>
             <div class="ol-swatches" data-ol-swatches></div>
 
-            <h6>Warna bebas</h6>
+            <h6 data-i18n="theme.custom">Warna bebas</h6>
             <div class="row g-2">
                 <div class="col-5"><input type="color" class="ol-color-input" data-ol-color-input value="#0190fb" aria-label="Pilih warna"></div>
                 <div class="col-7"><input type="text" class="form-control h-100" data-ol-hex-input placeholder="#0190fb" aria-label="Kode warna hex"></div>
             </div>
 
-            <h6>Mode</h6>
+            <h6 data-i18n="theme.mode">Mode</h6>
             <div class="ol-option-group">
-                <button type="button" class="ol-option" data-ol-set="mode" data-value="light"><i class="bi bi-sun"></i>Terang</button>
-                <button type="button" class="ol-option" data-ol-set="mode" data-value="dark"><i class="bi bi-moon-stars"></i>Gelap</button>
-                <button type="button" class="ol-option" data-ol-set="mode" data-value="auto"><i class="bi bi-circle-half"></i>Otomatis</button>
+                <button type="button" class="ol-option" data-ol-set="mode" data-value="light"><i class="bi bi-sun"></i><span data-i18n="theme.light">Terang</span></button>
+                <button type="button" class="ol-option" data-ol-set="mode" data-value="dark"><i class="bi bi-moon-stars"></i><span data-i18n="theme.dark">Gelap</span></button>
+                <button type="button" class="ol-option" data-ol-set="mode" data-value="auto"><i class="bi bi-circle-half"></i><span data-i18n="theme.auto">Otomatis</span></button>
             </div>
 
-            <h6>Gaya sidebar</h6>
+            <h6 data-i18n="theme.sidebar">Gaya sidebar</h6>
             <div class="ol-option-group">
-                <button type="button" class="ol-option" data-ol-set="sidebar" data-value="light"><i class="bi bi-layout-sidebar"></i>Terang</button>
-                <button type="button" class="ol-option" data-ol-set="sidebar" data-value="dark"><i class="bi bi-layout-sidebar-inset"></i>Gelap</button>
-                <button type="button" class="ol-option" data-ol-set="sidebar" data-value="primary"><i class="bi bi-layout-sidebar-inset-reverse"></i>Berwarna</button>
+                <button type="button" class="ol-option" data-ol-set="sidebar" data-value="light"><i class="bi bi-layout-sidebar"></i><span data-i18n="theme.light">Terang</span></button>
+                <button type="button" class="ol-option" data-ol-set="sidebar" data-value="dark"><i class="bi bi-layout-sidebar-inset"></i><span data-i18n="theme.dark">Gelap</span></button>
+                <button type="button" class="ol-option" data-ol-set="sidebar" data-value="primary"><i class="bi bi-layout-sidebar-inset-reverse"></i><span data-i18n="theme.colored">Berwarna</span></button>
             </div>
 
-            <h6>Sudut kartu</h6>
+            <h6 data-i18n="theme.radius">Sudut kartu</h6>
             <div class="ol-option-group">
-                <button type="button" class="ol-option" data-ol-set="radius" data-value="6"><i class="bi bi-square"></i>Tegas</button>
-                <button type="button" class="ol-option" data-ol-set="radius" data-value="14"><i class="bi bi-app"></i>Standar</button>
-                <button type="button" class="ol-option" data-ol-set="radius" data-value="20"><i class="bi bi-circle"></i>Bulat</button>
+                <button type="button" class="ol-option" data-ol-set="radius" data-value="6"><i class="bi bi-square"></i><span data-i18n="theme.sharp">Tegas</span></button>
+                <button type="button" class="ol-option" data-ol-set="radius" data-value="14"><i class="bi bi-app"></i><span data-i18n="theme.standard">Standar</span></button>
+                <button type="button" class="ol-option" data-ol-set="radius" data-value="20"><i class="bi bi-circle"></i><span data-i18n="theme.round">Bulat</span></button>
             </div>
 
-            <h6 class="d-flex align-items-center">Loading screen <button type="button" class="btn btn-link btn-sm ms-auto p-0 text-decoration-none" data-ol-preview-loader><i class="bi bi-play-circle me-1"></i>Pratinjau</button></h6>
+            <h6 class="d-flex align-items-center"><span data-i18n="theme.loader">Loading screen</span> <button type="button" class="btn btn-link btn-sm ms-auto p-0 text-decoration-none" data-ol-preview-loader><i class="bi bi-play-circle me-1"></i><span data-i18n="theme.preview">Pratinjau</span></button></h6>
             <div class="ol-option-group">
-                <button type="button" class="ol-option" data-ol-set="loader" data-value="logo"><i class="bi bi-hexagon"></i>Logo</button>
-                <button type="button" class="ol-option" data-ol-set="loader" data-value="ring"><i class="bi bi-circle"></i>Ring</button>
-                <button type="button" class="ol-option" data-ol-set="loader" data-value="spinner"><i class="bi bi-arrow-repeat"></i>Spinner</button>
-                <button type="button" class="ol-option" data-ol-set="loader" data-value="dots"><i class="bi bi-three-dots"></i>Titik</button>
-                <button type="button" class="ol-option" data-ol-set="loader" data-value="bar"><i class="bi bi-hr"></i>Bar</button>
-                <button type="button" class="ol-option" data-ol-set="loader" data-value="none"><i class="bi bi-slash-circle"></i>Mati</button>
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="logo"><i class="bi bi-hexagon"></i><span data-i18n="theme.loaderLogo">Logo</span></button>
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="ring"><i class="bi bi-circle"></i><span data-i18n="theme.loaderRing">Ring</span></button>
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="spinner"><i class="bi bi-arrow-repeat"></i><span data-i18n="theme.loaderSpinner">Spinner</span></button>
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="dots"><i class="bi bi-three-dots"></i><span data-i18n="theme.loaderDots">Titik</span></button>
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="bar"><i class="bi bi-hr"></i><span data-i18n="theme.loaderBar">Bar</span></button>
+                <button type="button" class="ol-option" data-ol-set="loader" data-value="none"><i class="bi bi-slash-circle"></i><span data-i18n="theme.off">Mati</span></button>
             </div>
 
-            <h6>Sidebar desktop</h6>
+            <h6 data-i18n="theme.desktopSidebar">Sidebar desktop</h6>
             <div class="ol-option-group" style="grid-template-columns:1fr 1fr">
-                <button type="button" class="ol-option" data-ol-set="mini" data-value="false"><i class="bi bi-arrows-expand-vertical"></i>Lebar</button>
-                <button type="button" class="ol-option" data-ol-set="mini" data-value="true"><i class="bi bi-arrows-collapse-vertical"></i>Mini (ikon)</button>
+                <button type="button" class="ol-option" data-ol-set="mini" data-value="false"><i class="bi bi-arrows-expand-vertical"></i><span data-i18n="theme.wide">Lebar</span></button>
+                <button type="button" class="ol-option" data-ol-set="mini" data-value="true"><i class="bi bi-arrows-collapse-vertical"></i><span data-i18n="theme.mini">Mini (ikon)</span></button>
             </div>
 
             <button type="button" class="btn btn-outline-secondary w-100 mt-4" data-ol-reset-theme>
-                <i class="bi bi-arrow-counterclockwise me-1"></i> Kembalikan ke bawaan
+                <i class="bi bi-arrow-counterclockwise me-1"></i> <span data-i18n="theme.reset">Kembalikan ke bawaan</span>
             </button>
         </div>
     </div>
@@ -68,14 +72,14 @@
     <div class="offcanvas offcanvas-end ol-notes-panel" tabindex="-1" id="olNotes" aria-labelledby="olNotesLabel">
         <div class="offcanvas-header border-bottom">
             <div>
-                <h5 class="offcanvas-title fw-bold" id="olNotesLabel"><i class="bi bi-sticky me-1 text-warning"></i> Sticky Notes</h5>
-                <div class="small text-muted-ol">Catatan pribadi, tersimpan di browser</div>
+                <h5 class="offcanvas-title fw-bold" id="olNotesLabel"><i class="bi bi-sticky me-1 text-warning"></i> <span data-i18n="notes.title">Sticky Notes</span></h5>
+                <div class="small text-muted-ol" data-i18n="notes.subtitle">Catatan pribadi, tersimpan di browser</div>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Tutup"></button>
         </div>
         <div class="offcanvas-body">
             <form class="mb-3" data-ol-notes-form>
-                <textarea class="form-control mb-2" rows="3" placeholder="Tulis catatan... (Ctrl+Enter untuk simpan)" aria-label="Catatan baru"></textarea>
+                <textarea class="form-control mb-2" rows="3" placeholder="Tulis catatan... (Ctrl+Enter untuk simpan)" data-i18n-placeholder="notes.placeholder" aria-label="Catatan baru"></textarea>
                 <div class="d-flex align-items-center gap-1">
                     <button type="button" class="ol-note-swatch ol-note-yellow is-active" data-new-note-color="yellow" aria-label="Kuning"></button>
                     <button type="button" class="ol-note-swatch ol-note-green" data-new-note-color="green" aria-label="Hijau"></button>
@@ -83,10 +87,10 @@
                     <button type="button" class="ol-note-swatch ol-note-pink" data-new-note-color="pink" aria-label="Pink"></button>
                     <button type="button" class="ol-note-swatch ol-note-purple" data-new-note-color="purple" aria-label="Ungu"></button>
                     <button type="button" class="ol-note-swatch ol-note-orange" data-new-note-color="orange" aria-label="Oranye"></button>
-                    <button type="submit" class="btn btn-primary btn-sm ms-auto"><i class="bi bi-plus-lg"></i> Tambah</button>
+                    <button type="submit" class="btn btn-primary btn-sm ms-auto"><i class="bi bi-plus-lg"></i> <span data-i18n="notes.add">Tambah</span></button>
                 </div>
             </form>
-            <input type="search" class="form-control form-control-sm mb-3" placeholder="Cari catatan..." data-ol-notes-search aria-label="Cari catatan">
+            <input type="search" class="form-control form-control-sm mb-3" placeholder="Cari catatan..." data-i18n-placeholder="notes.search" data-ol-notes-search aria-label="Cari catatan">
             <div data-ol-notes-list></div>
         </div>
     </div>

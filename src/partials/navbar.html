@@ -3,13 +3,13 @@
         ======================================================= -->
         <header class="ol-topbar">
             <nav class="ol-navbar">
-                <button type="button" class="ol-navbar-btn" data-ol-toggle-sidebar aria-label="Buka/tutup sidebar">
+                <button type="button" class="ol-navbar-btn" data-ol-toggle-sidebar aria-label="Buka/tutup sidebar" data-i18n-title="top.toggleSidebar">
                     <i class="bi bi-list"></i>
                 </button>
 
                 <div class="ol-search d-none d-md-block">
                     <i class="bi bi-search"></i>
-                    <input type="search" class="form-control" placeholder="Cari menu, data, laporan..." data-ol-search aria-label="Cari">
+                    <input type="search" class="form-control" placeholder="Cari menu, data, laporan..." data-i18n-placeholder="top.search" data-ol-search aria-label="Cari">
                     <kbd>Ctrl K</kbd>
                 </div>
 
@@ -24,7 +24,7 @@
                         <div class="dropdown-menu dropdown-menu-end p-0">
                             <div class="ol-minical" data-ol-minical data-upcoming></div>
                             <div class="border-top p-2 text-center">
-                                <a href="calendar.html" class="small fw-semibold text-decoration-none">Buka kalender lengkap</a>
+                                <a href="calendar.html" class="small fw-semibold text-decoration-none" data-i18n="top.fullCalendar">Buka kalender lengkap</a>
                             </div>
                         </div>
                     </div>
@@ -42,8 +42,8 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-end ol-dropdown-wide">
                             <div class="ol-dropdown-head">
-                                <strong>Notifikasi</strong>
-                                <a href="#" class="small text-decoration-none" data-ol-mark-read>Tandai dibaca</a>
+                                <strong data-i18n="top.notifications">Notifikasi</strong>
+                                <a href="#" class="small text-decoration-none" data-ol-mark-read data-i18n="top.markRead">Tandai dibaca</a>
                             </div>
                             <a href="#" class="ol-notif-item unread">
                                 <span class="ol-stat-icon is-success" style="width:38px;height:38px;font-size:1rem"><i class="bi bi-check2-circle"></i></span>
@@ -57,14 +57,22 @@
                                 <span class="ol-stat-icon" style="width:38px;height:38px;font-size:1rem"><i class="bi bi-person-plus"></i></span>
                                 <span class="min-w-0"><span class="d-block fw-semibold">User baru</span><span class="small text-muted-ol">Rina Putri bergabung ke tim HRGA.</span><span class="d-block small text-muted-ol">Kemarin</span></span>
                             </a>
-                            <div class="p-2 text-center"><a href="#" class="small fw-semibold text-decoration-none">Lihat semua</a></div>
+                            <div class="p-2 text-center"><a href="#" class="small fw-semibold text-decoration-none" data-i18n="top.seeAll">Lihat semua</a></div>
                         </div>
                     </div>
 
-                    <button type="button" class="ol-navbar-btn d-none d-sm-inline-flex" data-ol-fullscreen aria-label="Layar penuh">
+                    <!-- Bahasa -->
+                    <div class="dropdown">
+                        <button type="button" class="ol-navbar-btn" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Bahasa" data-i18n-title="top.language">
+                            <span class="ol-lang-code" data-ol-lang-current>ID</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" data-ol-lang-menu></ul>
+                    </div>
+
+                    <button type="button" class="ol-navbar-btn d-none d-sm-inline-flex" data-ol-fullscreen aria-label="Layar penuh" data-i18n-title="top.fullscreen">
                         <i class="bi bi-arrows-fullscreen"></i>
                     </button>
-                    <button type="button" class="ol-navbar-btn" data-ol-toggle-mode aria-label="Ganti mode terang/gelap">
+                    <button type="button" class="ol-navbar-btn" data-ol-toggle-mode aria-label="Ganti mode terang/gelap" data-i18n-title="top.toggleMode">
                         <i class="bi bi-moon-stars"></i>
                     </button>
                     <button type="button" class="ol-navbar-btn d-none d-sm-inline-flex" data-bs-toggle="offcanvas" data-bs-target="#olCustomizer" aria-label="Pengaturan tema">
@@ -77,17 +85,17 @@
                             <span class="ol-avatar ol-avatar-sm ol-online">AD</span>
                             <span class="d-none d-lg-block text-start lh-sm">
                                 <span class="d-block fw-semibold small">Admin Orulabs</span>
-                                <span class="d-block text-muted-ol" style="font-size:.72rem">Administrator</span>
+                                <span class="d-block text-muted-ol" style="font-size:.72rem" data-i18n="user.role">Administrator</span>
                             </span>
                             <i class="bi bi-chevron-down small text-muted-ol d-none d-lg-inline"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><h6 class="dropdown-header">Masuk sebagai admin@orulabs.id</h6></li>
-                            <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> Profil saya</a></li>
-                            <li><a class="dropdown-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#olNotes"><i class="bi bi-sticky"></i> Catatan</a></li>
-                            <li><a class="dropdown-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#olCustomizer"><i class="bi bi-gear"></i> Pengaturan</a></li>
+                            <li><h6 class="dropdown-header"><span data-i18n="user.signedIn">Masuk sebagai</span> admin@orulabs.id</h6></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> <span data-i18n="user.profile">Profil saya</span></a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#olNotes"><i class="bi bi-sticky"></i> <span data-i18n="user.notes">Catatan</span></a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#olCustomizer"><i class="bi bi-gear"></i> <span data-i18n="user.settings">Pengaturan</span></a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right"></i> Keluar</a></li>
+                            <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right"></i> <span data-i18n="user.logout">Keluar</span></a></li>
                         </ul>
                     </div>
                 </div>

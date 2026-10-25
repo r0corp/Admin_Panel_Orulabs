@@ -46,11 +46,35 @@
 
     OL.escapeHtml = escapeHtml;
 
-    var MONTHS = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
-        "Agustus", "September", "Oktober", "November", "Desember"];
-    var DAYS_SHORT = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
+    // Nama bulan & hari (Senin dulu) mengikuti bahasa aktif; array diisi
+    // ulang di tempat saat bahasa diganti supaya referensinya tetap sama.
+    var MONTHS = [];
+    var DAYS_SHORT = [];
     OL.MONTHS = MONTHS;
     OL.DAYS_SHORT = DAYS_SHORT;
+
+    function loc() {
+        return OL.locale ? OL.locale() : "id-ID";
+    }
+
+    function t(key) {
+        return OL.t ? OL.t(key) : key;
+    }
+
+    function fillCalendarNames() {
+        var l = loc();
+        MONTHS.length = 0;
+        DAYS_SHORT.length = 0;
+        for (var m = 0; m < 12; m++) {
+            MONTHS.push(new Date(2024, m, 1).toLocaleDateString(l, { month: "long" }));
+        }
+        for (var d = 0; d < 7; d++) {
+            // 1 Januari 2024 jatuh pada hari Senin
+            DAYS_SHORT.push(new Date(2024, 0, 1 + d).toLocaleDateString(l, { weekday: "short" }).replace(".", ""));
+        }
+    }
+
+    fillCalendarNames();
 
     function ymd(d) {
         var m = d.getMonth() + 1;
@@ -159,7 +183,7 @@
             }
             if (e.target.closest("[data-ol-reset-theme]")) {
                 OL.resetTheme();
-                OL.toast("Tema dikembalikan ke bawaan.", "primary");
+                OL.toast(t("theme.resetDone"), "primary");
                 return;
             }
             var modeBtn = e.target.closest("[data-ol-toggle-mode]");
@@ -194,17 +218,17 @@
     }
 
     function syncCustomizer() {
-        var t = THEME.current;
+        var cur = THEME.current;
         $$(".ol-swatch").forEach(function (s) {
-            s.classList.toggle("is-active", s.dataset.color.toLowerCase() === String(t.primary).toLowerCase());
+            s.classList.toggle("is-active", s.dataset.color.toLowerCase() === String(cur.primary).toLowerCase());
         });
         $$("[data-ol-set]").forEach(function (o) {
-            o.classList.toggle("is-active", String(t[o.dataset.olSet]) === o.dataset.value);
+            o.classList.toggle("is-active", String(cur[o.dataset.olSet]) === o.dataset.value);
         });
         var picker = $("[data-ol-color-input]");
-        if (picker && /^#[0-9a-f]{6}$/i.test(t.primary)) { picker.value = t.primary; }
+        if (picker && /^#[0-9a-f]{6}$/i.test(cur.primary)) { picker.value = cur.primary; }
         var hexInput = $("[data-ol-hex-input]");
-        if (hexInput) { hexInput.value = t.primary; }
+        if (hexInput) { hexInput.value = cur.primary; }
         $$("[data-ol-toggle-mode] i").forEach(function (i) {
             var dark = html.getAttribute("data-bs-theme") === "dark";
             i.className = dark ? "bi bi-sun" : "bi bi-moon-stars";
@@ -269,8 +293,8 @@
         if (clock) {
             var tick = function () {
                 var d = new Date();
-                clock.textContent = d.toLocaleDateString("id-ID", { weekday: "short", day: "numeric", month: "short" }) +
-                    " · " + d.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+                clock.textContent = d.toLocaleDateString(loc(), { weekday: "short", day: "numeric", month: "short" }) +
+                    " · " + d.toLocaleTimeString(loc(), { hour: "2-digit", minute: "2-digit", second: "2-digit" });
             };
             tick();
             setInterval(tick, 1000);
@@ -344,9 +368,9 @@
             '<div class="flex-grow-1">' + escapeHtml(message) + '</div>' +
             '<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Tutup"></button></div>';
         wrap.appendChild(el);
-        var t = new bootstrap.Toast(el, { delay: 3500 });
+        var toast = new bootstrap.Toast(el, { delay: 3500 });
         el.addEventListener("hidden.bs.toast", function () { el.remove(); });
-        t.show();
+        toast.show();
     };
 
     document.addEventListener("click", function (e) {
@@ -439,7 +463,7 @@
                     '<span>' + MONTHS[m] + " " + y + "</span>" +
                     '<button type="button" class="btn btn-sm btn-link text-reset p-0" data-mc="1" aria-label="Bulan berikutnya"><i class="bi bi-chevron-right"></i></button></div>' +
                     '<div class="ol-minical-grid">';
-                DAYS_SHORT.forEach(function (d) { out += '<div class="dow">' + d.charAt(0) + d.charAt(1) + "</div>"; });
+                DAYS_SHORT.forEach(function (d) { out += '<div class="dow">' + escapeHtml(d.slice(0, 2)) + "</div>"; });
                 for (var i = 0; i < first; i++) {
                     out += '<div class="day muted">' + (prevDays - first + i + 1) + "</div>";
                 }
@@ -516,7 +540,7 @@
             if (s < 60) { return "baru saja"; }
             if (s < 3600) { return Math.floor(s / 60) + " mnt lalu"; }
             if (s < 86400) { return Math.floor(s / 3600) + " jam lalu"; }
-            return new Date(ts).toLocaleDateString("id-ID", { day: "numeric", month: "short" });
+            return new Date(ts).toLocaleDateString(loc(), { day: "numeric", month: "short" });
         }
 
         function render() {
@@ -526,7 +550,7 @@
 
             if (!shown.length) {
                 list.innerHTML = '<div class="ol-empty"><i class="bi bi-sticky"></i>' +
-                    (filter ? "Tidak ada catatan yang cocok." : "Belum ada catatan.") + "</div>";
+                    escapeHtml(filter ? t("notes.noMatch") : t("notes.empty")) + "</div>";
                 return;
             }
 
@@ -618,6 +642,7 @@
             render();
         });
 
+        document.addEventListener("ol:langchange", render);
         save();
         render();
     }
@@ -886,11 +911,7 @@
             });
         });
 
-        var greet = $("[data-ol-greeting]");
-        if (greet) {
-            var h = new Date().getHours();
-            greet.textContent = h < 11 ? "Selamat pagi" : h < 15 ? "Selamat siang" : h < 18 ? "Selamat sore" : "Selamat malam";
-        }
+        updateGreeting();
 
         $$("[data-ol-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
@@ -900,9 +921,9 @@
             var dateEl = $("[data-ol-bigdate]");
             var tickBig = function () {
                 var d = new Date();
-                big.textContent = d.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" });
+                big.textContent = d.toLocaleTimeString(loc(), { hour: "2-digit", minute: "2-digit" });
                 if (dateEl) {
-                    dateEl.textContent = d.toLocaleDateString("id-ID", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+                    dateEl.textContent = d.toLocaleDateString(loc(), { weekday: "long", day: "numeric", month: "long", year: "numeric" });
                 }
             };
             tickBig();
@@ -1199,28 +1220,30 @@
         });
         if (!links.length) { return; }
 
-        var items = links.map(function (a) {
-            var parent = a.closest(".ol-nav-sub");
-            var parentLink = parent ? $('[href="#' + parent.id + '"]') : null;
-            var icon = parentLink ? parentLink.querySelector("i").className : a.querySelector("i").className;
-            return {
-                group: "Halaman",
-                label: a.querySelector(".ol-nav-text").textContent.trim(),
-                hint: parentLink ? parentLink.querySelector(".ol-nav-text").textContent.trim() : "",
-                icon: icon.replace("nav-icon", "").trim(),
-                href: a.getAttribute("href")
-            };
-        });
-
-        var actions = [
-            { group: "Aksi", label: "Ganti mode terang / gelap", icon: "bi bi-moon-stars", run: function () { $("[data-ol-toggle-mode]") && $("[data-ol-toggle-mode]").click(); } },
-            { group: "Aksi", label: "Buka pengaturan tema", icon: "bi bi-palette", run: function () { bootstrap.Offcanvas.getOrCreateInstance("#olCustomizer").show(); } },
-            { group: "Aksi", label: "Buka sticky notes", icon: "bi bi-sticky", run: function () { bootstrap.Offcanvas.getOrCreateInstance("#olNotes").show(); } },
-            { group: "Aksi", label: "Ciutkan / lebarkan sidebar", icon: "bi bi-layout-sidebar", run: function () { OL.setTheme({ mini: !THEME.current.mini }); } },
-            { group: "Aksi", label: "Layar penuh", icon: "bi bi-arrows-fullscreen", run: function () { $("[data-ol-fullscreen]") && $("[data-ol-fullscreen]").click(); } },
-            { group: "Aksi", label: "Keluar", icon: "bi bi-box-arrow-right", href: "login.html" }
-        ];
-        var all = items.concat(actions);
+        function buildItems() {
+            var items = links.map(function (a) {
+                var parent = a.closest(".ol-nav-sub");
+                var parentLink = parent ? $('[href="#' + parent.id + '"]') : null;
+                var icon = parentLink ? parentLink.querySelector("i").className : a.querySelector("i").className;
+                return {
+                    group: t("palette.pages"),
+                    label: a.querySelector(".ol-nav-text").textContent.trim(),
+                    hint: parentLink ? parentLink.querySelector(".ol-nav-text").textContent.trim() : "",
+                    icon: icon.replace("nav-icon", "").trim(),
+                    href: a.getAttribute("href")
+                };
+            });
+            var g = t("palette.actions");
+            return items.concat([
+                { group: g, label: t("action.toggleMode"), icon: "bi bi-moon-stars", run: function () { $("[data-ol-toggle-mode]") && $("[data-ol-toggle-mode]").click(); } },
+                { group: g, label: t("action.theme"), icon: "bi bi-palette", run: function () { bootstrap.Offcanvas.getOrCreateInstance("#olCustomizer").show(); } },
+                { group: g, label: t("action.notes"), icon: "bi bi-sticky", run: function () { bootstrap.Offcanvas.getOrCreateInstance("#olNotes").show(); } },
+                { group: g, label: t("action.sidebar"), icon: "bi bi-layout-sidebar", run: function () { OL.setTheme({ mini: !THEME.current.mini }); } },
+                { group: g, label: t("action.fullscreen"), icon: "bi bi-arrows-fullscreen", run: function () { $("[data-ol-fullscreen]") && $("[data-ol-fullscreen]").click(); } },
+                { group: g, label: t("action.logout"), icon: "bi bi-box-arrow-right", href: "login.html" }
+            ]);
+        }
+        var all = buildItems();
 
         var modalEl = document.createElement("div");
         modalEl.className = "modal fade ol-palette";
@@ -1229,9 +1252,9 @@
         modalEl.innerHTML =
             '<div class="modal-dialog"><div class="modal-content">' +
             '<div class="position-relative"><i class="bi bi-search ol-palette-search-icon"></i>' +
-            '<input type="text" class="form-control ol-palette-input" placeholder="Ketik nama halaman atau aksi..." aria-label="Cari halaman atau aksi" autocomplete="off"></div>' +
+            '<input type="text" class="form-control ol-palette-input" placeholder="Ketik nama halaman atau aksi..." data-i18n-placeholder="palette.placeholder" aria-label="Cari halaman atau aksi" autocomplete="off"></div>' +
             '<ul class="ol-palette-list" role="listbox"></ul>' +
-            '<div class="ol-palette-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> pilih</span><span><kbd>Enter</kbd> buka</span><span><kbd>Esc</kbd> tutup</span></div>' +
+            '<div class="ol-palette-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> <span data-i18n="palette.select">pilih</span></span><span><kbd>Enter</kbd> <span data-i18n="palette.open">buka</span></span><span><kbd>Esc</kbd> <span data-i18n="palette.close">tutup</span></span></div>' +
             "</div></div>";
         document.body.appendChild(modalEl);
 
@@ -1248,7 +1271,7 @@
             });
             active = Math.min(active, Math.max(shown.length - 1, 0));
             if (!shown.length) {
-                list.innerHTML = '<li class="ol-empty py-4"><i class="bi bi-search"></i>Tidak ada hasil untuk "' + escapeHtml(input.value) + '"</li>';
+                list.innerHTML = '<li class="ol-empty py-4"><i class="bi bi-search"></i>' + escapeHtml(t("palette.noResult")) + ' "' + escapeHtml(input.value) + '"</li>';
                 return;
             }
             var html2 = "";
@@ -1280,6 +1303,8 @@
         }
 
         OL.openPalette = function () {
+            all = buildItems();
+            if (OL.applyI18n) { OL.applyI18n(modalEl); }
             input.value = "";
             active = 0;
             render();
@@ -1317,7 +1342,55 @@
     }
 
 
+    /* ========================================================
+       BAHASA: menu di navbar + pilihan di panel Tema
+       ======================================================== */
+
+    function initLanguage() {
+        if (!OL.LANGS) { return; }
+
+        $$("[data-ol-lang-menu]").forEach(function (menu) {
+            menu.innerHTML = OL.LANGS.map(function (l) {
+                return '<li><a class="dropdown-item d-flex align-items-center gap-2" href="#" data-ol-lang="' + l.code + '">' +
+                    '<span class="ol-lang-code">' + l.short + "</span>" + escapeHtml(l.name) + "</a></li>";
+            }).join("");
+        });
+
+        $$("[data-ol-lang-options]").forEach(function (box) {
+            box.innerHTML = OL.LANGS.map(function (l) {
+                return '<button type="button" class="ol-option" data-ol-lang="' + l.code + '" title="' + escapeHtml(l.name) + '">' +
+                    '<span class="ol-lang-code">' + l.short + '</span><span class="small text-truncate mw-100">' + escapeHtml(l.name) + "</span></button>";
+            }).join("");
+        });
+
+        document.addEventListener("click", function (e) {
+            var b = e.target.closest("[data-ol-lang]");
+            if (!b) { return; }
+            e.preventDefault();
+            OL.setLang(b.getAttribute("data-ol-lang"));
+        });
+
+        document.addEventListener("ol:langchange", function () {
+            fillCalendarNames();
+            // Kalender (mini & penuh) menggambar ulang lewat event ini.
+            document.dispatchEvent(new CustomEvent("ol:eventschange"));
+            updateGreeting();
+        });
+
+        OL.applyI18n();
+    }
+
+    function updateGreeting() {
+        var greet = $("[data-ol-greeting]");
+        if (greet) {
+            var h = new Date().getHours();
+            greet.textContent = t(h < 11 ? "greet.morning" : h < 15 ? "greet.noon" : h < 18 ? "greet.afternoon" : "greet.evening");
+        }
+    }
+
+
     function boot() {
+        initLanguage();
         buildCustomizer();
         initWizards();
         initPalette();

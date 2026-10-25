@@ -1018,6 +1018,42 @@ body {
     border: 1px solid var(--ol-border);
 }
 
+/* Kode bahasa (ID/EN/...) di navbar & panel Tema */
+.ol-lang-code {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 5px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    background: var(--ol-primary-subtle);
+    color: var(--ol-primary);
+}
+
+.ol-option .ol-lang-code {
+    font-size: 0.75rem;
+    height: 22px;
+}
+
+.ol-option.active,
+.dropdown-item.active .ol-lang-code {
+    border-color: var(--ol-primary);
+}
+
+.ol-option.active {
+    background: var(--ol-primary-subtle);
+    color: var(--ol-primary);
+}
+
+.dropdown-item.active .ol-lang-code {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
 .ol-clock {
     font-variant-numeric: tabular-nums;
     font-weight: 600;
