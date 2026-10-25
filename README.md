@@ -12,6 +12,7 @@
 <p align="center">
   <a href="https://r0corp.github.io/Admin_Panel_Orulabs/"><b>Lihat demo langsung</b></a> ·
   <a href="#edisi-pro--limited">Edisi Pro &amp; Limited</a> ·
+  <a href="https://wa.me/6281388611977?text=Halo%2C%20saya%20tertarik%20dengan%20Orulabs%20Admin%20Panel%20edisi%20Pro%20%2F%20Limited%20dan%20ingin%20bertanya.">WhatsApp</a> ·
   <a href="LICENSE">Lisensi MIT</a>
 </p>
 
@@ -69,7 +70,11 @@ Butuh tampilan yang lebih premium? Ada dua edisi berbayar yang dibangun di atas 
 | ![Limited Liquid Light](docs/editions/limited-liquid-light.jpg) | ![Limited Liquid Dark](docs/editions/limited-liquid-dark.jpg) |
 | **Orulabs Liquid - Edisi Limited** - kaca cair ala iOS 26, Liquid Light & Liquid Dark | Palet dikunci ke warna logo Orulabs |
 
-Tertarik? Hubungi [Orulabs di GitHub](https://github.com/r0corp).
+<p align="center">
+  <a href="https://wa.me/6281388611977?text=Halo%2C%20saya%20tertarik%20dengan%20Orulabs%20Admin%20Panel%20edisi%20Pro%20%2F%20Limited%20dan%20ingin%20bertanya."><img src="https://img.shields.io/badge/Tanya%20%26%20beli%20lewat%20WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="Hubungi lewat WhatsApp"></a>
+</p>
+
+<p align="center"><sub>Chat WhatsApp Orulabs: +62 813-8861-1977</sub></p>
 
 ## Cara pakai
 
