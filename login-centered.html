@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- File ini hasil build dari src/pages/login-centered.html. Edit sumbernya lalu jalankan: python tools/build.py -->
+<html lang="id" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login (Centered) · Orulabs Admin</title>
+    <meta name="description" content="Orulabs Admin Panel - template dashboard admin berbasis Bootstrap 5.">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+    <!-- Tema dipasang paling awal supaya tidak berkedip -->
+    <script src="assets/js/orulabs-theme-init.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/css/orulabs.css">
+</head>
+<body>
+<button type="button" class="ol-navbar-btn ol-auth-mode" data-ol-toggle-mode aria-label="Ganti mode terang/gelap"><i class="bi bi-moon-stars"></i></button>
+
+    <!-- Variasi 2: kartu di tengah, latar pola titik + cahaya warna tema -->
+    <div class="ol-auth-centered">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <span class="ol-brand-logo mb-3" style="width:56px;height:56px;font-size:1.6rem;border-radius:16px"><i class="bi bi-hexagon-half"></i></span>
+                    <h1 class="ol-auth-title">Masuk ke Orulabs</h1>
+                    <p class="text-muted-ol mb-0">Gunakan akun kantor Anda.</p>
+                </div>
+
+                <div class="d-grid gap-2 mb-1">
+                    <button type="button" class="btn btn-social"><i class="bi bi-google me-2 text-danger"></i>Lanjutkan dengan Google</button>
+                    <button type="button" class="btn btn-social"><i class="bi bi-microsoft me-2 text-primary"></i>Lanjutkan dengan Microsoft</button>
+                </div>
+
+                <div class="ol-divider">atau dengan email</div>
+
+                <form class="needs-validation" novalidate data-ol-redirect="index.html">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="cEmail" placeholder="nama@perusahaan.co.id" required autocomplete="username">
+                        <label for="cEmail">Email</label>
+                        <div class="invalid-feedback">Masukkan email yang valid.</div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="cPass" placeholder="Password" required autocomplete="current-password">
+                        <label for="cPass">Password</label>
+                        <div class="invalid-feedback">Password wajib diisi.</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4 small">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="cRemember"><label class="form-check-label" for="cRemember">Ingat saya</label></div>
+                        <a href="forgot-password.html" class="text-decoration-none">Lupa password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-gradient w-100 py-2">Masuk</button>
+                </form>
+
+                <p class="text-center text-muted-ol small mt-4 mb-0">Belum punya akun? <a href="register.html" class="fw-semibold text-decoration-none">Daftar</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/orulabs.js"></script>
+</body>
+</html>

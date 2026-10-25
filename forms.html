@@ -1,0 +1,507 @@
+<!doctype html>
+<!-- File ini hasil build dari src/pages/forms.html. Edit sumbernya lalu jalankan: python tools/build.py -->
+<html lang="id" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Input · Orulabs Admin</title>
+    <meta name="description" content="Orulabs Admin Panel - template dashboard admin berbasis Bootstrap 5.">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+    <!-- Tema dipasang paling awal supaya tidak berkedip -->
+    <script src="assets/js/orulabs-theme-init.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/css/tom-select.bootstrap5.min.css">
+    <link rel="stylesheet" href="assets/css/orulabs.css">
+</head>
+<body class="ol-layout">
+
+    <!-- ======================================================
+         SIDEBAR
+         Menu aktif ditandai otomatis oleh orulabs.js
+         berdasarkan nama file halaman.
+    ======================================================= -->
+    <aside class="ol-sidebar" aria-label="Menu utama">
+        <a href="index.html" class="ol-sidebar-brand">
+            <span class="ol-brand-logo"><i class="bi bi-hexagon-half"></i></span>
+            <span class="ol-brand-text">Orulabs<small>Admin Panel</small></span>
+        </a>
+
+        <div class="ol-sidebar-body">
+            <ul class="ol-nav">
+                <li class="ol-nav-header">Utama</li>
+                <li>
+                    <a href="index.html" class="ol-nav-link">
+                        <i class="bi bi-grid-1x2"></i><span class="ol-nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="calendar.html" class="ol-nav-link">
+                        <i class="bi bi-calendar3"></i><span class="ol-nav-text">Kalender</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ol-nav-link" data-bs-toggle="offcanvas" data-bs-target="#olNotes">
+                        <i class="bi bi-sticky"></i><span class="ol-nav-text">Sticky Notes</span>
+                        <span class="badge text-bg-warning ol-nav-badge" data-ol-notes-count>0</span>
+                    </a>
+                </li>
+
+                <li class="ol-nav-header">Komponen</li>
+                <li>
+                    <a href="#menu-ui" class="ol-nav-link collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="menu-ui">
+                        <i class="bi bi-ui-checks-grid"></i><span class="ol-nav-text">UI Elements</span>
+                        <i class="bi bi-chevron-right ol-nav-arrow"></i>
+                    </a>
+                    <ul class="ol-nav-sub collapse" id="menu-ui">
+                        <li><a href="buttons.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Buttons</span></a></li>
+                        <li><a href="elements.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Elements</span></a></li>
+                        <li><a href="cards.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Cards &amp; Widgets</span></a></li>
+                        <li><a href="typography.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Typography &amp; Warna</span></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#menu-forms" class="ol-nav-link collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="menu-forms">
+                        <i class="bi bi-input-cursor-text"></i><span class="ol-nav-text">Forms</span>
+                        <i class="bi bi-chevron-right ol-nav-arrow"></i>
+                    </a>
+                    <ul class="ol-nav-sub collapse" id="menu-forms">
+                        <li><a href="forms.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Form Input</span></a></li>
+                        <li><a href="form-advanced.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Form Lanjutan</span></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="tables.html" class="ol-nav-link">
+                        <i class="bi bi-table"></i><span class="ol-nav-text">Tables</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="charts.html" class="ol-nav-link">
+                        <i class="bi bi-bar-chart-line"></i><span class="ol-nav-text">Charts</span>
+                    </a>
+                </li>
+
+                <li class="ol-nav-header">Halaman</li>
+                <li>
+                    <a href="profile.html" class="ol-nav-link">
+                        <i class="bi bi-person-circle"></i><span class="ol-nav-text">Profil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#menu-auth" class="ol-nav-link collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="menu-auth">
+                        <i class="bi bi-shield-lock"></i><span class="ol-nav-text">Autentikasi</span>
+                        <span class="badge text-bg-primary ol-nav-badge">7</span>
+                        <i class="bi bi-chevron-right ol-nav-arrow"></i>
+                    </a>
+                    <ul class="ol-nav-sub collapse" id="menu-auth">
+                        <li><a href="login.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Login - Split</span></a></li>
+                        <li><a href="login-centered.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Login - Centered</span></a></li>
+                        <li><a href="login-glass.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Login - Glass</span></a></li>
+                        <li><a href="login-minimal.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Login - Minimal</span></a></li>
+                        <li><a href="register.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Register</span></a></li>
+                        <li><a href="forgot-password.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Lupa Password + OTP</span></a></li>
+                        <li><a href="lock-screen.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Lock Screen</span></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#menu-pages" class="ol-nav-link collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="menu-pages">
+                        <i class="bi bi-files"></i><span class="ol-nav-text">Halaman Lain</span>
+                        <i class="bi bi-chevron-right ol-nav-arrow"></i>
+                    </a>
+                    <ul class="ol-nav-sub collapse" id="menu-pages">
+                        <li><a href="pricing.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Pricing</span></a></li>
+                        <li><a href="404.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Error 404</span></a></li>
+                        <li><a href="blank.html" class="ol-nav-link"><i class="bi bi-circle-fill"></i><span class="ol-nav-text">Halaman Kosong</span></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="ol-nav-link" data-bs-toggle="offcanvas" data-bs-target="#olCustomizer">
+                        <i class="bi bi-palette"></i><span class="ol-nav-text">Pengaturan Tema</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="ol-sidebar-footer">
+            <div class="ol-sidebar-user">
+                <span class="ol-avatar ol-avatar-sm ol-online">AD</span>
+                <div class="min-w-0">
+                    <div class="fw-semibold text-truncate">Admin Orulabs</div>
+                    <div class="small text-truncate">Administrator</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="ol-overlay"></div>
+
+    <div class="ol-main">
+
+        <!-- ======================================================
+             NAVBAR (sticky)
+        ======================================================= -->
+        <header class="ol-topbar">
+            <nav class="ol-navbar">
+                <button type="button" class="ol-navbar-btn" data-ol-toggle-sidebar aria-label="Buka/tutup sidebar">
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <div class="ol-search d-none d-md-block">
+                    <i class="bi bi-search"></i>
+                    <input type="search" class="form-control" placeholder="Cari menu, data, laporan..." data-ol-search aria-label="Cari">
+                    <kbd>Ctrl K</kbd>
+                </div>
+
+                <div class="ms-auto d-flex align-items-center gap-1">
+                    <span class="ol-clock d-none d-xl-inline me-2" data-ol-clock></span>
+
+                    <!-- Mini kalender -->
+                    <div class="dropdown">
+                        <button type="button" class="ol-navbar-btn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-label="Kalender">
+                            <i class="bi bi-calendar-event"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end p-0">
+                            <div class="ol-minical" data-ol-minical data-upcoming></div>
+                            <div class="border-top p-2 text-center">
+                                <a href="calendar.html" class="small fw-semibold text-decoration-none">Buka kalender lengkap</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sticky notes -->
+                    <button type="button" class="ol-navbar-btn" data-bs-toggle="offcanvas" data-bs-target="#olNotes" aria-label="Sticky notes">
+                        <i class="bi bi-sticky"></i>
+                    </button>
+
+                    <!-- Notifikasi -->
+                    <div class="dropdown">
+                        <button type="button" class="ol-navbar-btn" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notifikasi">
+                            <i class="bi bi-bell"></i>
+                            <span class="ol-count" data-ol-notif-count>3</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end ol-dropdown-wide">
+                            <div class="ol-dropdown-head">
+                                <strong>Notifikasi</strong>
+                                <a href="#" class="small text-decoration-none" data-ol-mark-read>Tandai dibaca</a>
+                            </div>
+                            <a href="#" class="ol-notif-item unread">
+                                <span class="ol-stat-icon is-success" style="width:38px;height:38px;font-size:1rem"><i class="bi bi-check2-circle"></i></span>
+                                <span class="min-w-0"><span class="d-block fw-semibold">Pengajuan disetujui</span><span class="small text-muted-ol">Permintaan #1024 sudah disetujui manajer.</span><span class="d-block small text-muted-ol">5 menit lalu</span></span>
+                            </a>
+                            <a href="#" class="ol-notif-item unread">
+                                <span class="ol-stat-icon is-warning" style="width:38px;height:38px;font-size:1rem"><i class="bi bi-exclamation-triangle"></i></span>
+                                <span class="min-w-0"><span class="d-block fw-semibold">Stok menipis</span><span class="small text-muted-ol">Kertas A4 tersisa 3 rim.</span><span class="d-block small text-muted-ol">1 jam lalu</span></span>
+                            </a>
+                            <a href="#" class="ol-notif-item unread">
+                                <span class="ol-stat-icon" style="width:38px;height:38px;font-size:1rem"><i class="bi bi-person-plus"></i></span>
+                                <span class="min-w-0"><span class="d-block fw-semibold">User baru</span><span class="small text-muted-ol">Rina Putri bergabung ke tim HRGA.</span><span class="d-block small text-muted-ol">Kemarin</span></span>
+                            </a>
+                            <div class="p-2 text-center"><a href="#" class="small fw-semibold text-decoration-none">Lihat semua</a></div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="ol-navbar-btn d-none d-sm-inline-flex" data-ol-fullscreen aria-label="Layar penuh">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </button>
+                    <button type="button" class="ol-navbar-btn" data-ol-toggle-mode aria-label="Ganti mode terang/gelap">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+                    <button type="button" class="ol-navbar-btn d-none d-sm-inline-flex" data-bs-toggle="offcanvas" data-bs-target="#olCustomizer" aria-label="Pengaturan tema">
+                        <i class="bi bi-palette"></i>
+                    </button>
+
+                    <!-- User -->
+                    <div class="dropdown ms-1">
+                        <button type="button" class="ol-user-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="ol-avatar ol-avatar-sm ol-online">AD</span>
+                            <span class="d-none d-lg-block text-start lh-sm">
+                                <span class="d-block fw-semibold small">Admin Orulabs</span>
+                                <span class="d-block text-muted-ol" style="font-size:.72rem">Administrator</span>
+                            </span>
+                            <i class="bi bi-chevron-down small text-muted-ol d-none d-lg-inline"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><h6 class="dropdown-header">Masuk sebagai admin@orulabs.id</h6></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> Profil saya</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#olNotes"><i class="bi bi-sticky"></i> Catatan</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#olCustomizer"><i class="bi bi-gear"></i> Pengaturan</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right"></i> Keluar</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ol-scroll-progress"><span></span></div>
+            </nav>
+        </header>
+
+        <main class="ol-content">
+<div class="ol-page-header">
+                <span class="ol-page-icon"><i class="bi bi-input-cursor-text"></i></span>
+                <div>
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item">Forms</li><li class="breadcrumb-item active" aria-current="page">Form Input</li></ol></nav>
+                    <h1 class="ol-page-title">Form Input</h1>
+                    <p class="ol-page-subtitle">Semua jenis input, termasuk date picker dan select berpencarian.</p>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Input dasar</h2></div>
+                        <div class="card-body">
+                            <div class="mb-3"><label class="form-label" for="f1">Teks</label><input type="text" class="form-control" id="f1" placeholder="Masukkan nama"></div>
+                            <div class="mb-3"><label class="form-label" for="f2">Email</label><input type="email" class="form-control" id="f2" placeholder="nama@perusahaan.co.id"></div>
+                            <div class="mb-3">
+                                <label class="form-label" for="f3">Password</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="f3" value="rahasia123">
+                                    <button class="btn btn-outline-secondary" type="button" data-ol-toggle-password="#f3" aria-label="Tampilkan password"><i class="bi bi-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-sm-6"><label class="form-label" for="f4">Angka</label><input type="number" class="form-control" id="f4" value="10" min="0"></div>
+                                <div class="col-sm-6"><label class="form-label" for="f5">Telepon</label><input type="tel" class="form-control" id="f5" placeholder="0812-xxxx-xxxx"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label d-flex" for="f6">Keterangan <span class="ms-auto small text-muted-ol" id="f6count"></span></label>
+                                <textarea class="form-control" id="f6" rows="3" maxlength="200" data-ol-counter="#f6count" placeholder="Maksimal 200 karakter"></textarea>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-sm-6"><label class="form-label" for="f7">Disabled</label><input type="text" class="form-control" id="f7" value="Tidak bisa diubah" disabled></div>
+                                <div class="col-sm-6"><label class="form-label" for="f8">Readonly</label><input type="text" class="form-control" id="f8" value="Hanya baca" readonly></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Tanggal, waktu &amp; select</h2></div>
+                        <div class="card-body">
+                            <div class="row g-3 mb-3">
+                                <div class="col-sm-6"><label class="form-label" for="d1">Tanggal</label><div class="input-group"><span class="input-group-text"><i class="bi bi-calendar3"></i></span><input type="text" class="form-control" id="d1" data-ol-date placeholder="Pilih tanggal"></div></div>
+                                <div class="col-sm-6"><label class="form-label" for="d2">Rentang tanggal</label><div class="input-group"><span class="input-group-text"><i class="bi bi-calendar-range"></i></span><input type="text" class="form-control" id="d2" data-ol-date="range" placeholder="Dari - sampai"></div></div>
+                                <div class="col-sm-6"><label class="form-label" for="d3">Tanggal &amp; jam</label><input type="text" class="form-control" id="d3" data-ol-datetime placeholder="Pilih tanggal & jam"></div>
+                                <div class="col-sm-6"><label class="form-label" for="d4">Jam</label><input type="text" class="form-control" id="d4" data-ol-time placeholder="08:00"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="s1">Select biasa</label>
+                                <select class="form-select" id="s1"><option>Pilih departemen...</option><option>IT</option><option>HRGA</option><option>Finance</option><option>Marketing</option></select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="s2">Select berpencarian</label>
+                                <select id="s2" data-ol-select placeholder="Ketik untuk mencari kota...">
+                                    <option value="">Ketik untuk mencari kota...</option>
+                                    <option>Jakarta</option><option>Bandung</option><option>Surabaya</option><option>Medan</option><option>Semarang</option><option>Makassar</option><option>Yogyakarta</option><option>Denpasar</option><option>Palembang</option><option>Balikpapan</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="s3">Multi select</label>
+                                <select id="s3" data-ol-select multiple placeholder="Pilih beberapa...">
+                                    <option selected>Laptop</option><option selected>Monitor</option><option>Printer</option><option>Proyektor</option><option>Kursi</option><option>Meja</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" for="s4">Tags (bisa tambah sendiri)</label>
+                                <select id="s4" data-ol-select="tags" multiple placeholder="Ketik lalu Enter...">
+                                    <option selected>penting</option><option>internal</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Checkbox, radio, switch, range</h2></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6 mb-3">
+                                    <div class="ol-section-title">Checkbox</div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox" id="c1" checked><label class="form-check-label" for="c1">Terpilih</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox" id="c2"><label class="form-check-label" for="c2">Tidak terpilih</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox" id="c3" disabled><label class="form-check-label" for="c3">Disabled</label></div>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <div class="ol-section-title">Radio</div>
+                                    <div class="form-check"><input class="form-check-input" type="radio" name="r" id="r1" checked><label class="form-check-label" for="r1">Pria</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="radio" name="r" id="r2"><label class="form-check-label" for="r2">Wanita</label></div>
+                                    <div class="form-check form-check-inline mt-2"><input class="form-check-input" type="radio" name="r2" id="r3" checked><label class="form-check-label" for="r3">Inline A</label></div>
+                                    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="r2" id="r4"><label class="form-check-label" for="r4">Inline B</label></div>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <div class="ol-section-title">Switch</div>
+                                    <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="w1" checked><label class="form-check-label" for="w1">Notifikasi email</label></div>
+                                    <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="w2"><label class="form-check-label" for="w2">Mode maintenance</label></div>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <div class="ol-section-title">Range</div>
+                                    <label class="form-label d-flex" for="rg">Volume <span class="ms-auto text-primary" id="rgOut"></span></label>
+                                    <input type="range" class="form-range" id="rg" min="0" max="100" value="60" data-ol-range-output="#rgOut">
+                                </div>
+                            </div>
+                            <div class="ol-section-title">Pilihan kartu (btn-check)</div>
+                            <div class="row g-2">
+                                <div class="col-4"><input type="radio" class="btn-check" name="plan" id="p1" checked><label class="btn btn-outline-primary w-100 py-3" for="p1"><i class="bi bi-person d-block fs-4"></i>Basic</label></div>
+                                <div class="col-4"><input type="radio" class="btn-check" name="plan" id="p2"><label class="btn btn-outline-primary w-100 py-3" for="p2"><i class="bi bi-people d-block fs-4"></i>Tim</label></div>
+                                <div class="col-4"><input type="radio" class="btn-check" name="plan" id="p3"><label class="btn btn-outline-primary w-100 py-3" for="p3"><i class="bi bi-building d-block fs-4"></i>Bisnis</label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Input group, floating label, ukuran</h2></div>
+                        <div class="card-body">
+                            <div class="input-group mb-3"><span class="input-group-text">Rp</span><input type="text" class="form-control" placeholder="0" aria-label="Nominal"><span class="input-group-text">,00</span></div>
+                            <div class="input-group mb-3"><span class="input-group-text"><i class="bi bi-person"></i></span><input type="text" class="form-control" placeholder="Username" aria-label="Username"></div>
+                            <div class="input-group mb-3"><input type="text" class="form-control" placeholder="Cari data..." aria-label="Cari"><button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button></div>
+                            <div class="input-group mb-3"><input type="text" class="form-control" placeholder="orulabs" aria-label="Subdomain"><span class="input-group-text">.co.id</span></div>
+                            <div class="form-floating mb-3"><input type="email" class="form-control" id="fl1" placeholder="nama@contoh.com"><label for="fl1">Email (floating label)</label></div>
+                            <div class="form-floating mb-3"><select class="form-select" id="fl2"><option>IT</option><option>HRGA</option></select><label for="fl2">Departemen</label></div>
+                            <input class="form-control form-control-lg mb-2" type="text" placeholder="Input besar" aria-label="Input besar">
+                            <input class="form-control form-control-sm" type="text" placeholder="Input kecil" aria-label="Input kecil">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Upload file</h2></div>
+                        <div class="card-body">
+                            <div class="mb-3"><label class="form-label" for="u1">Input file biasa</label><input class="form-control" type="file" id="u1"></div>
+                            <div class="ol-dropzone mb-2" data-ol-dropzone="#u2list">
+                                <input type="file" id="u2" multiple hidden>
+                                <i class="bi bi-cloud-arrow-up"></i>
+                                <div class="fw-semibold text-body mt-1">Tarik &amp; lepas file di sini</div>
+                                <div class="small">atau klik untuk memilih (bisa banyak file)</div>
+                            </div>
+                            <ul class="list-group" id="u2list"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Validasi</h2></div>
+                        <div class="card-body">
+                            <form class="row g-3 needs-validation" novalidate>
+                                <div class="col-md-6"><label class="form-label" for="v1">Nama depan</label><input type="text" class="form-control" id="v1" required><div class="invalid-feedback">Wajib diisi.</div><div class="valid-feedback">Oke!</div></div>
+                                <div class="col-md-6"><label class="form-label" for="v2">NIK</label><input type="text" class="form-control" id="v2" pattern="[0-9]{16}" required><div class="invalid-feedback">NIK harus 16 digit angka.</div></div>
+                                <div class="col-12"><label class="form-label" for="v3">Email</label><input type="email" class="form-control" id="v3" required><div class="invalid-feedback">Email tidak valid.</div></div>
+                                <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" id="v4" required><label class="form-check-label" for="v4">Saya setuju dengan syarat &amp; ketentuan</label><div class="invalid-feedback">Wajib dicentang.</div></div></div>
+                                <div class="col-12 d-flex gap-2 justify-content-end"><button type="reset" class="btn btn-ghost">Reset</button><button class="btn btn-primary" type="submit">Kirim</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="ol-footer">
+            <span>&copy; <span data-ol-year></span> <strong>Orulabs</strong> Admin Panel. Semua hak dilindungi.</span>
+            <span>Versi 1.0.0</span>
+        </footer>
+    </div>
+
+    <!-- ======================================================
+         PANEL TEMA (CUSTOMIZER)
+    ======================================================= -->
+    <div class="offcanvas offcanvas-end ol-customizer" tabindex="-1" id="olCustomizer" aria-labelledby="olCustomizerLabel">
+        <div class="offcanvas-header border-bottom">
+            <div>
+                <h5 class="offcanvas-title fw-bold" id="olCustomizerLabel"><i class="bi bi-palette me-1 text-primary"></i> Pengaturan Tema</h5>
+                <div class="small text-muted-ol">Tersimpan otomatis di browser ini</div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Tutup"></button>
+        </div>
+        <div class="offcanvas-body pt-0">
+            <h6>Warna utama</h6>
+            <div class="ol-swatches" data-ol-swatches></div>
+
+            <h6>Warna bebas</h6>
+            <div class="row g-2">
+                <div class="col-5"><input type="color" class="ol-color-input" data-ol-color-input value="#2563eb" aria-label="Pilih warna"></div>
+                <div class="col-7"><input type="text" class="form-control h-100" data-ol-hex-input placeholder="#2563eb" aria-label="Kode warna hex"></div>
+            </div>
+
+            <h6>Mode</h6>
+            <div class="ol-option-group">
+                <button type="button" class="ol-option" data-ol-set="mode" data-value="light"><i class="bi bi-sun"></i>Terang</button>
+                <button type="button" class="ol-option" data-ol-set="mode" data-value="dark"><i class="bi bi-moon-stars"></i>Gelap</button>
+                <button type="button" class="ol-option" data-ol-set="mode" data-value="auto"><i class="bi bi-circle-half"></i>Otomatis</button>
+            </div>
+
+            <h6>Gaya sidebar</h6>
+            <div class="ol-option-group">
+                <button type="button" class="ol-option" data-ol-set="sidebar" data-value="light"><i class="bi bi-layout-sidebar"></i>Terang</button>
+                <button type="button" class="ol-option" data-ol-set="sidebar" data-value="dark"><i class="bi bi-layout-sidebar-inset"></i>Gelap</button>
+                <button type="button" class="ol-option" data-ol-set="sidebar" data-value="primary"><i class="bi bi-layout-sidebar-inset-reverse"></i>Berwarna</button>
+            </div>
+
+            <h6>Sudut kartu</h6>
+            <div class="ol-option-group">
+                <button type="button" class="ol-option" data-ol-set="radius" data-value="6"><i class="bi bi-square"></i>Tegas</button>
+                <button type="button" class="ol-option" data-ol-set="radius" data-value="14"><i class="bi bi-app"></i>Standar</button>
+                <button type="button" class="ol-option" data-ol-set="radius" data-value="20"><i class="bi bi-circle"></i>Bulat</button>
+            </div>
+
+            <h6>Sidebar desktop</h6>
+            <div class="ol-option-group" style="grid-template-columns:1fr 1fr">
+                <button type="button" class="ol-option" data-ol-set="mini" data-value="false"><i class="bi bi-arrows-expand-vertical"></i>Lebar</button>
+                <button type="button" class="ol-option" data-ol-set="mini" data-value="true"><i class="bi bi-arrows-collapse-vertical"></i>Mini (ikon)</button>
+            </div>
+
+            <button type="button" class="btn btn-outline-secondary w-100 mt-4" data-ol-reset-theme>
+                <i class="bi bi-arrow-counterclockwise me-1"></i> Kembalikan ke bawaan
+            </button>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         STICKY NOTES
+    ======================================================= -->
+    <div class="offcanvas offcanvas-end ol-notes-panel" tabindex="-1" id="olNotes" aria-labelledby="olNotesLabel">
+        <div class="offcanvas-header border-bottom">
+            <div>
+                <h5 class="offcanvas-title fw-bold" id="olNotesLabel"><i class="bi bi-sticky me-1 text-warning"></i> Sticky Notes</h5>
+                <div class="small text-muted-ol">Catatan pribadi, tersimpan di browser</div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Tutup"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form class="mb-3" data-ol-notes-form>
+                <textarea class="form-control mb-2" rows="3" placeholder="Tulis catatan... (Ctrl+Enter untuk simpan)" aria-label="Catatan baru"></textarea>
+                <div class="d-flex align-items-center gap-1">
+                    <button type="button" class="ol-note-swatch ol-note-yellow is-active" data-new-note-color="yellow" aria-label="Kuning"></button>
+                    <button type="button" class="ol-note-swatch ol-note-green" data-new-note-color="green" aria-label="Hijau"></button>
+                    <button type="button" class="ol-note-swatch ol-note-blue" data-new-note-color="blue" aria-label="Biru"></button>
+                    <button type="button" class="ol-note-swatch ol-note-pink" data-new-note-color="pink" aria-label="Pink"></button>
+                    <button type="button" class="ol-note-swatch ol-note-purple" data-new-note-color="purple" aria-label="Ungu"></button>
+                    <button type="button" class="ol-note-swatch ol-note-orange" data-new-note-color="orange" aria-label="Oranye"></button>
+                    <button type="submit" class="btn btn-primary btn-sm ms-auto"><i class="bi bi-plus-lg"></i> Tambah</button>
+                </div>
+            </form>
+            <input type="search" class="form-control form-control-sm mb-3" placeholder="Cari catatan..." data-ol-notes-search aria-label="Cari catatan">
+            <div data-ol-notes-list></div>
+        </div>
+    </div>
+
+    <button type="button" class="ol-customizer-toggle" data-bs-toggle="offcanvas" data-bs-target="#olCustomizer" aria-label="Pengaturan tema">
+        <i class="bi bi-gear"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/js/tom-select.complete.min.js"></script>
+    <script src="assets/js/orulabs.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!--@
+title: Form Input
+layout: app
+libs: flatpickr, tomselect
+-->
+            <div class="ol-page-header">
+                <span class="ol-page-icon"><i class="bi bi-input-cursor-text"></i></span>
+                <div>
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item">Forms</li><li class="breadcrumb-item active" aria-current="page">Form Input</li></ol></nav>
+                    <h1 class="ol-page-title">Form Input</h1>
+                    <p class="ol-page-subtitle">Semua jenis input, termasuk date picker dan select berpencarian.</p>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Input dasar</h2></div>
+                        <div class="card-body">
+                            <div class="mb-3"><label class="form-label" for="f1">Teks</label><input type="text" class="form-control" id="f1" placeholder="Masukkan nama"></div>
+                            <div class="mb-3"><label class="form-label" for="f2">Email</label><input type="email" class="form-control" id="f2" placeholder="nama@perusahaan.co.id"></div>
+                            <div class="mb-3">
+                                <label class="form-label" for="f3">Password</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="f3" value="rahasia123">
+                                    <button class="btn btn-outline-secondary" type="button" data-ol-toggle-password="#f3" aria-label="Tampilkan password"><i class="bi bi-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-sm-6"><label class="form-label" for="f4">Angka</label><input type="number" class="form-control" id="f4" value="10" min="0"></div>
+                                <div class="col-sm-6"><label class="form-label" for="f5">Telepon</label><input type="tel" class="form-control" id="f5" placeholder="0812-xxxx-xxxx"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label d-flex" for="f6">Keterangan <span class="ms-auto small text-muted-ol" id="f6count"></span></label>
+                                <textarea class="form-control" id="f6" rows="3" maxlength="200" data-ol-counter="#f6count" placeholder="Maksimal 200 karakter"></textarea>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-sm-6"><label class="form-label" for="f7">Disabled</label><input type="text" class="form-control" id="f7" value="Tidak bisa diubah" disabled></div>
+                                <div class="col-sm-6"><label class="form-label" for="f8">Readonly</label><input type="text" class="form-control" id="f8" value="Hanya baca" readonly></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Tanggal, waktu &amp; select</h2></div>
+                        <div class="card-body">
+                            <div class="row g-3 mb-3">
+                                <div class="col-sm-6"><label class="form-label" for="d1">Tanggal</label><div class="input-group"><span class="input-group-text"><i class="bi bi-calendar3"></i></span><input type="text" class="form-control" id="d1" data-ol-date placeholder="Pilih tanggal"></div></div>
+                                <div class="col-sm-6"><label class="form-label" for="d2">Rentang tanggal</label><div class="input-group"><span class="input-group-text"><i class="bi bi-calendar-range"></i></span><input type="text" class="form-control" id="d2" data-ol-date="range" placeholder="Dari - sampai"></div></div>
+                                <div class="col-sm-6"><label class="form-label" for="d3">Tanggal &amp; jam</label><input type="text" class="form-control" id="d3" data-ol-datetime placeholder="Pilih tanggal & jam"></div>
+                                <div class="col-sm-6"><label class="form-label" for="d4">Jam</label><input type="text" class="form-control" id="d4" data-ol-time placeholder="08:00"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="s1">Select biasa</label>
+                                <select class="form-select" id="s1"><option>Pilih departemen...</option><option>IT</option><option>HRGA</option><option>Finance</option><option>Marketing</option></select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="s2">Select berpencarian</label>
+                                <select id="s2" data-ol-select placeholder="Ketik untuk mencari kota...">
+                                    <option value="">Ketik untuk mencari kota...</option>
+                                    <option>Jakarta</option><option>Bandung</option><option>Surabaya</option><option>Medan</option><option>Semarang</option><option>Makassar</option><option>Yogyakarta</option><option>Denpasar</option><option>Palembang</option><option>Balikpapan</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="s3">Multi select</label>
+                                <select id="s3" data-ol-select multiple placeholder="Pilih beberapa...">
+                                    <option selected>Laptop</option><option selected>Monitor</option><option>Printer</option><option>Proyektor</option><option>Kursi</option><option>Meja</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" for="s4">Tags (bisa tambah sendiri)</label>
+                                <select id="s4" data-ol-select="tags" multiple placeholder="Ketik lalu Enter...">
+                                    <option selected>penting</option><option>internal</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Checkbox, radio, switch, range</h2></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6 mb-3">
+                                    <div class="ol-section-title">Checkbox</div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox" id="c1" checked><label class="form-check-label" for="c1">Terpilih</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox" id="c2"><label class="form-check-label" for="c2">Tidak terpilih</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox" id="c3" disabled><label class="form-check-label" for="c3">Disabled</label></div>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <div class="ol-section-title">Radio</div>
+                                    <div class="form-check"><input class="form-check-input" type="radio" name="r" id="r1" checked><label class="form-check-label" for="r1">Pria</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="radio" name="r" id="r2"><label class="form-check-label" for="r2">Wanita</label></div>
+                                    <div class="form-check form-check-inline mt-2"><input class="form-check-input" type="radio" name="r2" id="r3" checked><label class="form-check-label" for="r3">Inline A</label></div>
+                                    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="r2" id="r4"><label class="form-check-label" for="r4">Inline B</label></div>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <div class="ol-section-title">Switch</div>
+                                    <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="w1" checked><label class="form-check-label" for="w1">Notifikasi email</label></div>
+                                    <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="w2"><label class="form-check-label" for="w2">Mode maintenance</label></div>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <div class="ol-section-title">Range</div>
+                                    <label class="form-label d-flex" for="rg">Volume <span class="ms-auto text-primary" id="rgOut"></span></label>
+                                    <input type="range" class="form-range" id="rg" min="0" max="100" value="60" data-ol-range-output="#rgOut">
+                                </div>
+                            </div>
+                            <div class="ol-section-title">Pilihan kartu (btn-check)</div>
+                            <div class="row g-2">
+                                <div class="col-4"><input type="radio" class="btn-check" name="plan" id="p1" checked><label class="btn btn-outline-primary w-100 py-3" for="p1"><i class="bi bi-person d-block fs-4"></i>Basic</label></div>
+                                <div class="col-4"><input type="radio" class="btn-check" name="plan" id="p2"><label class="btn btn-outline-primary w-100 py-3" for="p2"><i class="bi bi-people d-block fs-4"></i>Tim</label></div>
+                                <div class="col-4"><input type="radio" class="btn-check" name="plan" id="p3"><label class="btn btn-outline-primary w-100 py-3" for="p3"><i class="bi bi-building d-block fs-4"></i>Bisnis</label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Input group, floating label, ukuran</h2></div>
+                        <div class="card-body">
+                            <div class="input-group mb-3"><span class="input-group-text">Rp</span><input type="text" class="form-control" placeholder="0" aria-label="Nominal"><span class="input-group-text">,00</span></div>
+                            <div class="input-group mb-3"><span class="input-group-text"><i class="bi bi-person"></i></span><input type="text" class="form-control" placeholder="Username" aria-label="Username"></div>
+                            <div class="input-group mb-3"><input type="text" class="form-control" placeholder="Cari data..." aria-label="Cari"><button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button></div>
+                            <div class="input-group mb-3"><input type="text" class="form-control" placeholder="orulabs" aria-label="Subdomain"><span class="input-group-text">.co.id</span></div>
+                            <div class="form-floating mb-3"><input type="email" class="form-control" id="fl1" placeholder="nama@contoh.com"><label for="fl1">Email (floating label)</label></div>
+                            <div class="form-floating mb-3"><select class="form-select" id="fl2"><option>IT</option><option>HRGA</option></select><label for="fl2">Departemen</label></div>
+                            <input class="form-control form-control-lg mb-2" type="text" placeholder="Input besar" aria-label="Input besar">
+                            <input class="form-control form-control-sm" type="text" placeholder="Input kecil" aria-label="Input kecil">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Upload file</h2></div>
+                        <div class="card-body">
+                            <div class="mb-3"><label class="form-label" for="u1">Input file biasa</label><input class="form-control" type="file" id="u1"></div>
+                            <div class="ol-dropzone mb-2" data-ol-dropzone="#u2list">
+                                <input type="file" id="u2" multiple hidden>
+                                <i class="bi bi-cloud-arrow-up"></i>
+                                <div class="fw-semibold text-body mt-1">Tarik &amp; lepas file di sini</div>
+                                <div class="small">atau klik untuk memilih (bisa banyak file)</div>
+                            </div>
+                            <ul class="list-group" id="u2list"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Validasi</h2></div>
+                        <div class="card-body">
+                            <form class="row g-3 needs-validation" novalidate>
+                                <div class="col-md-6"><label class="form-label" for="v1">Nama depan</label><input type="text" class="form-control" id="v1" required><div class="invalid-feedback">Wajib diisi.</div><div class="valid-feedback">Oke!</div></div>
+                                <div class="col-md-6"><label class="form-label" for="v2">NIK</label><input type="text" class="form-control" id="v2" pattern="[0-9]{16}" required><div class="invalid-feedback">NIK harus 16 digit angka.</div></div>
+                                <div class="col-12"><label class="form-label" for="v3">Email</label><input type="email" class="form-control" id="v3" required><div class="invalid-feedback">Email tidak valid.</div></div>
+                                <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" id="v4" required><label class="form-check-label" for="v4">Saya setuju dengan syarat &amp; ketentuan</label><div class="invalid-feedback">Wajib dicentang.</div></div></div>
+                                <div class="col-12 d-flex gap-2 justify-content-end"><button type="reset" class="btn btn-ghost">Reset</button><button class="btn btn-primary" type="submit">Kirim</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>

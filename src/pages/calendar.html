@@ -1,0 +1,84 @@
+<!--@
+title: Kalender
+layout: app
+libs: flatpickr
+js: calendar
+-->
+            <div class="ol-page-header">
+                <span class="ol-page-icon"><i class="bi bi-calendar3"></i></span>
+                <div>
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item active" aria-current="page">Kalender</li></ol></nav>
+                    <h1 class="ol-page-title">Kalender</h1>
+                    <p class="ol-page-subtitle">Klik tanggal untuk menambah event, klik event untuk mengubah.</p>
+                </div>
+                <div class="ol-page-actions">
+                    <button type="button" class="btn btn-primary" data-cal-new><i class="bi bi-plus-lg me-1"></i> Event baru</button>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-xl-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="btn-group" role="group" aria-label="Navigasi bulan">
+                                <button type="button" class="btn btn-soft-primary btn-icon" data-cal-nav="-1" aria-label="Bulan sebelumnya"><i class="bi bi-chevron-left"></i></button>
+                                <button type="button" class="btn btn-soft-primary btn-icon" data-cal-nav="1" aria-label="Bulan berikutnya"><i class="bi bi-chevron-right"></i></button>
+                            </div>
+                            <button type="button" class="btn btn-outline-primary btn-sm" data-cal-today>Hari ini</button>
+                            <h2 class="card-title ms-2 fs-5" data-cal-title></h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="ol-calendar" data-cal-grid></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="card mb-3">
+                        <div class="card-header"><h2 class="card-title">Event mendatang</h2></div>
+                        <div class="list-group list-group-flush" data-cal-upcoming></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h2 class="card-title">Keterangan</h2></div>
+                        <div class="card-body small">
+                            <div class="d-flex align-items-center gap-2 mb-2"><span class="badge bg-primary">&nbsp;</span> Rapat / umum</div>
+                            <div class="d-flex align-items-center gap-2 mb-2"><span class="badge bg-success">&nbsp;</span> Training / acara</div>
+                            <div class="d-flex align-items-center gap-2 mb-2"><span class="badge bg-warning">&nbsp;</span> Audit / pemeriksaan</div>
+                            <div class="d-flex align-items-center gap-2 mb-2"><span class="badge bg-danger">&nbsp;</span> Deadline</div>
+                            <div class="d-flex align-items-center gap-2"><span class="badge bg-info">&nbsp;</span> Maintenance</div>
+                            <p class="text-muted-ol mt-3 mb-0">Data event disimpan di browser (localStorage). Ganti <code>OL.events</code> di orulabs.js dengan panggilan API untuk versi produksi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <form class="modal-content" id="eventForm" novalidate>
+                        <div class="modal-header">
+                            <h5 class="modal-title fw-bold" id="eventModalLabel">Event</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="evId">
+                            <div class="mb-3"><label class="form-label" for="evTitle">Judul</label><input type="text" class="form-control" id="evTitle" required maxlength="80"><div class="invalid-feedback">Judul wajib diisi.</div></div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-7"><label class="form-label" for="evDate">Tanggal</label><input type="text" class="form-control" id="evDate" required></div>
+                                <div class="col-5"><label class="form-label" for="evTime">Jam</label><input type="text" class="form-control" id="evTime" data-ol-time placeholder="09:00"></div>
+                            </div>
+                            <label class="form-label d-block">Warna</label>
+                            <div class="d-flex gap-2" role="radiogroup" aria-label="Warna event">
+                                <input type="radio" class="btn-check" name="evColor" id="evc1" value="primary" checked><label class="btn btn-sm btn-outline-primary" for="evc1">Umum</label>
+                                <input type="radio" class="btn-check" name="evColor" id="evc2" value="success"><label class="btn btn-sm btn-outline-success" for="evc2">Acara</label>
+                                <input type="radio" class="btn-check" name="evColor" id="evc3" value="warning"><label class="btn btn-sm btn-outline-warning" for="evc3">Audit</label>
+                                <input type="radio" class="btn-check" name="evColor" id="evc4" value="danger"><label class="btn btn-sm btn-outline-danger" for="evc4">Deadline</label>
+                                <input type="radio" class="btn-check" name="evColor" id="evc5" value="info"><label class="btn btn-sm btn-outline-info" for="evc5">Maint.</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger me-auto" id="evDelete"><i class="bi bi-trash3 me-1"></i> Hapus</button>
+                            <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-floppy me-1"></i> Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>

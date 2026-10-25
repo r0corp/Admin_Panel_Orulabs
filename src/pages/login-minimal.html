@@ -1,0 +1,55 @@
+<!--@
+title: Login (Minimal)
+layout: auth
+-->
+    <!-- Variasi 4: minimal ala SaaS - form di kiri, pratinjau produk di kanan -->
+    <div class="ol-auth-minimal">
+        <div class="ol-auth-minimal-form">
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="index.html" class="ol-auth-brand"><span class="ol-brand-logo" style="width:34px;height:34px;font-size:1rem"><i class="bi bi-hexagon-half"></i></span> Orulabs</a>
+                <button type="button" class="ol-navbar-btn" data-ol-toggle-mode aria-label="Ganti mode terang/gelap"><i class="bi bi-moon-stars"></i></button>
+            </div>
+
+            <div class="ol-auth-card py-5">
+                <span class="badge badge-soft-primary rounded-pill mb-3"><i class="bi bi-stars me-1"></i> Fitur baru: kalender tim</span>
+                <h1 class="ol-auth-title" style="font-size:2rem">Masuk</h1>
+                <p class="text-muted-ol mb-4">Selamat datang kembali! Silakan isi data Anda.</p>
+
+                <form class="needs-validation" novalidate data-ol-redirect="index.html">
+                    <div class="mb-3"><label class="form-label" for="mEmail">Email</label><input type="email" class="form-control" id="mEmail" placeholder="nama@perusahaan.co.id" required autocomplete="username"><div class="invalid-feedback">Masukkan email yang valid.</div></div>
+                    <div class="mb-2"><label class="form-label" for="mPass">Password</label><input type="password" class="form-control" id="mPass" placeholder="••••••••" required autocomplete="current-password"><div class="invalid-feedback">Password wajib diisi.</div></div>
+                    <div class="text-end mb-4"><a href="forgot-password.html" class="small fw-semibold text-decoration-none">Lupa password?</a></div>
+                    <button type="submit" class="btn btn-primary w-100 py-2 mb-2">Masuk</button>
+                    <button type="button" class="btn btn-social w-100 py-2"><i class="bi bi-google me-2 text-danger"></i>Masuk dengan Google</button>
+                </form>
+                <p class="text-muted-ol small mt-4 mb-0">Belum punya akun? <a href="register.html" class="fw-semibold text-decoration-none">Buat akun gratis</a></p>
+            </div>
+
+            <div class="small text-muted-ol d-flex justify-content-between">
+                <span>&copy; <span data-ol-year></span> Orulabs</span>
+                <span><a href="#" class="text-reset text-decoration-none">Privasi</a> · <a href="#" class="text-reset text-decoration-none">Bantuan</a></span>
+            </div>
+        </div>
+
+        <div class="ol-auth-showcase" aria-hidden="true">
+            <div class="ol-showcase-stack">
+                <div class="card ol-showcase-main">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div><div class="small text-muted-ol">Pendapatan bulan ini</div><div class="fs-3 fw-800">Rp 248,5 jt</div></div>
+                        <span class="badge badge-soft-success">+12,4%</span>
+                    </div>
+                    <div class="ol-mini-bars">
+                        <span style="height:45%"></span><span style="height:60%"></span><span style="height:38%"></span><span style="height:72%"></span><span style="height:55%"></span><span style="height:88%"></span><span style="height:64%"></span><span style="height:95%"></span>
+                    </div>
+                </div>
+                <div class="card ol-showcase-float f1">
+                    <span class="ol-stat-icon is-success" style="width:40px;height:40px;font-size:1.1rem"><i class="bi bi-check2-circle"></i></span>
+                    <div><div class="fw-semibold small">Pengajuan disetujui</div><div class="text-muted-ol" style="font-size:.75rem">baru saja</div></div>
+                </div>
+                <div class="card ol-showcase-float f2">
+                    <span class="ol-avatar-group"><span class="ol-avatar ol-avatar-sm">BS</span><span class="ol-avatar ol-avatar-sm" style="background:#16a34a">SW</span><span class="ol-avatar ol-avatar-sm" style="background:#ea580c">AR</span></span>
+                    <div><div class="fw-semibold small">12 anggota tim online</div><div class="text-muted-ol" style="font-size:.75rem">HRGA &amp; IT</div></div>
+                </div>
+            </div>
+        </div>
+    </div>

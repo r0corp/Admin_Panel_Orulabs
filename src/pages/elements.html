@@ -1,0 +1,286 @@
+<!--@
+title: Elements
+layout: app
+-->
+            <div class="ol-page-header">
+                <span class="ol-page-icon"><i class="bi bi-ui-checks-grid"></i></span>
+                <div>
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item">UI Elements</li><li class="breadcrumb-item active" aria-current="page">Elements</li></ol></nav>
+                    <h1 class="ol-page-title">Elements</h1>
+                    <p class="ol-page-subtitle">Alert, badge, progress, modal, toast, tab, accordion, tooltip, dan lainnya.</p>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <!-- Alerts -->
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Alerts</h2></div>
+                        <div class="card-body">
+                            <div class="alert alert-primary d-flex gap-2"><i class="bi bi-info-circle-fill"></i><div><strong>Info.</strong> Alert primary mengikuti warna tema.</div></div>
+                            <div class="alert alert-success d-flex gap-2"><i class="bi bi-check-circle-fill"></i><div><strong>Berhasil!</strong> Data sudah tersimpan.</div></div>
+                            <div class="alert alert-warning d-flex gap-2"><i class="bi bi-exclamation-triangle-fill"></i><div><strong>Perhatian.</strong> Stok hampir habis.</div></div>
+                            <div class="alert alert-danger alert-dismissible fade show d-flex gap-2 mb-0" role="alert"><i class="bi bi-x-octagon-fill"></i><div><strong>Gagal.</strong> Koneksi ke server terputus.</div><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges & avatars -->
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Badge &amp; Avatar</h2></div>
+                        <div class="card-body">
+                            <div class="ol-section-title">Solid</div>
+                            <div class="ol-demo-row mb-3">
+                                <span class="badge text-bg-primary">Primary</span>
+                                <span class="badge text-bg-success">Success</span>
+                                <span class="badge text-bg-warning">Warning</span>
+                                <span class="badge text-bg-danger">Danger</span>
+                                <span class="badge text-bg-info">Info</span>
+                                <span class="badge text-bg-secondary">Secondary</span>
+                                <span class="badge rounded-pill text-bg-primary">Pill</span>
+                            </div>
+                            <div class="ol-section-title">Soft (untuk status)</div>
+                            <div class="ol-demo-row mb-3">
+                                <span class="badge badge-soft-primary">Diproses</span>
+                                <span class="badge badge-soft-success">Selesai</span>
+                                <span class="badge badge-soft-warning">Menunggu</span>
+                                <span class="badge badge-soft-danger">Ditolak</span>
+                                <span class="badge badge-soft-info">Baru</span>
+                                <span class="badge badge-soft-secondary">Draft</span>
+                            </div>
+                            <div class="ol-section-title">Avatar</div>
+                            <div class="ol-demo-row">
+                                <span class="ol-avatar ol-avatar-sm">SM</span>
+                                <span class="ol-avatar">MD</span>
+                                <span class="ol-avatar ol-avatar-lg ol-online">LG</span>
+                                <span class="ol-avatar-group ms-3">
+                                    <span class="ol-avatar">AB</span>
+                                    <span class="ol-avatar" style="background:#16a34a">CD</span>
+                                    <span class="ol-avatar" style="background:#ea580c">EF</span>
+                                    <span class="ol-avatar" style="background:#475569">+5</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress & spinners -->
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Progress &amp; Spinner</h2></div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between small mb-1"><span>Target penjualan</span><strong>75%</strong></div>
+                            <div class="progress mb-3" role="progressbar" aria-label="Target penjualan" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="height:8px"><div class="progress-bar" style="width:75%"></div></div>
+                            <div class="d-flex justify-content-between small mb-1"><span>Kapasitas gudang</span><strong>52%</strong></div>
+                            <div class="progress mb-3" role="progressbar" aria-label="Kapasitas gudang" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100" style="height:8px"><div class="progress-bar bg-success" style="width:52%"></div></div>
+                            <div class="d-flex justify-content-between small mb-1"><span>Upload berjalan</span><strong>40%</strong></div>
+                            <div class="progress mb-3" role="progressbar" aria-label="Upload" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="height:8px"><div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="width:40%"></div></div>
+                            <div class="progress-stacked mb-4" style="height:10px">
+                                <div class="progress" role="progressbar" aria-label="Bagian 1" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width:35%"><div class="progress-bar"></div></div>
+                                <div class="progress" role="progressbar" aria-label="Bagian 2" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%"><div class="progress-bar bg-success"></div></div>
+                                <div class="progress" role="progressbar" aria-label="Bagian 3" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width:15%"><div class="progress-bar bg-danger"></div></div>
+                            </div>
+                            <div class="ol-demo-row">
+                                <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Memuat...</span></div>
+                                <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Memuat...</span></div>
+                                <div class="spinner-border text-success spinner-border-sm" role="status"><span class="visually-hidden">Memuat...</span></div>
+                                <div class="spinner-grow text-warning spinner-grow-sm" role="status"><span class="visually-hidden">Memuat...</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal, toast, tooltip -->
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Modal, Toast, Tooltip, Popover</h2></div>
+                        <div class="card-body">
+                            <div class="ol-section-title">Modal</div>
+                            <div class="ol-demo-row mb-3">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#demoModal">Modal form</button>
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Konfirmasi hapus</button>
+                                <button type="button" class="btn btn-soft-primary" data-bs-toggle="modal" data-bs-target="#largeModal">Modal besar</button>
+                            </div>
+                            <div class="ol-section-title">Toast</div>
+                            <div class="ol-demo-row mb-3">
+                                <button type="button" class="btn btn-success btn-sm" data-ol-toast="Data berhasil disimpan." data-variant="success">Sukses</button>
+                                <button type="button" class="btn btn-danger btn-sm" data-ol-toast="Terjadi kesalahan, coba lagi." data-variant="danger">Error</button>
+                                <button type="button" class="btn btn-warning btn-sm" data-ol-toast="Sesi akan berakhir 5 menit lagi." data-variant="warning">Peringatan</button>
+                                <button type="button" class="btn btn-info btn-sm" data-ol-toast="Ada 3 pesan baru." data-variant="info">Info</button>
+                            </div>
+                            <div class="ol-section-title">Tooltip &amp; popover</div>
+                            <div class="ol-demo-row">
+                                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" data-bs-title="Tooltip di atas">Atas</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Tooltip di kanan">Kanan</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip di bawah">Bawah</button>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="popover" data-bs-title="Judul popover" data-bs-content="Isi popover bisa berupa penjelasan singkat.">Popover</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Tabs</h2></div>
+                        <div class="card-body">
+                            <ul class="nav nav-tabs mb-3" role="tablist">
+                                <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-a" type="button" role="tab" aria-selected="true"><i class="bi bi-house me-1"></i>Umum</button></li>
+                                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-b" type="button" role="tab" aria-selected="false"><i class="bi bi-person me-1"></i>Profil</button></li>
+                                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-c" type="button" role="tab" aria-selected="false"><i class="bi bi-gear me-1"></i>Pengaturan</button></li>
+                            </ul>
+                            <div class="tab-content mb-4">
+                                <div class="tab-pane fade show active" id="tab-a" role="tabpanel">Isi tab Umum. Gunakan tab untuk memecah form panjang.</div>
+                                <div class="tab-pane fade" id="tab-b" role="tabpanel">Isi tab Profil.</div>
+                                <div class="tab-pane fade" id="tab-c" role="tabpanel">Isi tab Pengaturan.</div>
+                            </div>
+                            <ul class="nav nav-pills mb-3" role="tablist">
+                                <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pill-a" type="button" role="tab" aria-selected="true">Semua</button></li>
+                                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pill-b" type="button" role="tab" aria-selected="false">Aktif</button></li>
+                                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pill-c" type="button" role="tab" aria-selected="false">Arsip</button></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="pill-a" role="tabpanel">Gaya pill cocok untuk filter.</div>
+                                <div class="tab-pane fade" id="pill-b" role="tabpanel">Data aktif.</div>
+                                <div class="tab-pane fade" id="pill-c" role="tabpanel">Data arsip.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion -->
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Accordion (FAQ)</h2></div>
+                        <div class="card-body">
+                            <div class="accordion" id="faq">
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true">Bagaimana cara mengganti warna tema?</button></h3>
+                                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faq"><div class="accordion-body">Klik ikon palet di navbar atau tombol gerigi di tepi kanan, lalu pilih warna.</div></div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false">Apakah catatan tersimpan?</button></h3>
+                                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Ya, sticky notes tersimpan di localStorage browser. Sambungkan ke API untuk menyimpan di server.</div></div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false">Bisa dipakai di Flask / Laravel?</button></h3>
+                                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Bisa. Potong bagian sidebar, navbar, dan footer menjadi partial template di framework Anda.</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination, breadcrumb, list group -->
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Pagination &amp; Breadcrumb</h2></div>
+                        <div class="card-body">
+                            <nav aria-label="Contoh pagination" class="mb-3">
+                                <ul class="pagination">
+                                    <li class="page-item disabled"><span class="page-link">‹</span></li>
+                                    <li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">›</a></li>
+                                </ul>
+                            </nav>
+                            <nav aria-label="breadcrumb" class="mb-3">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Master Data</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Karyawan</li>
+                                </ol>
+                            </nav>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action active" aria-current="true"><i class="bi bi-inbox me-2"></i>Kotak masuk <span class="badge text-bg-light float-end">12</span></a>
+                                <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-send me-2"></i>Terkirim</a>
+                                <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-archive me-2"></i>Arsip</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Offcanvas & collapse -->
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Offcanvas, Collapse, Empty state</h2></div>
+                        <div class="card-body">
+                            <div class="ol-demo-row mb-3">
+                                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demoOffcanvas">Buka panel kanan</button>
+                                <button class="btn btn-soft-primary" type="button" data-bs-toggle="collapse" data-bs-target="#demoCollapse" aria-expanded="false">Toggle collapse</button>
+                            </div>
+                            <div class="collapse mb-3" id="demoCollapse"><div class="p-3 rounded-ol bg-surface-2">Konten tersembunyi yang bisa dibuka-tutup.</div></div>
+                            <div class="ol-empty border rounded-ol">
+                                <i class="bi bi-inbox"></i>
+                                <div class="fw-semibold text-body">Belum ada data</div>
+                                <div class="small mb-3">Data yang Anda tambahkan akan muncul di sini.</div>
+                                <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-plus-lg me-1"></i>Tambah data</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal form -->
+            <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <form class="modal-content needs-validation" novalidate>
+                        <div class="modal-header">
+                            <h5 class="modal-title fw-bold" id="demoModalLabel"><i class="bi bi-person-plus me-1 text-primary"></i> Tambah Karyawan</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3"><label class="form-label" for="mName">Nama lengkap</label><input type="text" class="form-control" id="mName" required><div class="invalid-feedback">Nama wajib diisi.</div></div>
+                            <div class="mb-3"><label class="form-label" for="mEmail">Email</label><input type="email" class="form-control" id="mEmail" required><div class="invalid-feedback">Email tidak valid.</div></div>
+                            <div><label class="form-label" for="mDept">Departemen</label><select class="form-select" id="mDept" required><option value="">Pilih...</option><option>IT</option><option>HRGA</option><option>Finance</option></select><div class="invalid-feedback">Pilih departemen.</div></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-floppy me-1"></i> Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal konfirmasi -->
+            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content text-center p-3">
+                        <div class="modal-body">
+                            <span class="ol-stat-icon is-danger mb-3" style="width:64px;height:64px;font-size:1.8rem;border-radius:50%"><i class="bi bi-trash3"></i></span>
+                            <h5 class="fw-bold" id="confirmModalLabel">Hapus data ini?</h5>
+                            <p class="text-muted-ol small mb-4">Tindakan ini tidak bisa dibatalkan.</p>
+                            <div class="d-flex gap-2">
+                                <button type="button" class="btn btn-ghost flex-fill" data-bs-dismiss="modal">Batal</button>
+                                <button type="button" class="btn btn-danger flex-fill" data-bs-dismiss="modal" data-ol-toast="Data dihapus." data-variant="danger">Ya, hapus</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal besar -->
+            <div class="modal fade" id="largeModal" tabindex="-1" aria-labelledby="largeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header"><h5 class="modal-title fw-bold" id="largeModalLabel">Detail Dokumen</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button></div>
+                        <div class="modal-body">
+                            <p>Modal besar dengan isi yang bisa di-scroll. Cocok untuk detail data, preview dokumen, atau syarat &amp; ketentuan.</p>
+                            <p class="text-muted-ol">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum.</p>
+                        </div>
+                        <div class="modal-footer"><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offcanvas demo -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="demoOffcanvas" aria-labelledby="demoOffcanvasLabel">
+                <div class="offcanvas-header border-bottom"><h5 class="offcanvas-title fw-bold" id="demoOffcanvasLabel">Filter Data</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Tutup"></button></div>
+                <div class="offcanvas-body">
+                    <div class="mb-3"><label class="form-label" for="ofStatus">Status</label><select class="form-select" id="ofStatus"><option>Semua</option><option>Aktif</option><option>Nonaktif</option></select></div>
+                    <div class="mb-3"><label class="form-label" for="ofDept">Departemen</label><select class="form-select" id="ofDept"><option>Semua</option><option>IT</option><option>HRGA</option></select></div>
+                    <button type="button" class="btn btn-primary w-100" data-bs-dismiss="offcanvas">Terapkan filter</button>
+                </div>
+            </div>

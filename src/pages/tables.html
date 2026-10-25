@@ -1,0 +1,127 @@
+<!--@
+title: Tables
+layout: app
+-->
+            <div class="ol-page-header">
+                <span class="ol-page-icon"><i class="bi bi-table"></i></span>
+                <div>
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item active" aria-current="page">Tables</li></ol></nav>
+                    <h1 class="ol-page-title">Data Karyawan</h1>
+                    <p class="ol-page-subtitle">Tabel dengan pencarian, urutkan kolom, dan paging tanpa library tambahan.</p>
+                </div>
+                <div class="ol-page-actions">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-soft-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download me-1"></i> Export</button>
+                        <ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-excel"></i> Excel</a></li><li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-pdf"></i> PDF</a></li><li><a class="dropdown-item" href="#" onclick="window.print();return false;"><i class="bi bi-printer"></i> Cetak</a></li></ul>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmp"><i class="bi bi-plus-lg me-1"></i> Tambah</button>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    <div class="ol-search" style="max-width:280px">
+                        <i class="bi bi-search"></i>
+                        <input type="search" class="form-control" placeholder="Cari karyawan..." data-ol-table-search="#empTable" aria-label="Cari karyawan" style="padding-right:.75rem">
+                    </div>
+                    <div class="ms-auto d-flex align-items-center gap-2 small">
+                        <label for="empSize" class="text-muted-ol text-nowrap">Tampilkan</label>
+                        <select class="form-select form-select-sm" id="empSize" data-ol-table-size="#empTable" style="width:auto"><option>5</option><option selected>8</option><option>15</option></select>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover" id="empTable" data-ol-table data-page-size="8">
+                        <thead>
+                            <tr>
+                                <th style="width:36px"><input class="form-check-input" type="checkbox" aria-label="Pilih semua"></th>
+                                <th data-sort>Nama</th>
+                                <th data-sort>Departemen</th>
+                                <th data-sort>Jabatan</th>
+                                <th data-sort>Bergabung</th>
+                                <th data-sort>Gaji</th>
+                                <th data-sort>Status</th>
+                                <th class="text-end">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm">BS</span><div><div class="fw-semibold">Budi Santoso</div><div class="small text-muted-ol">budi@orulabs.id</div></div></div></td><td>IT</td><td>System Administrator</td><td data-value="2019-03-11">11 Mar 2019</td><td data-value="12500000">Rp 12.500.000</td><td><span class="badge badge-soft-success">Aktif</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#16a34a">SW</span><div><div class="fw-semibold">Siti Wulandari</div><div class="small text-muted-ol">siti@orulabs.id</div></div></div></td><td>HRGA</td><td>HRGA Supervisor</td><td data-value="2020-07-01">1 Jul 2020</td><td data-value="11000000">Rp 11.000.000</td><td><span class="badge badge-soft-success">Aktif</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#ea580c">AR</span><div><div class="fw-semibold">Andi Rahman</div><div class="small text-muted-ol">andi@orulabs.id</div></div></div></td><td>Finance</td><td>Accounting Staff</td><td data-value="2021-01-18">18 Jan 2021</td><td data-value="8200000">Rp 8.200.000</td><td><span class="badge badge-soft-warning">Cuti</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#db2777">DL</span><div><div class="fw-semibold">Dewi Lestari</div><div class="small text-muted-ol">dewi@orulabs.id</div></div></div></td><td>Marketing</td><td>Digital Marketing</td><td data-value="2022-05-09">9 Mei 2022</td><td data-value="9100000">Rp 9.100.000</td><td><span class="badge badge-soft-success">Aktif</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#0891b2">RH</span><div><div class="fw-semibold">Rizky Hidayat</div><div class="small text-muted-ol">rizky@orulabs.id</div></div></div></td><td>IT</td><td>Web Developer</td><td data-value="2022-11-21">21 Nov 2022</td><td data-value="10400000">Rp 10.400.000</td><td><span class="badge badge-soft-success">Aktif</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#7c3aed">NA</span><div><div class="fw-semibold">Nadia Amelia</div><div class="small text-muted-ol">nadia@orulabs.id</div></div></div></td><td>HRGA</td><td>Recruitment Officer</td><td data-value="2023-02-06">6 Feb 2023</td><td data-value="7800000">Rp 7.800.000</td><td><span class="badge badge-soft-success">Aktif</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#475569">FP</span><div><div class="fw-semibold">Fajar Pratama</div><div class="small text-muted-ol">fajar@orulabs.id</div></div></div></td><td>Operasional</td><td>Driver</td><td data-value="2018-09-03">3 Sep 2018</td><td data-value="5600000">Rp 5.600.000</td><td><span class="badge badge-soft-success">Aktif</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#dc2626">GS</span><div><div class="fw-semibold">Gita Savitri</div><div class="small text-muted-ol">gita@orulabs.id</div></div></div></td><td>Finance</td><td>Finance Manager</td><td data-value="2017-04-17">17 Apr 2017</td><td data-value="18500000">Rp 18.500.000</td><td><span class="badge badge-soft-success">Aktif</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#0d9488">HK</span><div><div class="fw-semibold">Hendra Kurniawan</div><div class="small text-muted-ol">hendra@orulabs.id</div></div></div></td><td>Operasional</td><td>Warehouse Lead</td><td data-value="2019-12-02">2 Des 2019</td><td data-value="8900000">Rp 8.900.000</td><td><span class="badge badge-soft-danger">Nonaktif</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#ca8a04">IM</span><div><div class="fw-semibold">Indah Maharani</div><div class="small text-muted-ol">indah@orulabs.id</div></div></div></td><td>Marketing</td><td>Brand Executive</td><td data-value="2024-03-25">25 Mar 2024</td><td data-value="8400000">Rp 8.400.000</td><td><span class="badge badge-soft-info">Probation</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#4f46e5">JW</span><div><div class="fw-semibold">Joko Widodo S.</div><div class="small text-muted-ol">joko@orulabs.id</div></div></div></td><td>IT</td><td>Network Engineer</td><td data-value="2021-08-16">16 Agu 2021</td><td data-value="11800000">Rp 11.800.000</td><td><span class="badge badge-soft-success">Aktif</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                            <tr><td><input class="form-check-input" type="checkbox" aria-label="Pilih"></td><td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#be185d">KM</span><div><div class="fw-semibold">Kartika Maya</div><div class="small text-muted-ol">kartika@orulabs.id</div></div></div></td><td>HRGA</td><td>GA Staff</td><td data-value="2025-06-02">2 Jun 2025</td><td data-value="6200000">Rp 6.200.000</td><td><span class="badge badge-soft-info">Probation</span></td><td class="text-end text-nowrap"><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Lihat"><i class="bi bi-eye"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Edit"><i class="bi bi-pencil"></i></button><button type="button" class="btn btn-ghost btn-icon btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#delEmp" aria-label="Hapus"><i class="bi bi-trash3"></i></button></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer d-flex flex-wrap align-items-center gap-2">
+                    <span class="small text-muted-ol" data-ol-table-info="#empTable"></span>
+                    <div class="ms-auto" data-ol-table-pager="#empTable"></div>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Tabel bergaris</h2></div>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-sm">
+                                <thead><tr><th>#</th><th>Barang</th><th class="text-end">Qty</th><th class="text-end">Harga</th></tr></thead>
+                                <tbody>
+                                    <tr><td>1</td><td>Kertas A4</td><td class="text-end">20</td><td class="text-end">Rp 1.100.000</td></tr>
+                                    <tr><td>2</td><td>Tinta printer</td><td class="text-end">6</td><td class="text-end">Rp 840.000</td></tr>
+                                    <tr><td>3</td><td>Map plastik</td><td class="text-end">50</td><td class="text-end">Rp 250.000</td></tr>
+                                </tbody>
+                                <tfoot><tr class="fw-bold"><td colspan="3" class="text-end">Total</td><td class="text-end">Rp 2.190.000</td></tr></tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Header berwarna tema</h2></div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-primary-head">
+                                <thead><tr><th>Ruangan</th><th>Kapasitas</th><th>Status</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Meeting A</td><td>8 orang</td><td><span class="badge badge-soft-success">Kosong</span></td></tr>
+                                    <tr><td>Meeting B</td><td>12 orang</td><td><span class="badge badge-soft-danger">Dipakai</span></td></tr>
+                                    <tr><td>Aula</td><td>60 orang</td><td><span class="badge badge-soft-warning">Dipesan</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="addEmp" tabindex="-1" aria-labelledby="addEmpLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <form class="modal-content needs-validation" novalidate>
+                        <div class="modal-header"><h5 class="modal-title fw-bold" id="addEmpLabel">Tambah Karyawan</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button></div>
+                        <div class="modal-body">
+                            <div class="mb-3"><label class="form-label" for="ae1">Nama</label><input type="text" class="form-control" id="ae1" required><div class="invalid-feedback">Wajib diisi.</div></div>
+                            <div class="mb-3"><label class="form-label" for="ae2">Email</label><input type="email" class="form-control" id="ae2" required><div class="invalid-feedback">Email tidak valid.</div></div>
+                            <div><label class="form-label" for="ae3">Departemen</label><select class="form-select" id="ae3" required><option value="">Pilih...</option><option>IT</option><option>HRGA</option><option>Finance</option></select><div class="invalid-feedback">Wajib dipilih.</div></div>
+                        </div>
+                        <div class="modal-footer"><button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Batal</button><button type="submit" class="btn btn-primary">Simpan</button></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal fade" id="delEmp" tabindex="-1" aria-labelledby="delEmpLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content text-center p-3">
+                        <div class="modal-body">
+                            <span class="ol-stat-icon is-danger mb-3" style="width:64px;height:64px;font-size:1.8rem;border-radius:50%"><i class="bi bi-trash3"></i></span>
+                            <h5 class="fw-bold" id="delEmpLabel">Hapus karyawan?</h5>
+                            <p class="text-muted-ol small mb-4">Data tidak bisa dikembalikan.</p>
+                            <div class="d-flex gap-2"><button type="button" class="btn btn-ghost flex-fill" data-bs-dismiss="modal">Batal</button><button type="button" class="btn btn-danger flex-fill" data-bs-dismiss="modal" data-ol-toast="Karyawan dihapus." data-variant="danger">Hapus</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>

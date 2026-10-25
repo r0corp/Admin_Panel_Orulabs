@@ -1,0 +1,133 @@
+<!--@
+title: Cards & Widgets
+layout: app
+-->
+            <div class="ol-page-header">
+                <span class="ol-page-icon"><i class="bi bi-window-stack"></i></span>
+                <div>
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item">UI Elements</li><li class="breadcrumb-item active" aria-current="page">Cards &amp; Widgets</li></ol></nav>
+                    <h1 class="ol-page-title">Cards &amp; Widgets</h1>
+                    <p class="ol-page-subtitle">Kartu dasar, kartu statistik, profil, dan widget siap pakai.</p>
+                </div>
+                <div class="ol-page-actions">
+                    <button type="button" class="btn btn-soft-primary"><i class="bi bi-funnel me-1"></i> Filter</button>
+                    <button type="button" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i> Tambah</button>
+                </div>
+            </div>
+
+            <div class="ol-section-title">Kartu statistik</div>
+            <div class="row g-3 mb-4">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card ol-stat">
+                        <div class="d-flex align-items-start justify-content-between">
+                            <div><div class="ol-stat-label">Total Aset</div><div class="ol-stat-value">1.024</div><div class="ol-trend up mt-1"><i class="bi bi-arrow-up-right"></i> 4 baru</div></div>
+                            <span class="ol-stat-icon"><i class="bi bi-box-seam"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card ol-stat">
+                        <div class="d-flex align-items-start justify-content-between">
+                            <div><div class="ol-stat-label">Dipinjam</div><div class="ol-stat-value">86</div><div class="ol-trend up mt-1"><i class="bi bi-arrow-up-right"></i> 2,1%</div></div>
+                            <span class="ol-stat-icon is-info"><i class="bi bi-arrow-left-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card ol-stat">
+                        <div class="d-flex align-items-start justify-content-between">
+                            <div><div class="ol-stat-label">Perlu Servis</div><div class="ol-stat-value">12</div><div class="ol-trend down mt-1"><i class="bi bi-arrow-down-right"></i> 3 terlambat</div></div>
+                            <span class="ol-stat-icon is-warning"><i class="bi bi-tools"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card ol-stat ol-stat-solid">
+                        <div class="d-flex align-items-start justify-content-between">
+                            <div><div class="ol-stat-label">Nilai Aset</div><div class="ol-stat-value">Rp 3,2 M</div><div class="ol-trend mt-1">Per 25 Okt 2026</div></div>
+                            <span class="ol-stat-icon"><i class="bi bi-cash-coin"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ol-section-title">Kartu dasar</div>
+            <div class="row g-3 mb-4">
+                <div class="col-md-6 col-xl-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h2 class="card-title">Judul kartu</h2>
+                            <div class="ms-auto dropdown">
+                                <button class="btn btn-ghost btn-icon btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu kartu"><i class="bi bi-three-dots-vertical"></i></button>
+                                <ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="#"><i class="bi bi-arrow-clockwise"></i> Muat ulang</a></li><li><a class="dropdown-item" href="#"><i class="bi bi-download"></i> Unduh</a></li></ul>
+                            </div>
+                        </div>
+                        <div class="card-body">Kartu standar dengan header, menu titik tiga, isi, dan footer.</div>
+                        <div class="card-footer d-flex justify-content-end gap-2">
+                            <button type="button" class="btn btn-ghost btn-sm">Batal</button>
+                            <button type="button" class="btn btn-primary btn-sm">Simpan</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="card h-100">
+                        <div class="card-header card-header-primary">
+                            <h2 class="card-title"><i class="bi bi-star me-1"></i> Header berwarna</h2>
+                        </div>
+                        <div class="card-body">Pakai class <code>card-header-primary</code> untuk header dengan warna tema.</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="card h-100 overflow-hidden">
+                        <div class="bg-gradient-primary d-flex align-items-center justify-content-center" style="height:140px"><i class="bi bi-image fs-1 opacity-75"></i></div>
+                        <div class="card-body">
+                            <h3 class="card-title mb-1">Kartu dengan gambar</h3>
+                            <p class="text-muted-ol small mb-3">Ganti blok gradient dengan &lt;img class="card-img-top"&gt;.</p>
+                            <a href="#" class="btn btn-soft-primary btn-sm">Selengkapnya <i class="bi bi-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ol-section-title">Widget</div>
+            <div class="row g-3">
+                <div class="col-md-6 col-xl-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <span class="ol-avatar ol-avatar-xl mb-3">RP</span>
+                            <h3 class="h5 fw-bold mb-0">Rina Putri</h3>
+                            <div class="text-muted-ol small mb-3">HRGA Supervisor</div>
+                            <div class="d-flex justify-content-center gap-2 mb-3">
+                                <span class="badge badge-soft-primary">Rekrutmen</span><span class="badge badge-soft-success">Aset</span><span class="badge badge-soft-warning">Pantry</span>
+                            </div>
+                            <div class="row text-center border-top pt-3">
+                                <div class="col"><div class="fw-800 fs-5">128</div><div class="small text-muted-ol">Tugas</div></div>
+                                <div class="col"><div class="fw-800 fs-5">96%</div><div class="small text-muted-ol">Selesai</div></div>
+                                <div class="col"><div class="fw-800 fs-5">4,9</div><div class="small text-muted-ol">Rating</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Daftar tugas</h2><span class="badge badge-soft-primary ms-auto">3/5</span></div>
+                        <div class="card-body">
+                            <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="t1" checked><label class="form-check-label text-decoration-line-through text-muted-ol" for="t1">Cek stok ATK</label></div>
+                            <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="t2" checked><label class="form-check-label text-decoration-line-through text-muted-ol" for="t2">Kirim laporan mingguan</label></div>
+                            <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="t3" checked><label class="form-check-label text-decoration-line-through text-muted-ol" for="t3">Booking ruang meeting</label></div>
+                            <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="t4"><label class="form-check-label" for="t4">Servis AC lantai 2</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="t5"><label class="form-check-label" for="t5">Perpanjang kontrak vendor</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xl-4">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Pesan terbaru</h2></div>
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"><span class="ol-avatar ol-avatar-sm">BS</span><span class="min-w-0"><span class="d-flex justify-content-between"><strong>Budi</strong><small class="text-muted-ol">09:12</small></span><span class="d-block small text-muted-ol text-truncate">Laporan sudah saya kirim ke email ya.</span></span></a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"><span class="ol-avatar ol-avatar-sm" style="background:#16a34a">SW</span><span class="min-w-0"><span class="d-flex justify-content-between"><strong>Siti</strong><small class="text-muted-ol">Kemarin</small></span><span class="d-block small text-muted-ol text-truncate">Ruang meeting jam 2 sudah dipesan.</span></span></a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"><span class="ol-avatar ol-avatar-sm" style="background:#ea580c">AR</span><span class="min-w-0"><span class="d-flex justify-content-between"><strong>Andi</strong><small class="text-muted-ol">Senin</small></span><span class="d-block small text-muted-ol text-truncate">Vendor minta jadwal ulang servis.</span></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>

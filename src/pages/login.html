@@ -1,0 +1,62 @@
+<!--@
+title: Login
+layout: auth
+-->
+    <button type="button" class="ol-navbar-btn ol-auth-mode" data-ol-toggle-mode aria-label="Ganti mode terang/gelap"><i class="bi bi-moon-stars"></i></button>
+
+    <!-- Variasi 1: Split - hero berwarna di kiri, form di kanan -->
+    <div class="ol-auth">
+        <div class="ol-auth-hero">
+            <a href="index.html" class="ol-auth-brand text-white position-relative" style="z-index:1">
+                <span class="ol-brand-logo" style="background:rgba(255,255,255,.2);box-shadow:none"><i class="bi bi-hexagon-half"></i></span> Orulabs
+            </a>
+
+            <div style="max-width:460px">
+                <h2 class="display-6 fw-800 mb-3 position-relative" style="z-index:1">Kelola operasional kantor dalam satu panel.</h2>
+                <p class="opacity-75 mb-4 position-relative" style="z-index:1">Aset, laporan, jadwal, dan tim - semuanya rapi dan mudah dipantau.</p>
+                <div class="ol-hero-feature"><i class="bi bi-lightning-charge"></i><div><div class="fw-semibold">Cepat &amp; ringan</div><div class="small opacity-75">Tanpa build tool, cukup HTML, CSS, JS.</div></div></div>
+                <div class="ol-hero-feature"><i class="bi bi-palette"></i><div><div class="fw-semibold">Tema fleksibel</div><div class="small opacity-75">Ganti warna, mode gelap, dan gaya sidebar.</div></div></div>
+                <div class="ol-hero-feature"><i class="bi bi-phone"></i><div><div class="fw-semibold">Responsif</div><div class="small opacity-75">Nyaman dari desktop sampai ponsel.</div></div></div>
+            </div>
+
+            <div class="ol-hero-quote">
+                <p class="mb-2">"Sejak pakai panel ini, laporan mingguan tim jadi jauh lebih cepat disusun."</p>
+                <div class="d-flex align-items-center gap-2 small"><span class="ol-avatar ol-avatar-sm" style="background:rgba(255,255,255,.25)">SW</span><span><strong>Siti Wulandari</strong> · HRGA Supervisor</span></div>
+            </div>
+        </div>
+
+        <div class="ol-auth-form">
+            <div class="ol-auth-card">
+                <a href="index.html" class="ol-auth-brand d-lg-none mb-4"><span class="ol-brand-logo"><i class="bi bi-hexagon-half"></i></span> Orulabs</a>
+                <h1 class="ol-auth-title">Selamat datang kembali 👋</h1>
+                <p class="text-muted-ol mb-4">Masuk untuk melanjutkan ke dashboard.</p>
+
+                <form class="needs-validation" novalidate data-ol-redirect="index.html">
+                    <div class="mb-3">
+                        <label class="form-label" for="email">Email</label>
+                        <div class="input-group"><span class="input-group-text"><i class="bi bi-envelope"></i></span><input type="email" class="form-control" id="email" placeholder="nama@perusahaan.co.id" required autocomplete="username"><div class="invalid-feedback">Masukkan email yang valid.</div></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label d-flex" for="password">Password <a href="forgot-password.html" class="ms-auto fw-normal small text-decoration-none">Lupa password?</a></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                            <input type="password" class="form-control" id="password" required autocomplete="current-password">
+                            <button class="btn btn-outline-secondary" type="button" data-ol-toggle-password="#password" aria-label="Tampilkan password"><i class="bi bi-eye"></i></button>
+                            <div class="invalid-feedback">Password wajib diisi.</div>
+                        </div>
+                    </div>
+                    <div class="form-check mb-4"><input class="form-check-input" type="checkbox" id="remember"><label class="form-check-label" for="remember">Ingat saya</label></div>
+                    <button type="submit" class="btn btn-primary w-100 py-2">Masuk <i class="bi bi-arrow-right ms-1"></i></button>
+                </form>
+
+                <div class="ol-divider">atau masuk dengan</div>
+                <div class="row g-2">
+                    <div class="col-6"><button type="button" class="btn btn-social w-100"><i class="bi bi-google me-1 text-danger"></i> Google</button></div>
+                    <div class="col-6"><button type="button" class="btn btn-social w-100"><i class="bi bi-microsoft me-1 text-primary"></i> Microsoft</button></div>
+                </div>
+
+                <p class="text-center text-muted-ol small mt-4 mb-0">Belum punya akun? <a href="register.html" class="fw-semibold text-decoration-none">Daftar sekarang</a></p>
+                <p class="text-center small mt-3 mb-0"><span class="text-muted-ol">Variasi lain:</span> <a href="login-centered.html">Centered</a> · <a href="login-glass.html">Glass</a> · <a href="login-minimal.html">Minimal</a></p>
+            </div>
+        </div>
+    </div>

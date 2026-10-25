@@ -1,0 +1,200 @@
+<!--@
+title: Dashboard
+layout: app
+libs: chart
+js: dashboard
+-->
+            <div class="ol-page-header ol-fade-in">
+                <span class="ol-page-icon"><i class="bi bi-grid-1x2"></i></span>
+                <div>
+                    <h1 class="ol-page-title"><span data-ol-greeting>Selamat datang</span>, Admin 👋</h1>
+                    <p class="ol-page-subtitle">Ringkasan aktivitas dan performa hari ini.</p>
+                </div>
+                <div class="ol-page-actions">
+                    <button type="button" class="btn btn-soft-primary"><i class="bi bi-download me-1"></i> Export</button>
+                    <button type="button" class="btn btn-primary" data-ol-toast="Laporan baru dibuat." data-variant="success"><i class="bi bi-plus-lg me-1"></i> Buat Laporan</button>
+                </div>
+            </div>
+
+            <div class="ol-ticker">
+                <i class="bi bi-megaphone-fill"></i>
+                <div class="ol-ticker-track"><span>📢 Maintenance server dijadwalkan Sabtu pukul 22:00 · 🎉 Selamat datang anggota tim baru · ✅ Target kuartal ini sudah tercapai 82% · Tetap semangat dan jaga kesehatan!</span></div>
+            </div>
+
+            <!-- KPI -->
+            <div class="row g-3 mb-3">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card ol-stat ol-stat-solid">
+                        <div class="d-flex align-items-start justify-content-between">
+                            <div>
+                                <div class="ol-stat-label">Total Pendapatan</div>
+                                <div class="ol-stat-value">Rp 248,5 jt</div>
+                                <div class="ol-trend mt-1"><i class="bi bi-arrow-up-right"></i> 12,4% dari bulan lalu</div>
+                            </div>
+                            <span class="ol-stat-icon"><i class="bi bi-wallet2"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card ol-stat">
+                        <div class="d-flex align-items-start justify-content-between">
+                            <div>
+                                <div class="ol-stat-label">Pesanan</div>
+                                <div class="ol-stat-value">1.284</div>
+                                <div class="ol-trend up mt-1"><i class="bi bi-arrow-up-right"></i> 8,1%</div>
+                            </div>
+                            <span class="ol-stat-icon is-success"><i class="bi bi-bag-check"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card ol-stat">
+                        <div class="d-flex align-items-start justify-content-between">
+                            <div>
+                                <div class="ol-stat-label">Pelanggan Baru</div>
+                                <div class="ol-stat-value">342</div>
+                                <div class="ol-trend down mt-1"><i class="bi bi-arrow-down-right"></i> 2,3%</div>
+                            </div>
+                            <span class="ol-stat-icon is-warning"><i class="bi bi-people"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card ol-stat">
+                        <div class="d-flex align-items-start justify-content-between">
+                            <div>
+                                <div class="ol-stat-label">Tiket Terbuka</div>
+                                <div class="ol-stat-value">27</div>
+                                <div class="ol-trend up mt-1"><i class="bi bi-check2"></i> 18 selesai hari ini</div>
+                            </div>
+                            <span class="ol-stat-icon is-danger"><i class="bi bi-life-preserver"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+                <div class="col-xl-8">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h2 class="card-title">Pendapatan vs Pengeluaran</h2>
+                            <div class="ms-auto btn-group btn-group-sm" role="group" aria-label="Periode">
+                                <button type="button" class="btn btn-outline-primary active">12 Bulan</button>
+                                <button type="button" class="btn btn-outline-primary">6 Bulan</button>
+                                <button type="button" class="btn btn-outline-primary">30 Hari</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 300px"><canvas id="chartRevenue" aria-label="Grafik pendapatan" role="img"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h2 class="card-title">Kategori Penjualan</h2>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 220px"><canvas id="chartCategory" aria-label="Grafik kategori" role="img"></canvas></div>
+                            <ul class="list-unstyled mt-3 mb-0 small">
+                                <li class="d-flex justify-content-between py-1"><span>Elektronik</span><strong>42%</strong></li>
+                                <li class="d-flex justify-content-between py-1"><span>Perlengkapan Kantor</span><strong>28%</strong></li>
+                                <li class="d-flex justify-content-between py-1"><span>Furniture</span><strong>18%</strong></li>
+                                <li class="d-flex justify-content-between py-1"><span>Lainnya</span><strong>12%</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-xl-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Transaksi Terbaru</h2>
+                            <a href="tables.html" class="ms-auto btn btn-sm btn-soft-primary">Lihat semua</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr><th>No. Order</th><th>Pelanggan</th><th>Tanggal</th><th>Total</th><th>Status</th><th></th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-semibold">#ORD-2041</td>
+                                        <td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm">BS</span>Budi Santoso</div></td>
+                                        <td>24 Okt 2026</td><td>Rp 4.250.000</td>
+                                        <td><span class="badge badge-soft-success">Lunas</span></td>
+                                        <td class="text-end"><button type="button" class="btn btn-sm btn-icon btn-ghost" aria-label="Detail"><i class="bi bi-three-dots"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-semibold">#ORD-2040</td>
+                                        <td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#16a34a">SW</span>Siti Wulandari</div></td>
+                                        <td>24 Okt 2026</td><td>Rp 1.180.000</td>
+                                        <td><span class="badge badge-soft-warning">Menunggu</span></td>
+                                        <td class="text-end"><button type="button" class="btn btn-sm btn-icon btn-ghost" aria-label="Detail"><i class="bi bi-three-dots"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-semibold">#ORD-2039</td>
+                                        <td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#ea580c">AR</span>Andi Rahman</div></td>
+                                        <td>23 Okt 2026</td><td>Rp 760.000</td>
+                                        <td><span class="badge badge-soft-primary">Dikirim</span></td>
+                                        <td class="text-end"><button type="button" class="btn btn-sm btn-icon btn-ghost" aria-label="Detail"><i class="bi bi-three-dots"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-semibold">#ORD-2038</td>
+                                        <td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#db2777">DL</span>Dewi Lestari</div></td>
+                                        <td>23 Okt 2026</td><td>Rp 2.900.000</td>
+                                        <td><span class="badge badge-soft-danger">Batal</span></td>
+                                        <td class="text-end"><button type="button" class="btn btn-sm btn-icon btn-ghost" aria-label="Detail"><i class="bi bi-three-dots"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-semibold">#ORD-2037</td>
+                                        <td><div class="d-flex align-items-center gap-2"><span class="ol-avatar ol-avatar-sm" style="background:#0891b2">RH</span>Rizky Hidayat</div></td>
+                                        <td>22 Okt 2026</td><td>Rp 5.640.000</td>
+                                        <td><span class="badge badge-soft-success">Lunas</span></td>
+                                        <td class="text-end"><button type="button" class="btn btn-sm btn-icon btn-ghost" aria-label="Detail"><i class="bi bi-three-dots"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h2 class="card-title">Kalender</h2>
+                            <a href="calendar.html" class="ms-auto small text-decoration-none">Buka</a>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="ol-minical" data-ol-minical data-upcoming></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Aktivitas</h2>
+                        </div>
+                        <div class="card-body">
+                            <ul class="ol-timeline">
+                                <li>
+                                    <span class="ol-timeline-icon"><i class="bi bi-check2"></i></span>
+                                    <div class="fw-semibold">Order #2041 dibayar</div>
+                                    <div class="small text-muted-ol">10 menit lalu</div>
+                                </li>
+                                <li>
+                                    <span class="ol-timeline-icon"><i class="bi bi-upload"></i></span>
+                                    <div class="fw-semibold">Laporan Oktober diunggah</div>
+                                    <div class="small text-muted-ol">1 jam lalu oleh Siti</div>
+                                </li>
+                                <li>
+                                    <span class="ol-timeline-icon"><i class="bi bi-person-plus"></i></span>
+                                    <div class="fw-semibold">3 user baru terdaftar</div>
+                                    <div class="small text-muted-ol">Kemarin</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>

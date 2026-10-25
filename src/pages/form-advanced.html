@@ -1,0 +1,77 @@
+<!--@
+title: Form Lanjutan
+layout: app
+libs: flatpickr, tomselect
+js: form-advanced
+-->
+            <div class="ol-page-header">
+                <span class="ol-page-icon"><i class="bi bi-ui-radios"></i></span>
+                <div>
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item">Forms</li><li class="breadcrumb-item active" aria-current="page">Form Lanjutan</li></ol></nav>
+                    <h1 class="ol-page-title">Form Lanjutan</h1>
+                    <p class="ol-page-subtitle">Wizard bertahap dan layout form horizontal untuk input data.</p>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-xl-7">
+                    <div class="card">
+                        <div class="card-header"><h2 class="card-title">Wizard pengajuan</h2></div>
+                        <div class="card-body">
+                            <div class="ol-steps" data-wizard-steps>
+                                <div class="ol-step is-active">Data diri</div>
+                                <div class="ol-step">Detail</div>
+                                <div class="ol-step">Konfirmasi</div>
+                            </div>
+
+                            <form id="wizard" novalidate>
+                                <div data-wizard-pane>
+                                    <div class="row g-3">
+                                        <div class="col-md-6"><label class="form-label" for="wz1">Nama lengkap</label><input type="text" class="form-control" id="wz1" required><div class="invalid-feedback">Wajib diisi.</div></div>
+                                        <div class="col-md-6"><label class="form-label" for="wz2">NIK karyawan</label><input type="text" class="form-control" id="wz2" required><div class="invalid-feedback">Wajib diisi.</div></div>
+                                        <div class="col-md-6"><label class="form-label" for="wz3">Departemen</label><select class="form-select" id="wz3" required><option value="">Pilih...</option><option>IT</option><option>HRGA</option><option>Finance</option></select><div class="invalid-feedback">Pilih departemen.</div></div>
+                                        <div class="col-md-6"><label class="form-label" for="wz4">Email</label><input type="email" class="form-control" id="wz4" required><div class="invalid-feedback">Email tidak valid.</div></div>
+                                    </div>
+                                </div>
+                                <div data-wizard-pane hidden>
+                                    <div class="row g-3">
+                                        <div class="col-md-6"><label class="form-label" for="wz5">Jenis pengajuan</label><select class="form-select" id="wz5" required><option value="">Pilih...</option><option>Cuti</option><option>Peminjaman aset</option><option>Pembelian</option></select><div class="invalid-feedback">Wajib dipilih.</div></div>
+                                        <div class="col-md-6"><label class="form-label" for="wz6">Tanggal</label><input type="text" class="form-control" id="wz6" data-ol-date="range" placeholder="Dari - sampai" required></div>
+                                        <div class="col-12"><label class="form-label" for="wz7">Alasan</label><textarea class="form-control" id="wz7" rows="3" required></textarea><div class="invalid-feedback">Jelaskan alasannya.</div></div>
+                                    </div>
+                                </div>
+                                <div data-wizard-pane hidden>
+                                    <div class="text-center py-3">
+                                        <span class="ol-stat-icon is-success mb-3" style="width:64px;height:64px;font-size:1.8rem;border-radius:50%"><i class="bi bi-check2-all"></i></span>
+                                        <h3 class="h5 fw-bold">Periksa kembali data Anda</h3>
+                                        <p class="text-muted-ol">Ringkasan:</p>
+                                        <dl class="row text-start small mx-auto" style="max-width:420px" data-wizard-summary></dl>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between mt-4 pt-3 border-top">
+                                    <button type="button" class="btn btn-ghost" data-wizard-prev disabled><i class="bi bi-arrow-left me-1"></i> Kembali</button>
+                                    <button type="button" class="btn btn-primary" data-wizard-next>Lanjut <i class="bi bi-arrow-right ms-1"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-5">
+                    <div class="card">
+                        <div class="card-header"><h2 class="card-title">Form horizontal</h2></div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row mb-3"><label for="h1" class="col-sm-4 col-form-label">Kode aset</label><div class="col-sm-8"><input type="text" class="form-control" id="h1" value="TCI-LP-2026-0001"></div></div>
+                                <div class="row mb-3"><label for="h2" class="col-sm-4 col-form-label">Kategori</label><div class="col-sm-8"><select class="form-select" id="h2"><option>Laptop</option><option>Monitor</option></select></div></div>
+                                <div class="row mb-3"><label for="h3" class="col-sm-4 col-form-label">Tgl. beli</label><div class="col-sm-8"><input type="text" class="form-control" id="h3" data-ol-date></div></div>
+                                <div class="row mb-3"><label for="h4" class="col-sm-4 col-form-label">Harga</label><div class="col-sm-8"><div class="input-group"><span class="input-group-text">Rp</span><input type="text" class="form-control" id="h4"></div></div></div>
+                                <fieldset class="row mb-3"><legend class="col-form-label col-sm-4 pt-0">Kondisi</legend><div class="col-sm-8"><div class="form-check"><input class="form-check-input" type="radio" name="kond" id="k1" checked><label class="form-check-label" for="k1">Baik</label></div><div class="form-check"><input class="form-check-input" type="radio" name="kond" id="k2"><label class="form-check-label" for="k2">Rusak ringan</label></div></div></fieldset>
+                                <div class="row mb-3"><label for="h5" class="col-sm-4 col-form-label">PIC</label><div class="col-sm-8"><select id="h5" data-ol-select><option value="">Cari karyawan...</option><option>Budi Santoso</option><option>Siti Wulandari</option><option>Andi Rahman</option><option>Dewi Lestari</option></select></div></div>
+                                <div class="d-flex justify-content-end gap-2"><button type="reset" class="btn btn-ghost">Batal</button><button type="button" class="btn btn-primary" data-ol-toast="Aset tersimpan." data-variant="success"><i class="bi bi-floppy me-1"></i> Simpan</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>

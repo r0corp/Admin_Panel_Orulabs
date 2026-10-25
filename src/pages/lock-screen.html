@@ -1,0 +1,26 @@
+<!--@
+title: Lock Screen
+layout: auth
+-->
+    <div class="ol-auth-glass flex-column">
+        <span class="ol-blob b1"></span>
+        <span class="ol-blob b2"></span>
+
+        <div class="text-center mb-5 position-relative">
+            <div class="ol-lock-clock" data-ol-bigclock>--:--</div>
+            <div class="opacity-75 mt-2" data-ol-bigdate></div>
+        </div>
+
+        <div class="ol-glass-card text-center" style="max-width:360px">
+            <span class="ol-avatar ol-lock-avatar">AD</span>
+            <h1 class="h5 fw-bold mt-3 mb-0">Admin Orulabs</h1>
+            <p class="small opacity-75 mb-4">Sesi dikunci. Masukkan password untuk melanjutkan.</p>
+            <form class="needs-validation" novalidate data-ol-redirect="index.html">
+                <div class="input-group">
+                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" required autocomplete="current-password">
+                    <button type="submit" class="btn btn-light" aria-label="Buka"><i class="bi bi-arrow-right"></i></button>
+                </div>
+            </form>
+            <p class="small mt-4 mb-0"><a href="login.html">Bukan Anda? Masuk dengan akun lain</a></p>
+        </div>
+    </div>

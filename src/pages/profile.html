@@ -1,0 +1,93 @@
+<!--@
+title: Profil
+layout: app
+-->
+            <div class="card mb-3 overflow-hidden">
+                <div class="ol-cover"></div>
+                <div class="card-body pt-0">
+                    <div class="d-flex flex-wrap align-items-end gap-3">
+                        <span class="ol-avatar ol-avatar-xl ol-profile-avatar">AD</span>
+                        <div class="pb-1">
+                            <h1 class="h4 fw-800 mb-0">Admin Orulabs</h1>
+                            <div class="text-muted-ol"><i class="bi bi-briefcase me-1"></i>Administrator · <i class="bi bi-geo-alt ms-1 me-1"></i>Jakarta</div>
+                        </div>
+                        <div class="ms-auto d-flex gap-2 pb-1">
+                            <button type="button" class="btn btn-soft-primary"><i class="bi bi-chat-dots me-1"></i> Pesan</button>
+                            <button type="button" class="btn btn-primary" onclick="bootstrap.Tab.getOrCreateInstance(document.querySelector('.nav-link[data-bs-target=\'#pf-settings\']')).show()"><i class="bi bi-pencil me-1"></i> Edit profil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-xl-4">
+                    <div class="card mb-3">
+                        <div class="card-header"><h2 class="card-title">Tentang</h2></div>
+                        <div class="card-body">
+                            <p class="text-muted-ol">Mengelola sistem internal, aset IT, dan akses pengguna di seluruh departemen.</p>
+                            <ul class="list-unstyled small mb-0">
+                                <li class="d-flex gap-2 py-1"><i class="bi bi-envelope text-primary"></i> admin@orulabs.id</li>
+                                <li class="d-flex gap-2 py-1"><i class="bi bi-telephone text-primary"></i> +62 812-0000-0000</li>
+                                <li class="d-flex gap-2 py-1"><i class="bi bi-calendar-check text-primary"></i> Bergabung 11 Maret 2019</li>
+                                <li class="d-flex gap-2 py-1"><i class="bi bi-building text-primary"></i> Departemen IT</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h2 class="card-title">Keahlian</h2></div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between small mb-1"><span>Jaringan</span><strong>90%</strong></div>
+                            <div class="progress mb-3" style="height:6px"><div class="progress-bar" style="width:90%"></div></div>
+                            <div class="d-flex justify-content-between small mb-1"><span>Server &amp; Linux</span><strong>80%</strong></div>
+                            <div class="progress mb-3" style="height:6px"><div class="progress-bar" style="width:80%"></div></div>
+                            <div class="d-flex justify-content-between small mb-1"><span>Pemrograman web</span><strong>70%</strong></div>
+                            <div class="progress" style="height:6px"><div class="progress-bar" style="width:70%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-8">
+                    <div class="card">
+                        <div class="card-header pb-0 border-0">
+                            <ul class="nav nav-underline" role="tablist">
+                                <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#pf-activity" type="button" role="tab" aria-selected="true">Aktivitas</button></li>
+                                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#pf-settings" type="button" role="tab" aria-selected="false">Pengaturan akun</button></li>
+                                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#pf-security" type="button" role="tab" aria-selected="false">Keamanan</button></li>
+                            </ul>
+                        </div>
+                        <div class="card-body tab-content">
+                            <div class="tab-pane fade show active" id="pf-activity" role="tabpanel">
+                                <ul class="ol-timeline">
+                                    <li><span class="ol-timeline-icon"><i class="bi bi-hdd-network"></i></span><div class="fw-semibold">Menambahkan 4 switch baru ke inventaris</div><div class="small text-muted-ol">Hari ini, 10:24</div></li>
+                                    <li><span class="ol-timeline-icon"><i class="bi bi-person-check"></i></span><div class="fw-semibold">Menyetujui akses untuk Rina Putri</div><div class="small text-muted-ol">Kemarin, 15:02</div></li>
+                                    <li><span class="ol-timeline-icon"><i class="bi bi-cloud-arrow-up"></i></span><div class="fw-semibold">Backup database selesai</div><div class="small text-muted-ol">23 Okt 2026, 22:00</div></li>
+                                    <li><span class="ol-timeline-icon"><i class="bi bi-shield-lock"></i></span><div class="fw-semibold">Mengganti password</div><div class="small text-muted-ol">20 Okt 2026</div></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="pf-settings" role="tabpanel">
+                                <form class="row g-3 needs-validation" novalidate>
+                                    <div class="col-md-6"><label class="form-label" for="pfName">Nama</label><input type="text" class="form-control" id="pfName" value="Admin Orulabs" required></div>
+                                    <div class="col-md-6"><label class="form-label" for="pfEmail">Email</label><input type="email" class="form-control" id="pfEmail" value="admin@orulabs.id" required></div>
+                                    <div class="col-md-6"><label class="form-label" for="pfPhone">Telepon</label><input type="tel" class="form-control" id="pfPhone" value="+62 812-0000-0000"></div>
+                                    <div class="col-md-6"><label class="form-label" for="pfLang">Bahasa</label><select class="form-select" id="pfLang"><option>Bahasa Indonesia</option><option>English</option></select></div>
+                                    <div class="col-12"><label class="form-label" for="pfBio">Bio</label><textarea class="form-control" id="pfBio" rows="3">Mengelola sistem internal, aset IT, dan akses pengguna di seluruh departemen.</textarea></div>
+                                    <div class="col-12">
+                                        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="pfN1" checked><label class="form-check-label" for="pfN1">Kirim notifikasi ke email</label></div>
+                                        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="pfN2"><label class="form-check-label" for="pfN2">Ringkasan mingguan</label></div>
+                                    </div>
+                                    <div class="col-12 text-end"><button type="submit" class="btn btn-primary"><i class="bi bi-floppy me-1"></i> Simpan perubahan</button></div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="pf-security" role="tabpanel">
+                                <form class="row g-3 needs-validation" novalidate>
+                                    <div class="col-12"><label class="form-label" for="pfOld">Password lama</label><input type="password" class="form-control" id="pfOld" required autocomplete="current-password"></div>
+                                    <div class="col-md-6"><label class="form-label" for="pfNew">Password baru</label><input type="password" class="form-control" id="pfNew" minlength="8" required autocomplete="new-password"><div class="invalid-feedback">Minimal 8 karakter.</div></div>
+                                    <div class="col-md-6"><label class="form-label" for="pfNew2">Ulangi password baru</label><input type="password" class="form-control" id="pfNew2" minlength="8" required autocomplete="new-password"></div>
+                                    <div class="col-12"><div class="alert alert-primary small mb-0"><i class="bi bi-shield-check me-1"></i> Aktifkan verifikasi dua langkah untuk keamanan tambahan.</div></div>
+                                    <div class="col-12 text-end"><button type="submit" class="btn btn-primary">Perbarui password</button></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

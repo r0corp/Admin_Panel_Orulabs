@@ -1,0 +1,75 @@
+<!--@
+title: Typography & Warna
+layout: app
+-->
+            <div class="ol-page-header">
+                <span class="ol-page-icon"><i class="bi bi-fonts"></i></span>
+                <div>
+                    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Dashboard</a></li><li class="breadcrumb-item">UI Elements</li><li class="breadcrumb-item active" aria-current="page">Typography &amp; Warna</li></ol></nav>
+                    <h1 class="ol-page-title">Typography &amp; Warna</h1>
+                    <p class="ol-page-subtitle">Skala huruf, palet warna tema, dan cara mengganti warna lewat kode.</p>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Heading</h2></div>
+                        <div class="card-body">
+                            <h1>Heading 1</h1>
+                            <h2>Heading 2</h2>
+                            <h3>Heading 3</h3>
+                            <h4>Heading 4</h4>
+                            <h5>Heading 5</h5>
+                            <h6>Heading 6</h6>
+                            <p class="lead">Lead paragraph untuk pembuka halaman.</p>
+                            <p>Teks biasa dengan <a href="#">tautan</a>, <strong>tebal</strong>, <em>miring</em>, <mark>sorotan</mark>, dan <code>kode</code>.</p>
+                            <p class="text-muted-ol small mb-0">Teks kecil &amp; redup untuk keterangan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card h-100">
+                        <div class="card-header"><h2 class="card-title">Warna tema (ikut panel Tema)</h2></div>
+                        <div class="card-body">
+                            <div class="row g-2 mb-3">
+                                <div class="col-6 col-md-3"><div class="ol-color-chip" style="background:var(--ol-primary-dark)">primary-dark</div></div>
+                                <div class="col-6 col-md-3"><div class="ol-color-chip" style="background:var(--ol-primary)">primary</div></div>
+                                <div class="col-6 col-md-3"><div class="ol-color-chip" style="background:var(--ol-primary-light)">primary-light</div></div>
+                                <div class="col-6 col-md-3"><div class="ol-color-chip" style="background:var(--ol-gradient)">gradient</div></div>
+                            </div>
+                            <div class="row g-2 mb-4">
+                                <div class="col-4 col-md-2"><div class="ol-color-chip bg-success">success</div></div>
+                                <div class="col-4 col-md-2"><div class="ol-color-chip bg-danger">danger</div></div>
+                                <div class="col-4 col-md-2"><div class="ol-color-chip bg-warning text-dark">warning</div></div>
+                                <div class="col-4 col-md-2"><div class="ol-color-chip bg-info text-dark">info</div></div>
+                                <div class="col-4 col-md-2"><div class="ol-color-chip bg-secondary">secondary</div></div>
+                                <div class="col-4 col-md-2"><div class="ol-color-chip bg-dark">dark</div></div>
+                            </div>
+                            <div class="ol-section-title">Ganti warna bawaan lewat kode</div>
+                            <p class="small text-muted-ol">Ubah <code>OL_DEFAULTS</code> di <code>assets/js/orulabs-theme-init.js</code>:</p>
+                            <pre class="ol-code mb-3" id="codeDefaults">var OL_DEFAULTS = {
+    primary: "#7c3aed",   // warna utama
+    mode: "light",        // light | dark | auto
+    sidebar: "dark",      // light | dark | primary
+    radius: "14",         // 6 | 14 | 20
+    mini: false
+};</pre>
+                            <p class="small text-muted-ol">Atau ganti dari JavaScript kapan saja:</p>
+                            <pre class="ol-code mb-2">OL.setTheme({ primary: "#16a34a", sidebar: "primary" });</pre>
+                            <button type="button" class="btn btn-soft-primary btn-sm" data-ol-copy="#codeDefaults"><i class="bi bi-clipboard me-1"></i> Salin contoh</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header"><h2 class="card-title">Ikon</h2><a href="https://icons.getbootstrap.com/" target="_blank" rel="noopener" class="ms-auto small">Semua ikon Bootstrap Icons <i class="bi bi-box-arrow-up-right"></i></a></div>
+                        <div class="card-body">
+                            <div class="ol-demo-row fs-4 text-primary gap-3">
+                                <i class="bi bi-house"></i><i class="bi bi-speedometer2"></i><i class="bi bi-people"></i><i class="bi bi-box-seam"></i><i class="bi bi-cart3"></i><i class="bi bi-receipt"></i><i class="bi bi-calendar3"></i><i class="bi bi-chat-dots"></i><i class="bi bi-bell"></i><i class="bi bi-gear"></i><i class="bi bi-shield-check"></i><i class="bi bi-graph-up-arrow"></i><i class="bi bi-file-earmark-text"></i><i class="bi bi-truck"></i><i class="bi bi-building"></i><i class="bi bi-wallet2"></i>
+                            </div>
+                            <p class="small text-muted-ol mt-3 mb-0">Pakai: <code>&lt;i class="bi bi-house"&gt;&lt;/i&gt;</code></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
